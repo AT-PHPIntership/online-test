@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionsTextTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateQuestionsTextTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions_text', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('content');
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateQuestionsTextTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions_text');
+        Schema::dropIfExists('categories');
     }
 }

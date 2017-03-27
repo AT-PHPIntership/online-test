@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionsImageTable extends Migration
+class CreateSummaryTextTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateQuestionsImageTable extends Migration
      */
     public function up()
     {
-        Schema::create('questions_image', function (Blueprint $table) {
+        Schema::create('summary_text', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('image');
+            $table->string('content');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateQuestionsImageTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('questions_image');
+        Schema::dropIfExists('summary_text');
     }
 }

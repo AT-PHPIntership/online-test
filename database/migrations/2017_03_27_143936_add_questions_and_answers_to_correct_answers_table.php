@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateImagesTable extends Migration
+class AddQuestionsAndAnswersToCorrectAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,13 @@ class CreateImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('image')->nullable();
-            $table->integer('question_id')->unsigned();
+        Schema::table('correct_answers', function (Blueprint $table) {
             $table->foreign('question_id')
                   ->references('id')->on('questions')
                   ->onDelete('cascade');
-            $table->timestamps();
+            $table->foreign('answer_id')
+                  ->references('id')->on('answers')
+                  ->onDelete('cascade');
         });
     }
 
@@ -31,6 +30,9 @@ class CreateImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('images');
+        Schema::table('correct_answers', function (Blueprint $table) {
+            $table->dropForeign('correct_answers_question_id_foreign');
+            $table->dropForeign('correct_answers_answer_id_foreign');
+        });
     }
 }

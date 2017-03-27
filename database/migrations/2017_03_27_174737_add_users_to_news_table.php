@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateExamsTable extends Migration
+class AddUsersToNewsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateExamsTable extends Migration
      */
     public function up()
     {
-        Schema::create('exams', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title')->unique();
-            $table->string('audio');
-            $table->integer('count_test');
-            $table->timestamps();
+        Schema::table('news', function (Blueprint $table) {
+            $table->foreign('user_id')
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
         });
     }
 
@@ -29,6 +27,8 @@ class CreateExamsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('exams');
+        Schema::table('news', function (Blueprint $table) {
+            $table->dropForeign('news_user_id_foreign');
+        });
     }
 }

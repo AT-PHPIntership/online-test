@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePartesTable extends Migration
+class AddUsersAndExamsToUsersExamsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreatePartesTable extends Migration
      */
     public function up()
     {
-        Schema::create('partes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title')->unique();
-            $table->string('description')->nullable();
-            $table->integer('number_answer')->nullable();
-            $table->timestamps();
-            $table->integer('exam_id')->unsigned();
+        Schema::table('users_exams', function (Blueprint $table) {
+            $table->foreign('user_id')
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
             $table->foreign('exam_id')
                   ->references('id')->on('exams')
                   ->onDelete('cascade');
@@ -33,6 +30,9 @@ class CreatePartesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('partes');
+        Schema::table('users_exams', function (Blueprint $table) {
+            $table->dropForeign('users_exams_user_id_foreign');
+            $table->dropForeign('users_exams_exam_id_foreign');
+        });
     }
 }

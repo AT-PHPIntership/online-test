@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategorisTable extends Migration
+class CreateTableQuestionGroup extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateCategorisTable extends Migration
      */
     public function up()
     {
-        Schema::create('categoris', function (Blueprint $table) {
+        Schema::create('question_group', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->unique();
+            $table->integer('question_id')->unsigned();
+            $table->integer('summary_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateCategorisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categoris');
+        Schema::dropIfExists('question_group');
     }
 }
