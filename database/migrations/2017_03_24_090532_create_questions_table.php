@@ -17,6 +17,7 @@ class CreateQuestionsTable extends Migration
             $table->increments('id');
             $table->string('content')->nullable();
             $table->integer('part_id')->unsigned();
+            $table->integer('exam_id')->unsigned();
             $table->timestamps();
         });
     }
