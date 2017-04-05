@@ -1,0 +1,86 @@
+/* Exams Page*/
+body {
+	background-color: white;
+}
+ul {
+	list-style-type: none;
+
+}
+.new-exams ul {
+	padding-left: 5px;
+}
+.clear {
+	clear: both;
+}
+.leftbar {
+	/*float: left;*/
+}
+.content-exams {
+	background-color: white;
+}
+.content-exams h3 {
+	text-align: center;
+}
+.new-exams {
+	border: 1px solid black;
+}
+.top-exams {
+
+	border: 1px solid black;
+}
+.title-newexams , .title-topexams {
+	text-align: center;
+	padding-top: 18px;
+	color: #82651e;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #906921
+}
+.leftbar, .content-exams {
+	color: black;
+}
+.row-left {
+	/*padding-left: 10px;*/
+}
+.h5-exam {
+	text-align: center;
+}
+.click-practices {
+	border: 1px dotted grey;
+    margin-bottom: 10px;
+    padding: 15px;
+    position: relative;
+    border-radius: 10px;
+    background-color: #d9edf7;
+}
+.click-practices:hover {
+	color: #337ab7;
+}
+.click-practices h4 {
+	text-align: center;
+}
+.btn-exams:hover {
+	color: #d9edf7;
+	background-color: #02335d;
+	border: 1px solid #333;
+}
+.click-practices p {
+	font-size: 14px;
+}
+.btn-exams {
+	position: absolute;
+	right: 15px;
+	background-color: #1ab965;
+	border: 1px solid #1ab965;
+	bottom: 30px;
+	padding: 7px;
+	color: white;
+}
+.fa-clock-o  {
+	color: #663399;
+}
+.fa-question-circle-o {
+	color: red;
+}
+.fa-pencil-square-o  {
+	color: #337ab7;
+}
