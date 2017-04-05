@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/login.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="panel panel-login">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-6">
+                <a href="#" class="active" id="login-form-link">Infomation</a>
+              </div>
+              <div class="col-xs-6">
+                <a href="#" id="register-form-link">Password</a>
+              </div>
+            </div>
+            <hr>
+          </div>
+          <div class="panel-body">
+              <div class="row">
+                  <div class="col-lg-12">
+                      <form id="login-form" action="" method="post" role="form" style="display: block;">
+                          <div class="form-group">
+                              <label for="inputPassword">Email Adress</label>
+                              <div>
+                                <input class="form-control" id="disabledInput" type="text" placeholder="dinhnhandtu@gmail.com" disabled>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="">Full Name :</label>
+                              <input type="text" name="fullname" id="fullname" tabindex="1" class="form-control" value=" Dang Dinh Nhan">
+                          </div>
+                          <div class="form-group">
+                            <div class='input-group date' id='datetimepicker'>
+                                <input type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="">Sex :</label>
+                              <label class="radio-inline"><input type="radio" name="sex">Male</label>
+                              <label class="radio-inline"><input type="radio" name="sex">Female</label>
+                          </div>
+                          <div class="form-group">
+                              <div class="row">
+                                  <div class="col-sm-6 col-sm-offset-3">
+                                      <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Update Now">
+                                  </div>
+                              </div>
+                          </div>
+                      </form>
+                        <form id="register-form" action="" method="post" role="form" style="display: none;">
+                            <div class="form-group">
+                                <label for="">Old Password :</label>
+                                <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Old Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="">New Password :</label>
+                                <input type="password" name="new-password" id="new-password" tabindex="2" class="form-control" placeholder="New Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Confirm Password :</label>
+                                <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-sm-6 col-sm-offset-3">
+                                        <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Update Now">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -273,5 +273,31 @@ body {
 
 .text-center p {
   text-align: justify; }
+section {
+    padding: 100px 0pc;
 
+}
+span.glyphicon.glyphicon-time {
+    font-size: 30px;
+    /* padding-left: 142px; */
+}
+.r2 .p1{
+  height: 200px;
+  background: #FFFFFF;
+  border: 1px solid #EEEEEE;
+  border-radius: 5px;
+  color: black;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.r2 .p1 span{
+    font-size: 50px;
+    color: red;
+    font-weight: bold;
+}
+.r3 .result{
+  margin-top: 20px;  
+  text-align: center;
+}
 /*# sourceMappingURL=grayscale.css.map */
