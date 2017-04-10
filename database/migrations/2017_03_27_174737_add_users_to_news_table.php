@@ -14,8 +14,8 @@ class AddUsersToNewsTable extends Migration
     public function up()
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->foreign('user_id')
-                  ->references('id')->on('users')
+            $table->foreign('user_admin_id')
+                  ->references('id')->on('users_admin')
                   ->onDelete('cascade');
         });
     }
@@ -28,7 +28,7 @@ class AddUsersToNewsTable extends Migration
     public function down()
     {
         Schema::table('news', function (Blueprint $table) {
-            $table->dropForeign('news_user_id_foreign');
+            $table->dropForeign('news_user_admin_id_foreign');
         });
     }
 }
