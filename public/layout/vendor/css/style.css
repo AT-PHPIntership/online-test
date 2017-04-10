@@ -96,12 +96,14 @@ a {
   padding: 100px 0;
   text-align: center;
   color: white;
-  background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
-  background-color: black;
+  background-color: #000000;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover; }
+  .intro h1.brand-heading {
+    padding-top: 100px;
+    }
   .intro .intro-body {
     display: table-cell;
     vertical-align: middle; }
