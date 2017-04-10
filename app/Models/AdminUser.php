@@ -1,18 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Models\UserExam;
+use Illuminate\Database\Eloquent\Model;
 
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-
-class User extends Authenticatable
+class AdminUser extends Model
 {
-    use Notifiable;
-
-    protected $table = 'users';
-
+   
+    protected $table = 'admin_users';
     /**
      * The attributes that are mass assignable.
      *
@@ -33,12 +28,12 @@ class User extends Authenticatable
 
 
     /**
-     * User has many users_exam
+     * Admin User has many news
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function userExams()
+    public function news()
     {
-        return $this->hasMany(UserExams::class);
+        return $this->hasMany(News::class);
     }
 }
