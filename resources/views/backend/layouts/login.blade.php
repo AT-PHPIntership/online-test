@@ -10,7 +10,6 @@
   <title>{!! trans('labels.exam_login') !!}</title> 
 
   <!-- CSS --> 
-  <link href="{{ asset('backend/css/vendor.css') }}" rel="stylesheet"> 
 
   <!-- Font Awesome --> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> 
@@ -71,7 +70,6 @@
 </div> 
 
 <!-- Javascript --> 
-<script src="{{ asset('backend/js/vendor.js') }}"></script>      
 
 </body> 
 </html> 
