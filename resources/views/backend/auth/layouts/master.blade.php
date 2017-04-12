@@ -15,34 +15,11 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('bower_components/AdminLTE/dist/css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ asset('bower_components/AdminLTE/dist/css/skins/skin-blue.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('bower_components/AdminLTE/admin/login.css') }}">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
-<div class="wrapper">
-
-  <!-- Main Header -->
-  @include('backend.layouts.partials.header')
-  
-  <!-- Left side column. contains the logo and sidebar -->
-  @include('backend.layouts.partials.side_bar')
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Main content -->
-    <section class="content">
-      <!-- Your Page Content Here -->
       @yield('content')
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <!-- Main Footer -->
-  @include('backend.layouts.partials.footer')
-</div>
-<!-- ./wrapper -->
-
-<!-- REQUIRED JS SCRIPTS -->
-
+</body>
 <!-- jQuery 2.2.3 -->
 <script src="{{ asset('bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <!-- Bootstrap 3.3.6 -->

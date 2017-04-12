@@ -1,23 +1,43 @@
-<div class="col-md-3 left_col">
-  <div class="left_col scroll-view">
-    <div class="navbar nav_title" style="border: 0;">
-      <a href="" class="site_title"><i class="fa fa-cogs"></i> <span>{!! trans('labels.promotion_admin') !!}</span></a>
+<aside class="main-sidebar">
+
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+
+    <!-- Sidebar user panel (optional) -->
+    <div class="user-panel">
+      <div class="pull-left image">
+        <img src="{{ asset('bower_components/AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+      </div>
+      <div class="pull-left info">
+        <p>Admin - dinhnhandtu</p>
+        <!-- Status -->
+        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+      </div>
     </div>
 
-    <div class="clearfix"></div>
-        <!-- /menu profile quick info -->
-        <br />
-        <!-- sidebar menu -->
-        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-            <div class="menu_section">
-                <ul class="nav side-menu">
-                    <li><a href=""><i class="fa fa-home"></i> {!! trans('labels.dasboard') !!} </a></li>
-                    <li><a href=""><i class="fa fa-user"></i> {!! trans('labels.admin') !!} </a></li>
-                    <li><a href=""><i class="fa fa-sitemap"></i> {!! trans('labels.category') !!} </a></li>
-                    <li><a href=""><i class="fa fa-user-md"></i> {!! trans('labels.user') !!} </a></li>      
-                </ul>
-            </div>
-        </div>
-        <!-- /sidebar menu -->
-    </div>
-</div>
+    <!-- search form (Optional) -->
+    <form action="#" method="get" class="sidebar-form">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search...">
+            <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              </button>
+            </span>
+      </div>
+    </form>
+    <!-- /.search form -->
+
+    <!-- Sidebar Menu -->
+    <ul class="sidebar-menu">
+      <li class="header">MANAGER</li>
+      <!-- Optionally, you can add icons to the links -->
+      <li class="active"><a href="#"><i class="fa fa-user"></i><span>Account</span></a></li>
+      <li><a href="#"><i class="fa fa-sitemap"></i> <span>Category</span></a></li>
+      <li><a href="#"><i class="fa fa-newspaper-o"></i> <span>New</span></a></li>
+      <li><a href="#"><i class="fa fa-mortar-board"></i> <span>Exam</span></a></li>
+      <li><a href="#"><i class="fa fa-user-md"></i> <span>User</span></a></li>
+    </ul>
+    <!-- /.sidebar-menu -->
+  </section>
+  <!-- /.sidebar -->
+</aside>
