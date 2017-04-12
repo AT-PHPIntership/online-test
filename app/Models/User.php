@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use App\Models\UserExam;
 
@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name', 'email', 'password','sex', 'birthday'
     ];
 
+    public $timestamps = true;
     /**
      * The attributes that should be hidden for arrays.
      *
