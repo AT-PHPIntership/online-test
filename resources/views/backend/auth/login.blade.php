@@ -1,5 +1,4 @@
 @extends('backend.auth.layouts.master')
-
 @section('content')
 <div class="container">
     <div class="row " style="margin-top: 150px;">
