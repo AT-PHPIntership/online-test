@@ -3,6 +3,7 @@
     <!-- Default directory to check if there are no directories argurment  -->
     <file>app</file>
     <file>resources</file>
+    <file>config</file>
 
     <!-- Add PSR1 standard -->
     <rule ref="PSR1"></rule>
