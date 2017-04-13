@@ -12,13 +12,75 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
-        'remember_token' => str_random(10),
+        'password' => bcrypt('123456'),
+        'name'  => $faker->firstName().' '.$faker->lastName(),
+        'sex'       => $faker->NumberBetween($min = 0, $max = 1),
+        'birthday'  => $faker->dateTimeBetween($startDate = '-25 years', $endDate = '-20 years'),
+    ];
+});
+
+$factory->define(App\Models\AdminUser::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'email' => $faker->unique()->safeEmail,
+        'password' => bcrypt('123456'),
+        'name'  => $faker->firstName().' '.$faker->lastName(),
+        'sex'       => $faker->biasedNumberBetween($min = 0, $max = 1),
+        'birthday'  => $faker->dateTimeBetween($startDate = '-25 years', $endDate = '-20 years'),
+    ];
+});
+
+$factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->text($maxNbChars = 70),
+    ];
+});
+
+$factory->define(App\Models\News::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->text($maxNbChars = 70),
+        'slug'  => $faker->slug,
+        'content' => $faker->paragraph($nbSentences = 12, $variableNbSentences = true),
+    ];
+});
+
+$factory->define(App\Models\Part::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->text($maxNbChars = 70),
+        'description'  => $faker->text($maxNbChars = 70),
+        'number_answer' => $faker->biasedNumberBetween($min = 3, $max = 4),
+        'number_question' => $faker->biasedNumberBetween($min = 10, $max = 40),
+    ];
+});
+
+$factory->define(App\Models\Exam::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->text($maxNbChars = 70),
+        'audio'  => $faker->Url,
+        'count_test' => $faker->biasedNumberBetween($min = 0, $max = 50),
+    ];
+});
+
+$factory->define(App\Models\QuestionImage::class, function (Faker\Generator $faker) {
+    return [
+        'image' => $faker->imageUrl($width = 300, $height = 300),
+    ];
+});
+
+$factory->define(App\Models\Question::class, function (Faker\Generator $faker) {
+    return [
+        'content' => $faker->text($minNbChars = 5 , $maxNbChars = 30),
+    ];
+});
+
+$factory->define(App\Models\Answer::class, function (Faker\Generator $faker) {
+    return [
+        'content' => $faker->text($minNbChars = 5 , $maxNbChars = 30),
     ];
 });
