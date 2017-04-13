@@ -10,7 +10,7 @@ return [
     'cancel'          => 'Cancel',
     'submit'          => 'Submit',
     'reset'           => 'Reset',
-    'star'            => '*',
+    'edit'            => 'Edit',
     
     'exam_login' => 'Exam Toeic - Login',
     'admin_form'      => 'Page Login Admin',
@@ -19,6 +19,10 @@ return [
     'admin' => 'Admin',
     'category'  => 'Category',
     'user'  => 'User',
-    'manager' => 'Manager'
-
+    'manager' => 'Manager',
+    'fullname'  => 'Full Name',
+    'email' => 'Email Adress',
+    'sex'   => 'Gender',
+    'birthday'  => 'Birth Day',
+    'list'  => ' List',
 ];
