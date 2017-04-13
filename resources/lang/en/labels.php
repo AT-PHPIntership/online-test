@@ -11,7 +11,7 @@ return [
     'submit'          => 'Submit',
     'reset'           => 'Reset',
     'star'            => '*',
-
+    
     'exam_login' => 'Exam Toeic - Login',
     'admin_form'      => 'Page Login Admin',
     'button_login'    => 'Log in now',
