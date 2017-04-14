@@ -12,7 +12,7 @@ return [
     'cancel'    => 'Cancel',
     'submit'    => 'Submit',
     'reset' => 'Reset',
-    'edit'  => 'Edit',
+    'edit'  => ' Edit',
     'exam_login' => 'Exam Toeic - Login',
     'admin_form'      => 'Page Login Admin',
     'button_login'    => 'Log in now',
@@ -37,6 +37,13 @@ return [
     'copyright' => 'Copyright &copy; 2017',
     'company'   => ' AT-Company.',
     'dashboard'  => 'Dasboard',
-
-
+    'fullname'  => 'Fullname',
+    'sex'   => 'Gender',
+    'birthday'  => 'Birth Day',
+    'action'    => 'Action',
+    'list'  => ' --> List',
+    'delete'    => ' Delete',
+    'male'  => 'Male',
+    'famale'    => 'Famale',
+    'id'    => 'ID',
 ];

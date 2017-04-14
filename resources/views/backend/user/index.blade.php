@@ -12,16 +12,18 @@
                     <table id="list_users" class="table table-striped table-bordered">
                         <thead>
                             <tr>
+                                <th>{!! trans('labels.id') !!}</th>
                                 <th>{!! trans('labels.fullname') !!}</th>
                                 <th>{!! trans('labels.email') !!}</th>
                                 <th>{!! trans('labels.sex') !!}</th>
                                 <th>{!! trans('labels.birthday') !!}</th>
-                                <th>{!! trans('labels.action') !!}</th>
+                                <th class="text-center">{!! trans('labels.action') !!}</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($users as $user)
                             <tr>
+                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
@@ -32,11 +34,15 @@
                                     @endif
                                 </td>
                                 <td>{{ Carbon\Carbon::parse($user->birthday)->format('d-m-Y') }}</td>
-                                <td><a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>{!! trans('labels.edit') !!}</a></td>
+                                <td class="text-center">
+                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>{!! trans('labels.edit') !!}</a>
+                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i>{!! trans('labels.delete') !!}</a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
+                    {{$users->render()}}  
                 </div>
             </div>
         </div>

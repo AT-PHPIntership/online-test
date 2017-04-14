@@ -33,8 +33,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->user->all();
-        return view('backend.user.list',compact('users'));
+        $users = User::orderBy('id')->paginate();
+        return view('backend.user.index', compact('users'));
     }
 
     /**
@@ -50,56 +50,61 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request of user
+     *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    /*public function store(Request $request)
     {
         //
-    }
+    }*/
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id of user
+     *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    /*public function show($id)
     {
         //
-    }
+    }*/
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id of user
+     *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    /*public function edit($id)
     {
         //
-    }
+    }*/
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request of user
+     * @param int                      $id      of user
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    /*public function update(Request $request, $id)
     {
         //
-    }
+    }*/
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id of user
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+   /* public function destroy($id)
     {
         //
-    }
+    }*/
 }
