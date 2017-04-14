@@ -11,7 +11,6 @@ return [
     'submit'          => 'Submit',
     'reset'           => 'Reset',
     'edit'            => 'Edit',
-    
     'exam_login' => 'Exam Toeic - Login',
     'admin_form'      => 'Page Login Admin',
     'button_login'    => 'Log in now',
@@ -24,5 +23,8 @@ return [
     'email' => 'Email Adress',
     'sex'   => 'Gender',
     'birthday'  => 'Birth Day',
-    'list'  => ' List',
+    'list'  => ' --> List',
+    'male'  => 'Male',
+    'famale'    => "Famale",
+    'action'    =>'Action'
 ];
