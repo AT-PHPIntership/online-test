@@ -16,6 +16,4 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 
     // Login backend
     Route::Auth();
-
 });
-        
