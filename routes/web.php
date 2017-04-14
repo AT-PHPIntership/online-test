@@ -16,4 +16,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 
     // Login backend
     Route::Auth();
+
+    Route::get('dashboard', function () {
+        return view('backend.dashboard.index');
+    })->name('dashboard');
 });
