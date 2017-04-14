@@ -46,5 +46,4 @@ class LoginController extends Controller
     {
         return view('backend.auth.login');
     }
-
 }
