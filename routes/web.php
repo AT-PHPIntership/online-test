@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//=========================Backend=======================================
+Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
+
+    // Login backend
+    Route::Auth();
+
 });
+        
