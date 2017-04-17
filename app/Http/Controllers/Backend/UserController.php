@@ -6,26 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Session;
 
 class UserController extends Controller
 {
-    /**
-    * User
-    *
-    * @var User
-    */
-    private $user;
-
-    /**
-    * Construct a UserController
-    *
-    * @param int $user user
-    */
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -33,31 +18,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('created_at','DESC')->paginate();
+        $users = User::orderBy('created_at', 'DESC')->paginate();
         return view('backend.user.index', compact('users'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    /*public function create()
-    {
-        //
-    }*/
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request of user
-     *
-     * @return \Illuminate\Http\Response
-     */
-    /*public function store(Request $request)
-    {
-        //
-    }*/
 
     /**
      * Display the specified resource.
@@ -66,36 +29,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function show($id)
-    {
-        //
-    }*/
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id of user
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('backend.user.edit', compact('user'));
+        return view('backend.user.show', compact('user'));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request of user
-     * @param int                      $id      of user
-     *
-     * @return \Illuminate\Http\Response
-     */
-    /*public function update(Request $request, $id)
-    {
-        //
-    }*/
 
     /**
      * Remove the specified resource from storage.
@@ -108,6 +46,6 @@ class UserController extends Controller
     {
         User::findOrFail($id)->delete();
         Session::flash('success', trans('messages.user_delete_success'));
-        return redirect()->route('backend.user.index');
+        return redirect()->route('admin.user.index');
     }
 }
