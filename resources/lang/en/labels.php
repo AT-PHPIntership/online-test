@@ -45,7 +45,7 @@ return [
     'edit'  => ' --> Edit',
     'delete'    => ' Delete',
     'male'  => 'Male',
-    'famale'    => 'Famale',
+    'female'    => 'Female',
     'id'    => 'ID',
     'bt_edit'   => 'Edit',
     'no_data'   => 'No Data',

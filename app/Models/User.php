@@ -31,9 +31,9 @@ class User extends Authenticatable
     public function getSexLabelAttribute()
     {
         if ($this->sex == self::SEX_MALE) {
-            return 'Male';
+            return trans('labels.male');
         }
-        return 'Famale';
+        return trans('labels.female');
     }
     /**
      * The attributes that are mass assignable.
