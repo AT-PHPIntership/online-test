@@ -9,23 +9,7 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    /**
-    * User
-    *
-    * @var User
-    */
-    private $user;
-
-    /**
-    * Construct a UserController
-    *
-    * @param int $user user
-    */
-    public function __construct(User $user)
-    {
-        $this->user = $user;
-    }
-
+    
     /**
      * Display a listing of the resource.
      *
@@ -33,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::orderBy('created_at','DESC')->paginate();
+        $users = User::orderBy('created_at', 'DESC')->paginate();
         return view('backend.user.index', compact('users'));
     }
 
