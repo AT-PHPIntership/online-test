@@ -12,7 +12,7 @@ return [
     'cancel'    => 'Cancel',
     'submit'    => 'Submit',
     'reset' => 'Reset',
-    'edit'  => ' Edit',
+    'edit'  => 'Edit',
     'exam_login' => 'Exam Toeic - Login',
     'admin_form'      => 'Page Login Admin',
     'button_login'    => 'Log in now',
@@ -42,8 +42,13 @@ return [
     'birthday'  => 'Birth Day',
     'action'    => 'Action',
     'list'  => ' --> List',
+    'edit'  => ' --> Edit',
     'delete'    => ' Delete',
     'male'  => 'Male',
     'famale'    => 'Famale',
     'id'    => 'ID',
+    'bt_edit'   => 'Edit',
+    'no_data'   => 'No Data',
+    'user_delete_success'   => 'Delele User Successfully !'
+    
 ];

@@ -23,5 +23,5 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     Route::Auth();
 
     // User
-        Route::resource('user', 'UserController', ['as' => 'admin']);
+    Route::resource('user', 'UserController', ['as' => 'admin']);
 });

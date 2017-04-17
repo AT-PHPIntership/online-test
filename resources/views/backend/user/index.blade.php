@@ -8,6 +8,7 @@
                     <h2>{!! trans('labels.user') !!}<small>{!! trans('labels.list') !!}</small></h2>
                     <div class="clearfix"></div>
                 </div>
+                @if (count($users))
                 <div class="x_content">
                     <table id="list_users" class="table table-striped table-bordered">
                         <thead>
@@ -26,17 +27,11 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>
-                                    @if(($user->sex) == 1)
-                                        {!! trans('labels.male') !!}
-                                    @elseif(($user->sex) == 0)
-                                        {!! trans('labels.famale') !!}
-                                    @endif
-                                </td>
+                                <td>{{ $user->sex_label}}</td>
                                 <td>{{ Carbon\Carbon::parse($user->birthday)->format('d-m-Y') }}</td>
                                 <td class="text-center">
-                                    <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i>{!! trans('labels.edit') !!}</a>
-                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i>{!! trans('labels.delete') !!}</a>
+                                    <a href="{{route('admin.user.edit',$user->id)}}" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i>{!! trans('labels.bt_edit') !!}</a>
+                                    <a href="" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i>{!! trans('labels.delete') !!}</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -44,6 +39,12 @@
                     </table>
                     {{$users->render()}}  
                 </div>
+                @else
+                    <br>
+                    <div class="alert alert-info">
+                        {!! trans('labels.no_data') !!}
+                    </div>
+                @endif
             </div>
         </div>
     </div>

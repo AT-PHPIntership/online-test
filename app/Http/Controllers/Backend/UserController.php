@@ -42,10 +42,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    /*public function create()
     {
         //
-    }
+    }*/
 
     /**
      * Store a newly created resource in storage.
@@ -78,10 +78,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function edit($id)
+    public function edit($id)
     {
-        //
-    }*/
+        $user = User::findOrFail($id);
+        return view('backend.user.edit', compact('user'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -103,8 +104,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-   /* public function destroy($id)
+    public function destroy($id)
     {
-        //
-    }*/
+        User::findOrFail($id)->delete();
+        Session::flash('success', trans('messages.user_delete_success'));
+        return redirect()->route('backend.user.index');
+    }
 }
