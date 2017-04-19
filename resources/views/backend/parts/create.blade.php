@@ -9,28 +9,28 @@
       <form role="form" action="{{route('admin.parts.store')}}" method="POST">
       {{csrf_field()}}
         <div class="box-body">
-          <div class="form-group col-md-12">
+          <div class="form-group col-md-12  @if($errors->first('title')) has-error @endif">
             <label>{{ trans('parts.title') }}</label>
             <input type="text" class="form-control"  name="title">
-            <div class="form-group has-error">
-	          <span class="help-block">{{$errors->first('title')}}</span>
-	        </div>
+            @if($errors->first('title'))
+  	          <span class="help-block">{{$errors->first('title')}}</span>
+            @endif
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-6 @if($errors->first('number_answer')) has-error @endif"">
             <label>{{trans('parts.number_answer')}} </label>
             <input type="text" class="form-control"  name="number_answer">
-            <div class="form-group has-error">
+            @if($errors->first('title'))
 	          <span class="help-block">{{$errors->first('number_answer')}}</span>
-	        </div>
+            @endif
           </div>
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-6 @if($errors->first('number_question')) has-error @endif">
             <label>{{ trans('parts.number_question') }} </label>
             <input type="text" class="form-control"  name="number_question">
-            <div class="form-group has-error">
+            @if($errors->first('number_question')) 
 	          <span class="help-block">{{$errors->first('number_question')}}</span>
-	        </div>
+            @endif
           </div>
-          <div class="form-group">
+          <div class="form-group @if($errors->first('description')) has-error @endif">
           	<label>{{trans('parts.description')}}</label>
             <div class="box box-info ">
               <div class="box-header">
@@ -40,18 +40,18 @@
                 </div>
               </div>
               <div class="box-body pad">
-                <textarea id="editor1" name="description" rows="10" cols="80" placeholder="This is my textarea to be replaced with CKEditor.">
+                <textarea class="textarea" name="description" rows="10" cols="200" >
                 </textarea>
               </div>
             </div>
-             <div class="form-group has-error">
+            @if($errors->first('description')) 
 	          <span class="help-block">{{$errors->first('description')}}</span>
-	        </div>
+            @endif
           </div>
         </div>
         <div class="box-footer">
           <button type="submit" class="btn btn-primary">{{trans('backend.submit')}}</button>
-          <button type="button" class="btn  btn-danger"><a href="">{{trans('backend.cancel')}}</a></button>
+          <a href="{{route('admin.parts.index')}}"><button type="button" class="btn  btn-danger">{{trans('backend.cancel')}}</button></a>
         </div>
       </form>
     </div>
