@@ -37,6 +37,18 @@ return [
     'copyright' => 'Copyright &copy; 2017',
     'company'   => ' AT-Company.',
     'dashboard'  => 'Dasboard',
-
-
+    'fullname'  => 'Fullname',
+    'sex'   => 'Gender',
+    'birthday'  => 'Birth Day',
+    'action'    => 'Action',
+    'list'  => ' --> List',
+    'edit'  => ' --> Edit',
+    'delete'    => ' Delete',
+    'male'  => 'Male',
+    'female'    => 'Female',
+    'id'    => 'ID',
+    'bt_edit'   => 'Edit',
+    'no_data'   => 'No Data',
+    'user_delete_success'   => 'Delele User Successfully !'
+    
 ];

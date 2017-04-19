@@ -14,11 +14,15 @@
 //=========================Backend=======================================
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 
-    // Login backend
-    Route::Auth();
-
+    // Dashboard
     Route::get('dashboard', function () {
         return view('backend.dashboard.index');
     })->name('dashboard');
+
+    // Login backend
+    Route::Auth();
+
+    // User
+    Route::resource('user', 'UserController', ['as' => 'admin']);
     Route::resource('categories', 'CategoryController', ['as' => 'admin']);
 });

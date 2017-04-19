@@ -14,6 +14,28 @@ class User extends Authenticatable
     protected $table = 'users';
 
     /**
+     * Sex Male
+     */
+    const SEX_MALE = 0;
+
+    /**
+     * Sex female
+     */
+    const SEX_FEMALE = 1;
+
+    /**
+     * Set the user's sex.
+     *
+     * @return string
+     */
+    public function getSexLabelAttribute()
+    {
+        if ($this->sex == self::SEX_MALE) {
+            return trans('labels.male');
+        }
+        return trans('labels.female');
+    }
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
