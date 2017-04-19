@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\AdminUser;
 use App\Http\Controllers\Controller;
+use Session;
 
 class AdminUserController extends Controller
 {
@@ -45,7 +46,8 @@ class AdminUserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id of admin user
+     * @param int $id of admin user
+     *
      * @return \Illuminate\Http\Response
      */
     /*public function show($id)
@@ -85,8 +87,10 @@ class AdminUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function destroy($id)
+    public function destroy($id)
     {
-        //
-    }*/
+        AdminUser::findOrFail($id)->delete();
+        Session::flash('success', trans('messages.user_delete_success'));
+        return redirect()->route('admin.admin-user.index');
+    }
 }
