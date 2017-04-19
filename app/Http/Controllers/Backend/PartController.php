@@ -46,35 +46,46 @@ class PartController extends Controller
         return redirect()->route('admin.parts.index');
     }
 
-    // /**
-    //  * Display the specified resource.
-    //  */
-    // public function show($id)
-    // {
-    //     //
-    // }
 
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  */
-    // public function edit($id)
-    // {
-    //     //
-    // }
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id of part
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $part = Part::findOrFail($id);
+        return view('backend.parts.edit', compact('part'));
+    }
 
-    // /**
-    //  * Update the specified resource in storage.
-    //  */
-    // public function update(Request $request, $id)
-    // {
-    //     //
-    // }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request of part
+     * @param int                      $id      of part
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(PartRequest $request, $id)
+    {
+        Part::findOrFail($id)->update($request->all());
+        Session::flash('success', trans('messages.part_edit_success'));
+        return redirect()->route('admin.parts.index');
+    }
 
-    // /**
-    //  * Remove the specified resource from storage.
-    //  */
-    // public function destroy($id)
-    // {
-    //     //
-    // }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id of category
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        Part::findOrFail($id)->delete();
+        Session::flash('success', trans('messages.part_delete_success'));
+        return redirect()->route('admin.parts.index');
+    }
 }
