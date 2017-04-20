@@ -56,6 +56,8 @@ return [
     'show'  => ' --> Show Details',
     'created_at'    => 'Created at',
     'updated_at'    => 'Updated at',
-    'back'  => ' Back'
+    'back'  => ' Back',
+    'title' => 'Title',
+    'description'   => 'Description'
     
 ];

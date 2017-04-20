@@ -25,4 +25,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     // User
     Route::resource('user', 'UserController', ['as' => 'admin']);
     Route::resource('categories', 'CategoryController', ['as' => 'admin']);
+
+    // Part
+    Route::resource('part', 'PartController', ['as' => 'admin'], ['only' => [
+        'index',
+    ]]);
 });
