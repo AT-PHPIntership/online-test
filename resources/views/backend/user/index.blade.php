@@ -30,8 +30,12 @@
                                 <td>{{ $user->sex_label}}</td>
                                 <td>{{ Carbon\Carbon::parse($user->birthday)->format('d-m-Y') }}</td>
                                 <td class="text-center">
-                                    <a href="{{route('admin.user.edit',$user->id)}}" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i>{!! trans('labels.bt_edit') !!}</a>
-                                    <a href="" class="btn btn-danger btn-xs"><i class="fa fa-remove"></i>{!! trans('labels.delete') !!}</a>
+                                    <a href="{{route('admin.user.show',$user->id)}}" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i>{!! trans('labels.bt_details') !!}</a>
+                                    <form action="{!!route('admin.user.destroy',$user->id)!!}" enctype="multipart/form-data" method="POST">
+                                        <input type="hidden" name="_token"  value="{!! csrf_token()!!}"> 
+                                        {{ method_field('DELETE') }}
+                                        <button type="submit" class="btn btn-danger btn-xs" name="" onclick="return confirmDelete('Are you want to delete this !!!')"><i class="fa fa-remove"></i>{!! trans('labels.delete') !!}</button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach
