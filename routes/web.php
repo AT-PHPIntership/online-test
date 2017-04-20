@@ -23,6 +23,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     Route::Auth();
 
     // User
-    Route::resource('user', 'UserController', ['as' => 'admin']);
+    Route::resource('user', 'UserController', ['as' => 'admin'], ['only' => [
+        'index', 'show'
+    ]]);
+
+    // Category
     Route::resource('categories', 'CategoryController', ['as' => 'admin']);
 });
