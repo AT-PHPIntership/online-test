@@ -50,15 +50,6 @@ $factory->define(App\Models\News::class, function (Faker\Generator $faker) {
     ];
 });
 
-$factory->define(App\Models\Part::class, function (Faker\Generator $faker) {
-    return [
-        'title' => $faker->text($maxNbChars = 70),
-        'description'  => $faker->text($maxNbChars = 70),
-        'number_answer' => $faker->biasedNumberBetween($min = 3, $max = 4),
-        'number_question' => $faker->biasedNumberBetween($min = 10, $max = 40),
-    ];
-});
-
 $factory->define(App\Models\Exam::class, function (Faker\Generator $faker) {
     return [
         'title' => $faker->text($maxNbChars = 70),
