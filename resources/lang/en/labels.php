@@ -58,6 +58,7 @@ return [
     'updated_at'    => 'Updated at',
     'back'  => ' Back',
     'title' => 'Title',
-    'description'   => 'Description'
-    
+    'description'   => 'Description',
+    'add_account'   => 'Add New Account',
+    'add'   => ' --> Add'
 ];

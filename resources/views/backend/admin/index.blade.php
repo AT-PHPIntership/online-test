@@ -6,7 +6,7 @@
             <div class="x_panel">
                 <div class="x_title">
                     <h2>{!! trans('labels.admin_user') !!}<small>{!! trans('labels.list') !!}</small></h2>
-                    <button class="btn btn-primary"><i class="fa fa-plus"></i>{!! trans('labels.create') !!}</button>
+                    <a href="{{route('admin.admin-user.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i>{!! trans('labels.create') !!}</a>
                     <div class="clearfix"></div>
                 </div>
                 @if (count($adminUsers))

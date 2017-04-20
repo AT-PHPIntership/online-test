@@ -26,10 +26,10 @@ class AdminUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function create()
+    public function create()
     {
-        //
-    }*/
+         return view('backend.admin.create');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -38,11 +38,11 @@ class AdminUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function store(Request $request)
+    public function store(Request $request)
     {
         //
     }
-    */
+    
     /**
      * Display the specified resource.
      *
@@ -50,10 +50,10 @@ class AdminUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function show($id)
+    public function show($id)
     {
         //
-    }*/
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -62,10 +62,10 @@ class AdminUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function edit($id)
+    public function edit($id)
     {
         //
-    }*/
+    }
 
     /**
      * Update the specified resource in storage.
@@ -75,10 +75,10 @@ class AdminUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         //
-    }*/
+    }
 
     /**
      * Remove the specified resource from storage.
