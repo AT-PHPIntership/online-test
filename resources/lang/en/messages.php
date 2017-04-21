@@ -7,4 +7,7 @@ return [
     'news_create_success' => 'Create News Success',
     'news_edit_success' => 'Edit News Success',
     'news_delete_success' => 'Delete News Success',
+    'exams_create_success' => 'Create Exam Success',
+    'exams_edit_success' => 'Edit Exam Success',
+    'exams_delete_success' => 'Delete Exams Success',
 ];

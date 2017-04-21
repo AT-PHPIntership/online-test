@@ -28,7 +28,7 @@
             <td>{{$exam->title}}</td>
             <td>
               <audio controls>
-                <source src="{{asset('/backend/files_upload_audio/'.$exam->audio)}}" type="audio/mpeg">
+                <source src="{{asset(config('constant.upload_file_audio').$exam->audio)}}" type="audio/mpeg">
               Your browser does not support the audio element.
               </audio>
 

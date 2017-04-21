@@ -45,7 +45,7 @@ class ExamController extends Controller
         $exams->count_test = 0;
         if ($request->hasFile('audio')) {
             $exams ->audio= $request->audio->hashName();
-            $request->file('audio')->move('backend/files_upload_audio', $exams ->audio);
+            $request->file('audio')->move(config('constant.upload_file_audio'), $exams ->audio);
         }
         $result = $exams ->save();
         if ($result) {
