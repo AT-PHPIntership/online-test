@@ -27,7 +27,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         'index', 'show'
     ]]);
 
-    // Category
+    // Admin User
+    Route::resource('admin-user', 'AdminUserController', ['as' => 'admin'], ['only' => [
+    'index', 'create', 'store', 'update', 'destroy'
+    ]]);
+
+    //Category
     Route::resource('categories', 'CategoryController', ['as' => 'admin']);
 
     // Part
