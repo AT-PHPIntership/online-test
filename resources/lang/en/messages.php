@@ -9,5 +9,7 @@ return [
     'news_delete_success' => 'Delete News Success',
     'admin_user_create_success' => 'Add New Admin User Success',
     'admin_user_update_success' => 'Update Admin User Success',
-    
+    'exams_create_success' => 'Create Exam Success',
+    'exams_edit_success' => 'Edit Exam Success',
+    'exams_delete_success' => 'Delete Exams Success',
 ];

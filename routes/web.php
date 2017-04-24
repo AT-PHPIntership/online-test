@@ -20,7 +20,9 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth', 'namespace' => 'Backend
     })->name('dashboard');
 
     // User
-    Route::resource('user', 'UserController', ['as' => 'admin']);
+    Route::resource('user', 'UserController', ['as' => 'admin'], ['only' => [
+        'index', 'show'
+    ]]);
 
     // Admin User
     Route::resource('admin-user', 'AdminUserController', ['as' => 'admin'], ['only' => [
@@ -29,6 +31,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'auth', 'namespace' => 'Backend
 
     //Category
     Route::resource('categories', 'CategoryController', ['as' => 'admin']);
+    Route::resource('exams', 'ExamController', ['as' => 'admin']);
 
     // Part
     Route::resource('part', 'PartController', ['as' => 'admin'], ['only' => [

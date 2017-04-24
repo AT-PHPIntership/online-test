@@ -27,7 +27,7 @@ class AddQuestionsToQuestionImagesTable extends Migration
      */
     public function down()
     {
-        Schema::table('images', function (Blueprint $table) {
+        Schema::table('question_images', function (Blueprint $table) {
             $table->dropForeign('question_images_question_id_foreign');
         });
     }
