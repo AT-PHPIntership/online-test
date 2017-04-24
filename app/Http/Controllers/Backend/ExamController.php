@@ -36,7 +36,7 @@ class ExamController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request of exam
+     * @param \Illuminate\Http\Request $request of exams
      *
      * @return \Illuminate\Http\Response
      */
