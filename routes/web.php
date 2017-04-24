@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 
     //Category
     Route::resource('categories', 'CategoryController', ['as' => 'admin']);
-    Route::resource('exams', 'ExamController', ['as' => 'admin']);
+    Route::resource('exams', 'ExamController', ['as' => 'admin', 'except' => 'show']);
 
     // Part
     Route::resource('part', 'PartController', ['as' => 'admin'], ['only' => [
