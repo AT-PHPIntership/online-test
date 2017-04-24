@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Exam;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ExamPostRequest;
+use App\Http\Requests\ExamPutRequest;
 use Session;
 
 class ExamController extends Controller
@@ -35,7 +36,7 @@ class ExamController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request of exams
+     * @param \Illuminate\Http\Request $request of exam
      *
      * @return \Illuminate\Http\Response
      */
@@ -70,21 +71,40 @@ class ExamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param int $id of exam
+     *
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        //
+        $exam = Exam::findOrFail($id);
+        return view('backend.exams.edit', compact('exam'));
     }
 
     /**
      * Update the specified resource in storage.
      *
+     * @param \Illuminate\Http\Request $request of exam
+     * @param int                      $id      of exam
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update(ExamPutRequest $request, $id)
     {
-        //
+        $exam = Exam::findOrFail($id);
+        $exam->fill($request->all());
+        if ($request ->audio) {
+            $exam ->audio = $request->audio->hashName();
+            $request->file('audio')->move(config('constant.upload_file_audio'), $exam ->audio);
+        }
+        $result = $exam ->update();
+        if ($result) {
+            Session::flash('success', trans('messages.exams_edit_success'));
+            return redirect()->route('admin.exams.index');
+        } else {
+            Session::flash('error', trans('messages.exams_edit_errors'));
+            return redirect()->route('admin.exams.create');
+        }
     }
 
     /**

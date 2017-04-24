@@ -35,7 +35,7 @@
             </td>
             <td>{{$exam->count_test}}</td>
             <td>
-              <a href="">
+              <a href="{{route('admin.exams.edit',$exam->id)}}">
               <button type="button" class="btn btn-block btn-info btn-sm">
                 <i class="fa fa-fw fa-edit"></i>
               </button></a>
