@@ -7,6 +7,9 @@
   </div>
 @endif
   <div class="col-xs-10 col-xs-offset-1">
+  <div>
+  <button><a href="{{route('admin.exams.create')}}">Add</a></button>
+  </div>
     <div class="box">
       <div class="box-header">
         <h3 class="box-title">{{trans('exams.table')}}</h3>
