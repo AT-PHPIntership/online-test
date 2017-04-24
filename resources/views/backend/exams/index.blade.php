@@ -39,7 +39,7 @@
               <button type="button" class="btn btn-block btn-info btn-sm">
                 <i class="fa fa-fw fa-edit"></i>
               </button></a>
-              <form action="" enctype="multipart/form-data" method="POST">
+              <form action="{{route('admin.exams.destroy',$exam->id)}}" enctype="multipart/form-data" method="POST">
                  {{csrf_field()}}
                 {{ method_field('DELETE') }}
                 <button type="submit"  onclick="return confirmDelete('Are you want to delete this !!!')" class="btn btn-block btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>

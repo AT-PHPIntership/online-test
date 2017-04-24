@@ -92,10 +92,12 @@ class ExamController extends Controller
     public function update(ExamPutRequest $request, $id)
     {
         $exam = Exam::findOrFail($id);
+        $audioPathOld = $exam['audio'];
         $exam->fill($request->all());
         if ($request ->audio) {
             $exam ->audio = $request->audio->hashName();
             $request->file('audio')->move(config('constant.upload_file_audio'), $exam ->audio);
+            unlink(config('constant.upload_file_audio').$audioPathOld);
         }
         $result = $exam ->update();
         if ($result) {
@@ -110,10 +112,16 @@ class ExamController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param int $id of exam
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        //
+        $exam = Exam::findOrFail($id);
+        unlink(config('constant.upload_file_audio').$exam['audio']);
+        $exam->delete($id);
+        Session::flash('success', trans('messages.news_delete_success'));
+        return redirect()->route('admin.exams.index');
     }
 }
