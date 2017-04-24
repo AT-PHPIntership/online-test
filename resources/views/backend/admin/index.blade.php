@@ -2,6 +2,11 @@
 @section('content')
 <!-- page content -->
     <div class="row">
+        @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+            </div>
+        @endif
         <div class="col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
@@ -31,7 +36,7 @@
                                 <td>{{ $user->sex_label}}</td>
                                 <td>{{ Carbon\Carbon::parse($user->birthday)->format('d-m-Y') }}</td>
                                 <td class="text-center">
-                                    <a href="{{route('admin.admin-user.edit',$user->id)}}" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i>{!! trans('labels.bt_edit') !!}</a>
+                                    <a href="{{route('admin.admin-user.edit',$user->id)}}" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i>{!! trans('labels.bt_details') !!}</a>
                                     <form action="{!!route('admin.admin-user.destroy',$user->id)!!}" enctype="multipart/form-data" method="POST">
                                         <input type="hidden" name="_token"  value="{!! csrf_token()!!}"> 
                                         {{ method_field('DELETE') }}

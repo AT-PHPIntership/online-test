@@ -12,15 +12,12 @@
 */
 
 //=========================Backend=======================================
-Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
+Route::group(['prefix' => 'admin', 'middleware'=>'auth', 'namespace' => 'Backend'], function () {
 
     // Dashboard
     Route::get('dashboard', function () {
         return view('backend.dashboard.index');
     })->name('dashboard');
-
-    // Login backend
-    Route::Auth();
 
     // User
     Route::resource('user', 'UserController', ['as' => 'admin']);
@@ -37,4 +34,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     Route::resource('part', 'PartController', ['as' => 'admin'], ['only' => [
         'index',
     ]]);
+});
+
+// Login backend
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
+    Route::Auth();
 });

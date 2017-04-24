@@ -5,6 +5,8 @@ return [
     'dasboard'  => 'Dasboard',
     'email' => 'Email Address',
     'profile'   => 'Profile',
+    'old_password'  => 'Old Password',
+    'new_password'  => 'New Password',
     'password'  => 'Password',
     'repassword'    => 'Re-Password',
     'remember'  => 'Remember',
@@ -60,5 +62,8 @@ return [
     'title' => 'Title',
     'description'   => 'Description',
     'add_account'   => 'Add New Account',
-    'add'   => ' --> Add'
+    'update_account'    => 'Update Account',
+    'add'   => ' --> Add',
+    'update_information'    => 'Update Information',
+    'update_password'    => 'Update Password'
 ];
