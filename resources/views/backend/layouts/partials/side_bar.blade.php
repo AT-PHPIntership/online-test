@@ -18,10 +18,10 @@
       <!-- Optionally, you can add icons to the links -->
       <li class=""><a href=""><i class="fa fa-user"></i><span>{!! trans('labels.account') !!}</span></a></li>
       <li><a href="{{ route('admin.user.index') }}"><i class="fa fa-group"></i> <span>{!! trans('labels.user') !!}</span></a></li>
-      <li><a href="#"><i class="fa fa-sitemap"></i> <span>{!! trans('labels.category') !!}</span></a></li>
+      <li><a href="{{ route('admin.categories.index') }}"><i class="fa fa-sitemap"></i> <span>{!! trans('labels.category') !!}</span></a></li>
       <li><a href="#"><i class="fa fa-picture-o"></i> <span>{!! trans('labels.new') !!}</span></a></li>
       <li><a href="{{ route('admin.part.index') }}"><i class="fa fa-edit"></i> <span>{!! trans('labels.part') !!}</span></a></li>
-      <li><a href="#"><i class="fa fa-mortar-board"></i> <span>{!! trans('labels.exam') !!}</span></a></li>
+      <li><a href="{{ route('admin.exams.index') }}"><i class="fa fa-mortar-board"></i> <span>{!! trans('labels.exam') !!}</span></a></li>
     </ul>
     <!-- /.sidebar-menu -->
   </section>
