@@ -6,10 +6,13 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Models\AdminUser;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\AdminUserRequest;
+use App\Http\Requests\Backend\AdminUserEditRequest;
 use Session;
 
 class AdminUserController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -26,10 +29,10 @@ class AdminUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function create()
+    public function create()
     {
-        //
-    }*/
+         return view('backend.admin.create');
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -38,23 +41,14 @@ class AdminUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function store(Request $request)
+    public function store(AdminUserRequest $request)
     {
-        //
+        $adminUser = new AdminUser($request->all());
+        $adminUser->save();
+        Session::flash('success', trans('messages.admin_user_create_success'));
+        return redirect()->route('admin.admin-user.index');
     }
-    */
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id of admin user
-     *
-     * @return \Illuminate\Http\Response
-     */
-    /*public function show($id)
-    {
-        //
-    }*/
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -62,10 +56,11 @@ class AdminUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function edit($id)
+    public function edit($id)
     {
-        //
-    }*/
+        $adminUser = AdminUser::findOrFail($id);
+        return view('backend.admin.edit', compact('adminUser'));
+    }
 
     /**
      * Update the specified resource in storage.
@@ -75,10 +70,14 @@ class AdminUserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /*public function update(Request $request, $id)
+    public function update(AdminUserEditRequest $request, $id)
     {
-        //
-    }*/
+        $adminUser = AdminUser::findOrFail($id);
+        $adminUser->fill($request->all());
+        $adminUser->save();
+        Session::flash('success', trans('messages.admin_user_update_success'));
+        return redirect()->route('admin.admin-user.index');
+    }
 
     /**
      * Remove the specified resource from storage.

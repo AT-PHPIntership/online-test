@@ -19,9 +19,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         return view('backend.dashboard.index');
     })->name('dashboard');
 
-    // Login backend
-    Route::Auth();
-
     // User
     Route::resource('user', 'UserController', ['as' => 'admin'], ['only' => [
         'index', 'show'
@@ -29,7 +26,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 
     // Admin User
     Route::resource('admin-user', 'AdminUserController', ['as' => 'admin'], ['only' => [
-    'index', 'create', 'store', 'update', 'destroy'
+    'index', 'edit', 'create', 'store', 'update', 'destroy'
     ]]);
 
     //Category
@@ -40,4 +37,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     Route::resource('part', 'PartController', ['as' => 'admin'], ['only' => [
         'index',
     ]]);
+});
+
+// Login backend
+Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
+    Route::Auth();
 });
