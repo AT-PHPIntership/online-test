@@ -18,7 +18,7 @@
                 {{ method_field('PUT') }}
                 <div class="col-md-9">
                     <div>
-                        <span>{!! trans('labels.update_information') !!}</span>
+                        <span style="text-transform: uppercase;">{!! trans('labels.update_information') !!}</span>
                     </div>
                   
                     <label for="name" class="col-md-4 control-label">{!! trans('labels.fullname') !!}</label>
@@ -75,85 +75,8 @@
                                 </span>
                             @endif
                         </div>
-                    </div> 
-                    <div class="form-group{{ $errors->has('old') ? ' has-error' : '' }}">
-                        <label for="password" class="col-md-4 control-label">Old Password</label>
-                    
-                        <div class="col-md-6">
-                            <input id="password" type="password" class="form-control" name="old">
-                    
-                            @if ($errors->has('old'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('old') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-                    
-                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                        <label for="password" class="col-md-4 control-label">Password</label>
-                
-                        <div class="col-md-6">
-                            <input id="password" type="password" class="form-control" name="password">
-                
-                            @if ($errors->has('password'))
-                                <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-                    </div>
-                
-                    <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                        <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
-                
-                        <div class="col-md-6">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
-                
-                            @if ($errors->has('password_confirmation'))
-                                <span class="help-block">
-                                <strong>{{ $errors->first('password_confirmation') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-                    </div>
-                    
-                    {{-- <div>
-                        <span>{!! trans('labels.update_password') !!}</span>
-                    </div>
-
-                    <label for="oldPassword" class="col-sm-4 control-label">{!! trans('labels.old_password') !!}</label>
-                    <div class="col-sm-8">
-                        <div class="form-group {{ $errors->has('oldPassword') ? ' has-error' : '' }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}"> 
-                            <input type="password" class="form-control"  name="old_password" placeholder="Old Password">
-                            @if ($errors->has('password'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('oldPassword') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-                    <label for="newPassword" class="col-sm-4 control-label">{!! trans('labels.new_password') !!}</label>
-                    <div class="col-sm-8">
-                        <div class="form-group{{ $errors->has('newPassword') ? ' has-error' : '' }}">
-                            <input type="password" class="form-control" name="new_password" placeholder="New Password">
-                            @if ($errors->has('password'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('newPassword') }}</strong>
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-                    <label for="password_confirmation" class="col-sm-4 control-label">{!! trans('labels.repassword') !!}</label>
-                    <div class="col-sm-8">
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="password_confirmation" name="new_password_confirmation" placeholder="Re-enter Password">
-                        </div>
-                    </div>
-                    </div> --}}
                     <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-6">
+                        <div class="col-sm-offset-3 col-sm-6">
                             <button type="submit" class="btn btn-primary">{!! trans('labels.update_account') !!}</button>
                             <button type="submit" class="btn btn-default"><a href="{!! route('admin.admin-user.index') !!}">{{trans('labels.cancel')}}</a></button>
                         </div>
@@ -164,73 +87,3 @@
     </div>
 <!-- /page content -->
 @endsection
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Change Password</div>
-                <div class="panel-body">
-                @if (Session::has('success'))
-                    <div class="alert alert-success">{!! Session::get('success') !!}</div>
-                @endif
-                @if (Session::has('failure'))
-                    <div class="alert alert-danger">{!! Session::get('failure') !!}</div>
-                @endif
-                <form action="" method="post" role="form" class="form-horizontal">
-                    {{csrf_field()}}
- 
-                        <div class="form-group{{ $errors->has('old') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Old Password</label>
- 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="old">
- 
-                                @if ($errors->has('old'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('old') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
- 
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Password</label>
- 
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password">
- 
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
- 
-                            <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                                <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
- 
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
- 
-                                    @if ($errors->has('password_confirmation'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
- 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary form-control">Submit</button>
-                                </div>
-                        </div>
-                </form>
-                </div>
- 
-            </div>
-        </div>
-    </div>
-</div> -->
