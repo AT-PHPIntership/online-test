@@ -60,7 +60,6 @@ class AdminUserController extends Controller
     {
         $adminUser = AdminUser::findOrFail($id);
         return view('backend.admin.edit', compact('adminUser'));
-        
     }
 
     /**
@@ -74,9 +73,7 @@ class AdminUserController extends Controller
     public function update(AdminUserEditRequest $request, $id)
     {
         $adminUser = AdminUser::findOrFail($id);
-        $adminUser->name = $request->get('name');
-        $adminUser->sex = $request->get('sex');
-        $adminUser->birthday = $request->get('birthday');
+        $adminUser->fill($request->all());
         $adminUser->save();
         Session::flash('success', trans('messages.admin_user_update_success'));
         return redirect()->route('admin.admin-user.index');

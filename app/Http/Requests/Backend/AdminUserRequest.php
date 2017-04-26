@@ -29,7 +29,6 @@ class AdminUserRequest extends FormRequest
             'password'  => 'required|min:6|confirmed',
             'sex'   => 'required',
             'birthday'  => 'required',
-
         ];
     }
 }

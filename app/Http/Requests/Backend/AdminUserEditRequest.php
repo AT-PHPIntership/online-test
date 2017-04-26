@@ -25,6 +25,8 @@ class AdminUserEditRequest extends FormRequest
     {
         return [
             'name' => 'required',
+            'sex' => 'required',
+            'birthday' => 'required',
         ];
     }
 }

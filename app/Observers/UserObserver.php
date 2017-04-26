@@ -1,15 +1,16 @@
 <?php
 
-namespace App\Events;
+namespace App\Observers;
 
 use App\Models\AdminUser;
 
-class HashPassword
+class UserObserver
 {
     /**
      * Listen to the User created event.
      *
-     * @param  User  $user
+     * @param AdminUser $adminUser of hashpassword
+     *
      * @return void
      */
     public function creating(AdminUser $adminUser)
@@ -20,7 +21,8 @@ class HashPassword
     /**
      * Listen to the User deleting event.
      *
-     * @param  User  $user
+     * @param AdminUser $adminUser of hashpassword
+     *
      * @return void
      */
     public function updating(AdminUser $adminUser)

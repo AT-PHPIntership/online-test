@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Events\HashPassword;
+use App\Observers\UserObserver;
 use App\Models\AdminUser;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        AdminUser::observe(HashPassword::class);
+        AdminUser::observe(UserObserver::class);
     }
 
     /**
