@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Exam;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ExamPostRequest;
+use App\Http\Requests\ExamPutRequest;
 use Session;
 
 class ExamController extends Controller
@@ -56,44 +57,61 @@ class ExamController extends Controller
             return redirect()->route('admin.exams.create');
         }
     }
-    
-    /**
-     * Display the specified resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      *
+     * @param int $id of exam
+     *
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        //
+        $exam = Exam::findOrFail($id);
+        return view('backend.exams.edit', compact('exam'));
     }
 
     /**
      * Update the specified resource in storage.
      *
+     * @param \Illuminate\Http\Request $request of exam
+     * @param int                      $id      of exam
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update(ExamPutRequest $request, $id)
     {
-        //
+        $exam = Exam::findOrFail($id);
+        $audioPathOld = $exam['audio'];
+        $exam->fill($request->all());
+        if ($request ->audio) {
+            $exam ->audio = $request->audio->hashName();
+            $request->file('audio')->move(config('constant.upload_file_audio'), $exam ->audio);
+            unlink(config('constant.upload_file_audio').$audioPathOld);
+        }
+        $result = $exam ->update();
+        if ($result) {
+            Session::flash('success', trans('messages.exams_edit_success'));
+            return redirect()->route('admin.exams.index');
+        } else {
+            Session::flash('error', trans('messages.exams_edit_errors'));
+            return redirect()->route('admin.exams.create');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
+     * @param int $id of exam
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        //
+        $exam = Exam::findOrFail($id);
+        unlink(config('constant.upload_file_audio').$exam['audio']);
+        $exam->delete($id);
+        Session::flash('success', trans('messages.news_delete_success'));
+        return redirect()->route('admin.exams.index');
     }
 }

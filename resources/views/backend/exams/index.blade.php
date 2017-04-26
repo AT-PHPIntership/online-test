@@ -7,6 +7,9 @@
   </div>
 @endif
   <div class="col-xs-10 col-xs-offset-1">
+  <div>
+  <button><a href="{{route('admin.exams.create')}}">{{trans('exams.add')}}</a></button>
+  </div>
     <div class="box">
       <div class="box-header">
         <h3 class="box-title">{{trans('exams.table')}}</h3>
@@ -35,11 +38,11 @@
             </td>
             <td>{{$exam->count_test}}</td>
             <td>
-              <a href="">
+              <a href="{{route('admin.exams.edit',$exam->id)}}">
               <button type="button" class="btn btn-block btn-info btn-sm">
                 <i class="fa fa-fw fa-edit"></i>
               </button></a>
-              <form action="" enctype="multipart/form-data" method="POST">
+              <form action="{{route('admin.exams.destroy',$exam->id)}}" enctype="multipart/form-data" method="POST">
                  {{csrf_field()}}
                 {{ method_field('DELETE') }}
                 <button type="submit"  onclick="return confirmDelete('Are you want to delete this !!!')" class="btn btn-block btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
