@@ -8,7 +8,7 @@ class Exam extends Model
 {
     protected $table = "exams";
     protected $fillable = [
-        'title' , 'audio', 'count_test'
+        'title' , 'audio', 'count_test' , 'flag'
     ];
     public $timestamps = true;
 
