@@ -27,7 +27,7 @@
         </div>
         <div class="box-footer">
           <button type="submit" class="btn btn-primary">{{trans('backend.submit')}}</button>
-          <button type="button" class="btn  btn-danger"><a href="">{{trans('backend.cancel')}}</a></button>
+          <button type="button" class="btn  btn-danger"><a style="color: #fff" href="{{route('admin.exams.index')}}">{{trans('backend.cancel')}}</a></button>
         </div>
       </form>
     </div>
