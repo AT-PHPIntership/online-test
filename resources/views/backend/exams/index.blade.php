@@ -45,7 +45,7 @@
                  {{csrf_field()}}
                 {{ method_field('DELETE') }}
                 <button type="submit"  onclick="return confirmDelete('Are you want to delete this !!!')" class="btn btn-block btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
-               @if($exam->flag == 0)
+               @if($exam->is_finished == \App\Models\Exam::NOT_FINISHED)
                 <a href="">
                 <button type="button" class="btn btn-block btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button>
                 </a>

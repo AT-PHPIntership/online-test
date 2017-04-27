@@ -6,9 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exam extends Model
 {
+    /**
+     * Flag type finished exams
+     */
+    const FINISHED = 1;
+
+    /**
+     * Flag type not finished exams
+     */
+    const NOT_FINISHED = 0;
+
     protected $table = "exams";
     protected $fillable = [
-        'title' , 'audio', 'count_test' , 'flag'
+        'title' , 'audio', 'count_test' , 'is_finished'
     ];
     public $timestamps = true;
 

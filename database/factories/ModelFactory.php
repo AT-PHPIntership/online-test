@@ -55,7 +55,7 @@ $factory->define(App\Models\Exam::class, function (Faker\Generator $faker) {
         'title' => $faker->text($maxNbChars = 70),
         'audio'  => $faker->Url,
         'count_test' => $faker->biasedNumberBetween($min = 0, $max = 50),
-        'flag' =>$faker->biasedNumberBetween($min = 0, $max = 1),
+        'is_finished' =>$faker->biasedNumberBetween($min = 0, $max = 1),
     ];
 });
 
