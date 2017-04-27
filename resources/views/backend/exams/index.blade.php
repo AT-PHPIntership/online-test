@@ -62,7 +62,7 @@
       </div>
       <div class="box-footer clearfix">
         <ul class="pagination pagination-sm no-margin pull-right">
-          <li> </li>
+         <li> {{$exams->render()}}</li> 
         </ul>
       </div>
     </div>
