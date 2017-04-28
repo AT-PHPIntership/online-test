@@ -43,7 +43,6 @@ class ExamController extends Controller
     public function store(ExamPostRequest $request)
     {
         $exams = new Exam($request->all());
-        $exams->count_test = 0;
         if ($request->hasFile('audio')) {
             $exams ->audio= $request->audio->hashName();
             $request->file('audio')->move(config('constant.upload_file_audio'), $exams ->audio);

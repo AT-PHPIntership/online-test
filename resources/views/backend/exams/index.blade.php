@@ -39,13 +39,21 @@
             <td>{{$exam->count_test}}</td>
             <td>
               <a href="{{route('admin.exams.edit',$exam->id)}}">
-              <button type="button" class="btn btn-block btn-info btn-sm">
-                <i class="fa fa-fw fa-edit"></i>
-              </button></a>
+              <button type="button" class="btn btn-block btn-info btn-sm"><i class="fa fa-fw fa-edit"></i></button>
+              </a>
               <form action="{{route('admin.exams.destroy',$exam->id)}}" enctype="multipart/form-data" method="POST">
                  {{csrf_field()}}
                 {{ method_field('DELETE') }}
                 <button type="submit"  onclick="return confirmDelete('Are you want to delete this !!!')" class="btn btn-block btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
+               @if($exam->is_finished == \App\Models\Exam::NOT_FINISHED)
+                <a href="">
+                <button type="button" class="btn btn-block btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                </a>
+                @else
+                <a href="">
+                <button type="button" class="btn btn-block btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                </a>
+                @endif
               </form>
             </td>
           </tr>
@@ -54,7 +62,7 @@
       </div>
       <div class="box-footer clearfix">
         <ul class="pagination pagination-sm no-margin pull-right">
-          <li> </li>
+         <li> {{$exams->render()}}</li> 
         </ul>
       </div>
     </div>
