@@ -5,10 +5,15 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Exam;
+use App\Models\Question;
+use App\Models\Answer;
+use App\Models\QuestionImage;
+use App\Models\CorrectAnswer;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ExamPostRequest;
 use App\Http\Requests\ExamPutRequest;
 use Session;
+use DB;
 
 class ExamController extends Controller
 {
@@ -112,5 +117,60 @@ class ExamController extends Controller
         $exam->delete($id);
         Session::flash('success', trans('messages.news_delete_success'));
         return redirect()->route('admin.exams.index');
+    }
+    /**
+     * Show the form for create the part 1 question
+     *
+     * @param int $id of exam
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createPart1($id)
+    {
+        $exam = Exam::findOrFail($id);
+        return view('backend.questions.create.part1', compact('exam'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request of exams
+     * @param int                      $id      of exam
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function storePart1(Request $request, $id)
+    {
+        $requestQuestions = $request->all();
+        $questions = collect([]);
+        DB::transaction(function () use ($requestQuestions, $id, $questions) {
+            for ($i = 0; $i < count($requestQuestions['question']); $i++) {
+                $question = new Question;
+                $question->exam_id = $id;
+                $question->part_id = \App\Models\Part::PART_1;
+                $question->save();
+
+                $questionImage = new QuestionImage;
+                $requestQuestionsI = $requestQuestions['question'][$i];
+                $questionImage->image = $requestQuestionsI['image']->hashName();
+                $requestQuestionsI['image']->move(config('constant.upload_questions_img'), $requestQuestionsI['image']->hashName());
+                $question->questionImage()->save($questionImage);
+                $questions->push($question);
+
+                for ($j = 0; $j< count($requestQuestionsI['content']); $j++) {
+                    $answer = new Answer;
+                    $answer ->content = $requestQuestionsI['content'][$j];
+                    if ($requestQuestionsI['is_correct'] == $j) {
+                        $answer->is_correct = \App\Models\Answer::IS_CORRECT;
+                    } else {
+                        $answer->is_correct = \App\Models\Answer::NOT_CORRECT;
+                    }
+                    $question->answers()->save($answer);
+                    $questions->push($question);
+                }
+            }
+        });
+        Session::flash('success', trans('messages.part1_create_success'));
+        return redirect()->route('admin.exam.create.part2', $id);
     }
 }

@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+
+    const IS_CORRECT = 1;
+    const NOT_CORRECT = 0;
+    
     protected $table = 'answers';
     protected $fillable = [
         'content', 'question_id'

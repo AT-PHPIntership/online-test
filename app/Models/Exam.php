@@ -12,6 +12,11 @@ class Exam extends Model
     const FINISHED = 1;
 
     /**
+     * Flag type finish_ing exams
+     */
+    const FINISH_ING = 2;
+
+    /**
      * Flag type not finished exams
      */
     const NOT_FINISHED = 0;
