@@ -37,6 +37,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     Route::resource('part', 'PartController', ['as' => 'admin'], ['only' => [
         'index',
     ]]);
+    Route::resource('questions', 'QuestionController', ['as' => 'admin']);
+    Route::group(['prefix' => 'create'], function () {
+         Route::get('part2', 'QuestionController@createPart2')->name('admin.questions.createPart2');
+    });
 });
 
 // Login backend
