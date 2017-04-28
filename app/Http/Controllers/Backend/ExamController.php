@@ -8,11 +8,10 @@ use App\Models\Exam;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ExamPostRequest;
 use App\Http\Requests\ExamPutRequest;
-use App\Http\Requests\Backend\Part2Request;
 use App\Models\Question;
 use App\Models\Answer;
-use App\Models\CorrectAnswer;
 use Session;
+use DB;
 
 class ExamController extends Controller
 {
@@ -100,41 +99,6 @@ class ExamController extends Controller
             Session::flash('error', trans('messages.exams_edit_errors'));
             return redirect()->route('admin.exams.create');
         }
-    }
-
-    /**
-     * Show the form for setup part 2 exam the specified resource.
-     *
-     * @param int $id of exam
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getCreatePart2($id){
-        $exam = Exam::findOrFail($id);
-        return view('backend.parts.createpart2',compact('exam'));
-    }
-
-    /**
-     * Create a new part 2 for exam
-     *
-     * @param \Illuminate\Http\Request $request of exams
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function postCreatePart2(Request $request, $id){
-
-        $exam = Exam::findOrFail($id);
-        $question = new Question($request->all());
-        $question->exam_id = $id;
-        $question->save();  
-
-        $answer = new Answer($request->all());
-
-        $correctAnswer = new CorrectAnswer($request->all());
-        $exam->questions()->save();
-        Session::flash('success', trans('messages.part2_create_success'));
-        return redirect(action('ExamController@getCreatePart2', ['id'=>$exam->id]));
-        
     }
 
     /**

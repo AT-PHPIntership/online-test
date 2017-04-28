@@ -23,8 +23,10 @@ class Part2Request extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        $rules = [];
+        for ($i = 1; $i <= \App\Models\Part::NUMBER_QUESTION_PART_2; $i++) {
+            $rules['question.'.$i.'.correct'] = 'required';
+        }
+        return $rules;
     }
 }

@@ -11,7 +11,21 @@ class Answer extends Model
         'content', 'question_id'
     ];
     public $timestamps = true;
+    
+    /**
+     * Correct number 1
+     */
+    const IS_CORRECT = 1;
 
+    /**
+     * Not coreect number 0
+     */
+    const NOT_CORRECT = 0;
+    
+    /**
+     * Number answer = 3
+     */
+    const NUMBER_ANSWER_PART_2 = 3;
     /**
      * Answer belongs to a question.
      *
