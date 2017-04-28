@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
 use App\Models\Question;
 use App\Models\Part;
+use App\Models\Exam;
 
 class QuestionsTableSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class QuestionsTableSeeder extends Seeder
     {
         $faker = Faker::create();
               $part_id = Part::all()->pluck('id');
-              $exam_id = factory(App\Models\Exam::class, 10)->create()->pluck('id');
+              $exam_id = Exam::all()->pluck('id');
               for ($i = 1; $i <= 30; $i++) {
                 factory(App\Models\Question::class)->create([
                     'exam_id' => $faker->randomElement($exam_id->toArray()),
