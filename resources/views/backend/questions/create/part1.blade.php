@@ -38,6 +38,9 @@
                    </td>
                    <td>
                     <input type="file" name="question[{{$i}}][image]" required="">
+                    @if ($errors->has('image'))
+                      <span class="help-block">{{$errors->first('image')}}</span>
+                    @endif
                   </td>
                 </tr>
               @endfor

@@ -12,6 +12,7 @@ use App\Models\CorrectAnswer;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ExamPostRequest;
 use App\Http\Requests\ExamPutRequest;
+use App\Http\Requests\PostPart1Request;
 use Session;
 use DB;
 
@@ -139,7 +140,7 @@ class ExamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function storePart1(Request $request, $id)
+    public function storePart1(PostPart1Request $request, $id)
     {
         $requestQuestions = $request->all();
         $questions = collect([]);
