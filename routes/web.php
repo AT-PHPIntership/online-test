@@ -39,8 +39,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     ]]);
 
     Route::group(['prefix' => 'exams'], function () {
-        Route::get('{id}/question/part1/create', 'ExamController@createPart1')->name('admin.exam.create.part1');
-        Route::post('{id}/question/part1', 'ExamController@storePart1')->name('admin.exam.store.part1');
+        Route::get('{exam_id}/question/part1/create', 'QuestionController@createPart1')->name('admin.questions.create.part1');
+        Route::post('{exam_id}/question/part1', 'QuestionController@storePart1')->name('admin.exam.store.part1');
     });
 });
 

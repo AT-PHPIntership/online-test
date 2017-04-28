@@ -1,5 +1,6 @@
 @extends('backend.layouts.master')
 @section('content')
+
 <div class="row">
   <div class="col-md-12">
     <div class="box box-primary">
@@ -14,32 +15,27 @@
               <thead>
               <tr>
                 <th style="width: 3%">#</th>
-                <th style="width: 60%">{{trans('questions.answer')}}</th>
+                <th style="width: 40%">{{trans('questions.answer')}}</th>
                 <th style="width: 30%">{{trans('questions.picture')}}</th>
               </tr>
               </thead>
               <tbody id ="add_question">
               @for($i = 0; $i < \App\Models\Part::NUMBER_QUESTION_PART_1; $i++ )
                 <tr id="item">
-                  <td>{{$i}}</td>
+                  <td>{{ $i }}</td>
                   <td>
                     <div class="form-group">
-                    <input type="text" name="question[{{$i}}][content][]" value="{{trans('questions.keyA')}}" readonly=""> 
-                    <input type="text" name="question[{{$i}}][content][]" value="{{trans('questions.keyB')}}" readonly=""> 
-                    <input type="text" name="question[{{$i}}][content][]" value="{{trans('questions.keyC')}}" readonly=""> 
-                    <input type="text" name="question[{{$i}}][content][]" value="{{trans('questions.keyD')}}" readonly=""> 
-                    <select name="question[{{$i}}][is_correct]"> 
-                      <option value="0">{{trans('questions.keyA')}}</option>
-                      <option value="1">{{trans('questions.keyB')}}</option>
-                      <option value="2">{{trans('questions.keyC')}}</option>
-                      <option value="3">{{trans('questions.keyD')}}</option>
-                    </select>
+                      <select name="question[{{$i}}][correct]"> 
+                        @for($j = 0; $j < \App\Models\Answer::NUMBER_ANSWER_PART_1; $j++)
+                          <option value="{{ $j }}">{{trans('questions.key'. $j)}}</option>
+                        @endfor
+                      </select>
                     </div>
                    </td>
                    <td>
-                    <input type="file" name="question[{{$i}}][image]" required="">
-                    @if ($errors->has('image'))
-                      <span class="help-block">{{$errors->first('image')}}</span>
+                    <input type="file" name="question[{{$i}}][image]" >
+                    @if ($errors->has('question.*.image'))
+                      <span class="help-block">{{$errors->first('question.*.image')}}</span>
                     @endif
                   </td>
                 </tr>

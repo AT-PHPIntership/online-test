@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Backend;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,7 +24,7 @@ class PostPart1Request extends FormRequest
     public function rules()
     {
         return [
-            'image'=>'required|image',
+            'question.*.image'=>'required|image',
         ];
     }
 }

@@ -50,7 +50,7 @@
             </td>
             <td>
               @if($exam->is_finished == \App\Models\Exam::NOT_FINISHED)
-               <a href="{{route('admin.exam.create.part1',$exam->id)}}">
+               <a href="{{route('admin.questions.create.part1',$exam->id)}}">
                <button type="button" class="btn btn-block btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button>
                </a>
                @elseif($exam->is_finished == \App\Models\Exam::FINISHED)

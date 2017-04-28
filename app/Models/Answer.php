@@ -9,6 +9,7 @@ class Answer extends Model
 
     const IS_CORRECT = 1;
     const NOT_CORRECT = 0;
+    const NUMBER_ANSWER_PART_1 = 4;
     
     protected $table = 'answers';
     protected $fillable = [

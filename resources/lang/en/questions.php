@@ -1,9 +1,9 @@
 <?php
     return [
-        'keyA' => 'A',
-        'keyB' => 'B',
-        'keyC' => 'C',
-        'keyD' => 'D',
+        'key0' => 'A',
+        'key1' => 'B',
+        'key2' => 'C',
+        'key3' => 'D',
         'add_question_answer' => 'Add picture question & correct answer',
         'answer' => 'Answer',
         'question' => 'Question',
