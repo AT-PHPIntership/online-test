@@ -4,7 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Observers\UserObserver;
+use App\Observers\ExamObserver;
 use App\Models\AdminUser;
+use App\Models\Exam;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         AdminUser::observe(UserObserver::class);
+        Exam::observe(ExamObserver::class);
     }
 
     /**
