@@ -61,14 +61,4 @@ class Question extends Model
     {
         return $this->hasOne(QuestionImage::class);
     }
-
-    /**
-     * Question has one correct_answer
-     *
-     * @return Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function correctAnswer()
-    {
-        return $this->hasOne(CorrectAnswer::class);
-    }
 }

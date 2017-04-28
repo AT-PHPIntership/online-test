@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddQuestionsAndAnswersToCorrectAnswersTable extends Migration
+class AddQuestionsAndAnswersToUsersAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddQuestionsAndAnswersToCorrectAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::table('correct_answers', function (Blueprint $table) {
+        Schema::table('users_answers', function (Blueprint $table) {
             $table->foreign('question_id')
                   ->references('id')->on('questions')
                   ->onDelete('cascade');
@@ -30,9 +30,9 @@ class AddQuestionsAndAnswersToCorrectAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::table('correct_answers', function (Blueprint $table) {
-            $table->dropForeign('correct_answers_question_id_foreign');
-            $table->dropForeign('correct_answers_answer_id_foreign');
+        Schema::table('users_answers', function (Blueprint $table) {
+            $table->dropForeign('users_answers_question_id_foreign');
+            $table->dropForeign('users_answers_answer_id_foreign');
         });
     }
 }
