@@ -8,7 +8,6 @@ use App\Models\Exam;
 use App\Models\Question;
 use App\Models\Answer;
 use App\Models\QuestionImage;
-use App\Models\CorrectAnswer;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ExamPostRequest;
 use App\Http\Requests\ExamPutRequest;
