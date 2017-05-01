@@ -10,6 +10,7 @@ use App\Models\Answer;
 use App\Models\QuestionImage;
 use App\Http\Requests\Backend\PostPart1Request;
 use App\Http\Requests\Backend\PostPart4Request;
+use App\Http\Requests\Backend\PostPart5Request;
 use Session;
 use DB;
 
@@ -146,7 +147,7 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function storePart5(PostPart4Request $request, $examId)
+    public function storePart5(PostPart5Request $request, $examId)
     {
         $requestQuestions = $request->all();
         DB::transaction(function () use ($requestQuestions, $examId) {
