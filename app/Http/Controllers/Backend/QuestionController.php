@@ -76,6 +76,7 @@ class QuestionController extends Controller
         Session::flash('success', trans('messages.part1_create_success'));
         return redirect()->route('admin.exam.create.part2', $examId);
     }
+    
     /**
      * Show the form for create the part 1 question
      *
