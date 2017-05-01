@@ -78,7 +78,7 @@ class QuestionController extends Controller
     }
     
     /**
-     * Show the form for create the part 1 question
+     * Show the form for create the part 4 question
      *
      * @param int $examId of exam
      *
