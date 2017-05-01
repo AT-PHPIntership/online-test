@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ExamPostRequest;
 use App\Http\Requests\ExamPutRequest;
 use Session;
-use DB;
 
 class ExamController extends Controller
 {
