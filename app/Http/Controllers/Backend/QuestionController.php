@@ -73,6 +73,6 @@ class QuestionController extends Controller
             }
         });
         Session::flash('success', trans('messages.part1_create_success'));
-        // return redirect()->route('admin.exam.create.part2', $examId);
+        return redirect()->route('admin.exam.create.part2', $examId);
     }
 }
