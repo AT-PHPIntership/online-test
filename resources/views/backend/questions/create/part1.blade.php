@@ -20,23 +20,25 @@
               </tr>
               </thead>
               <tbody id ="add_question">
-              @for($i = 0; $i < \App\Models\Part::NUMBER_QUESTION_PART_1; $i++ )
+              @for($i = 1; $i <= \App\Models\Question::NUMBER_QUESTION_PART_1; $i++ )
                 <tr id="item">
                   <td>{{ $i }}</td>
                   <td>
                     <div class="form-group">
                       <select name="question[{{$i}}][correct]"> 
-                        @for($j = 0; $j < \App\Models\Answer::NUMBER_ANSWER_PART_1; $j++)
+                        @for($j = 0; $j < \App\Models\Answer::NUMBER_ANSWER_4; $j++)
                           <option value="{{ $j }}">{{trans('questions.key'. $j)}}</option>
                         @endfor
                       </select>
                     </div>
                    </td>
                    <td>
-                    <input type="file" name="question[{{$i}}][image]" >
+                     <div class="form-group {{ $errors->has('question.'.$i.'.image') ? ' has-error' : '' }}">
+                    <input type="file" name="question[{{$i}}][image]" required="">
                     @if ($errors->has('question.*.image'))
-                      <span class="help-block">{{$errors->first('question.*.image')}}</span>
+                      <span class="help-block"> {{ $errors->first('question.'.$i.'.image') }}</span>
                     @endif
+                    </div>
                   </td>
                 </tr>
               @endfor

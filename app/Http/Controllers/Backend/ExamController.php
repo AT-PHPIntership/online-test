@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Exam;
-use App\Models\Question;
-use App\Models\Answer;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\ExamPostRequest;
 use App\Http\Requests\ExamPutRequest;

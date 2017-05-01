@@ -27,13 +27,13 @@ class QuestionController extends Controller
     /**
      * Show the form for create the part 1 question
      *
-     * @param int $exam_id of exam
+     * @param int $examId of exam
      *
      * @return \Illuminate\Http\Response
      */
-    public function createPart1($exam_id)
+    public function createPart1($examId)
     {
-        $exam = Exam::findOrFail($exam_id);
+        $exam = Exam::findOrFail($examId);
         return view('backend.questions.create.part1', compact('exam'));
     }
 
@@ -41,17 +41,17 @@ class QuestionController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request of exams
-     * @param int                      $exam_id of exam
+     * @param int                      $examId  of exam
      *
      * @return \Illuminate\Http\Response
      */
-    public function storePart1(PostPart1Request $request, $exam_id)
+    public function storePart1(PostPart1Request $request, $examId)
     {
         $requestQuestions = $request->all();
-        DB::transaction(function () use ($requestQuestions, $exam_id) {
-            for ($i = 0; $i < count($requestQuestions['question']); $i++) {
+        DB::transaction(function () use ($requestQuestions, $examId) {
+            for ($i = 1; $i <= count($requestQuestions['question']); $i++) {
                 $question = new Question;
-                $question->exam_id = $exam_id;
+                $question->exam_id = $examId;
                 $question->part_id = \App\Models\Part::PART_1;
                 $question->save();
 
@@ -61,7 +61,7 @@ class QuestionController extends Controller
                 $requestQuestionsI['image']->move(config('constant.upload_questions_img'), $requestQuestionsI['image']->hashName());
                 $question->questionImage()->save($questionImage);
 
-                for ($j = 0; $j< \App\Models\Answer::NUMBER_ANSWER_PART_1; $j++) {
+                for ($j = 0; $j< \App\Models\Answer::NUMBER_ANSWER_4; $j++) {
                     $answer = new Answer;
                     if ($requestQuestionsI['correct'] == $j) {
                         $answer->is_correct = \App\Models\Answer::IS_CORRECT;
@@ -73,6 +73,6 @@ class QuestionController extends Controller
             }
         });
         Session::flash('success', trans('messages.part1_create_success'));
-        return redirect()->route('admin.exam.create.part2', $exam_id);
+        // return redirect()->route('admin.exam.create.part2', $examId);
     }
 }
