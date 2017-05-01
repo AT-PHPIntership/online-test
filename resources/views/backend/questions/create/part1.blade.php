@@ -7,7 +7,7 @@
       <div class="box-header with-border">
         <h3 class="box-title">{{$exam->title}}/{{trans('questions.question')}}/{{trans('questions.part1')}}/{{trans('questions.create')}}</h3>
       </div>
-       <form action="{{route('admin.exam.store.part1',$exam->id)}}" enctype="multipart/form-data" method="POST">
+       <form action="{{route('admin.questions.store.part1',$exam->id)}}" enctype="multipart/form-data" method="POST">
         {{csrf_field()}}
         <div class="form-group col-md-12">
           <h4 class="box-title">{{trans('questions.add_question_answer')}}</h4>
