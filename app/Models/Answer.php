@@ -26,6 +26,11 @@ class Answer extends Model
      * Number answer = 3
      */
     const NUMBER_ANSWER_PART_2 = 3;
+
+    /**
+     * Number answer = 4
+     */
+    const NUMBER_ANSWER_PART_3 = 4;
     /**
      * Answer belongs to a question.
      *

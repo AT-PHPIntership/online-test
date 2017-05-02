@@ -22,7 +22,7 @@
                       <h4 style ="padding-top: 30px" >{{trans('question.number')}}{{$i}}{{trans('question.:')}}</h4>
                       @for($j=0; $j < \App\Models\Answer::NUMBER_ANSWER_PART_2; $j++)
                         <label class="radio-inline">
-                          <input  type="radio" name="question[{{$i}}][correct]" value="{{$j}}" {{ old('question.'.$i.'.correct').'' == $j.''?'checjed':''}}>{{ trans('question.answer'.$j) }}
+                          <input  type="radio" name="question[{{$i}}][correct]" value="{{$j}}" {{ old('question.'.$i.'.correct').'' == $j.''?'checked':''}}>{{ trans('question.answer'.$j) }}
                         </label>
                       @endfor
                         @if ($errors->has('question.*.correct'))
