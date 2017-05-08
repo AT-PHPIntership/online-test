@@ -12,7 +12,7 @@
         <div class="box-body">
           <div class="form-group col-md-6 {{ $errors->has('title') ? ' has-error' : '' }}">
             <label>{{ trans('exams.title') }}</label>
-            <input type="texxt" class="form-control"  name="title">
+            <input type="text" class="form-control"  name="title" value="{{ old('title') }}">
             @if ($errors->has('name'))
               <span class="help-block">{{$errors->first('title')}}</span>
             @endif

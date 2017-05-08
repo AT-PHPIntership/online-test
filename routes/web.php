@@ -37,6 +37,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     Route::resource('part', 'PartController', ['as' => 'admin'], ['only' => [
         'index',
     ]]);
+
+    Route::group(['prefix' => 'exams'], function () {
+        Route::get('{examId}/question/part1/create', 'QuestionController@createPart1')->name('admin.questions.create.part1');
+        Route::post('{examId}/question/part1', 'QuestionController@storePart1')->name('admin.questions.store.part1');
+    });
 });
 
 // Login backend

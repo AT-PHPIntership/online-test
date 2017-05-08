@@ -7,6 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Part extends Model
 {
     protected $table = 'parts';
+
+    /**
+     *  PART_1 id of part 1
+     */
+    const PART_1 = 1;
+    
     protected $fillable = [
         'title', 'description', 'number_answer', 'number_question'
     ];
