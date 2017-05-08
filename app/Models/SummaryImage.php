@@ -11,4 +11,14 @@ class SummaryImage extends Model
       'image'
     ];
     public $timestamps = true;
+
+    /**
+    * Get all of the image's sumaries.
+     *
+    * @return string
+    */
+    public function summaries()
+    {
+        $this->morphMany('App\Models\Summary', 'summarytable');
+    }
 }

@@ -11,4 +11,14 @@ class SummaryText extends Model
       'content'
     ];
     public $timestamps = true;
+
+    /**
+    * Get all of the text's summaries.
+     *
+    * @return string
+    */
+    public function summaries()
+    {
+        $this->morphMany('App\Models\Summary', 'summarytable');
+    }
 }
