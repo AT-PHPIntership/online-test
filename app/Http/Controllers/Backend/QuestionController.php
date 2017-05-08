@@ -14,15 +14,6 @@ use DB;
 
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
     
     /**
      * Show the form for create the part 1 question
@@ -75,4 +66,18 @@ class QuestionController extends Controller
         Session::flash('success', trans('messages.part1_create_success'));
         return redirect()->route('admin.exam.create.part2', $examId);
     }
+
+    /**
+     * Show the form for create the part 1 question
+     *
+     * @param int $examId of exam
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createPart7($examId)
+    {
+        $exam = Exam::findOrFail($examId);
+        return view('backend.questions.create.part7', compact('exam'));
+    }
+
 }
