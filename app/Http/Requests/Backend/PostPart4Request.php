@@ -26,6 +26,7 @@ class PostPart4Request extends FormRequest
         return [
             'question.*.content'=>'required',
             'question.*.answer.*'=>'required',
+            'question.*.correct'=>'required',
         ];
     }
 }

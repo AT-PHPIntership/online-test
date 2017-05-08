@@ -47,12 +47,16 @@
                     </div>
                   </td>
                   <td>
-                    <div class="form-group">
+                    <div class="form-group {{ $errors->has('question.'.$i.'.content') ? ' has-error' : '' }}">
                       <select name="question[{{$i}}][correct]">
+                        <option value="">Choose</option>
                         @for($j = 0; $j < \App\Models\Answer::NUMBER_ANSWER_4; $j++)
-                          <option value="{{ $j }}">{{trans('questions.key'. $j)}}</option>
+                          <option value="{{ $j }}" {{ old('question.'.$i.'.correct').'' == $j.''?'selected':''}}>{{trans('questions.key'. $j)}}</option>
                         @endfor
                       </select>
+                      @if ($errors->has('question.*.correct'))
+                        <span class="help-block"> {{ $errors->first('question.'.$i.'.correct') }}</span>
+                      @endif
                     </div>
                    </td>
                 </tr>
