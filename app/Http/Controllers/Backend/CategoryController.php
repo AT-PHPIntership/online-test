@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Backend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\Backend\CategoryRequest;
 use Session;
 
 class CategoryController extends Controller

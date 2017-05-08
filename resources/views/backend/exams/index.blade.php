@@ -24,6 +24,7 @@
             <th >{{trans('exams.audio')}}</th>
             <th style="width:15%">{{trans('exams.count_test')}}</th>
             <th style="width:8%">{{trans('backend.action')}}</th>
+            <th style="width:8%">{{trans('questions.status')}}</th>
           </tr>
           @foreach($exams as $exam)
           <tr>
@@ -47,18 +48,22 @@
                  {{csrf_field()}}
                 {{ method_field('DELETE') }}
                 <button type="submit"  onclick="return confirmDelete('Are you want to delete this !!!')" class="btn btn-block btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
-               @if($exam->is_finished == \App\Models\Exam::NOT_FINISHED)
-                <a href="{{route('create.part2',$exam->id)}}">
-                <button type="button" class="btn btn-block btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                </a>
-                @else
-                <a href="">
-                  <button type="button" class="btn btn-block btn-success btn-sm">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                  </button>
-                </a>
-                @endif
               </form>
+            </td>
+            <td>
+              @if($exam->is_finished == \App\Models\Exam::NOT_FINISHED)
+               <a href="{{route('admin.questions.create.part1',$exam->id)}}">
+               <button type="button" class="btn btn-block btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button>
+               </a>
+               @elseif($exam->is_finished == \App\Models\Exam::FINISHED)
+               <a href="">
+               <button type="button" class="btn btn-block btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+               </a>
+               @else
+               <a href="">
+               <button type="button" class="btn btn-block btn-warning btn-sm"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+               </a>
+               @endif
             </td>
           </tr>
           @endforeach

@@ -12,4 +12,5 @@ return [
     'exams_create_success' => 'Create Exam Success',
     'exams_edit_success' => 'Edit Exam Success',
     'exams_delete_success' => 'Delete Exams Success',
+    'part1_create_success' => 'Create Part 1 Success',
 ];

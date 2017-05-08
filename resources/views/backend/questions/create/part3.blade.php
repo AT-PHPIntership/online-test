@@ -13,7 +13,7 @@
           <h3>{{trans('labels.exam').$exam->id}}</h3>
           <h5 class="box-title">{{ trans('exams.part3') }}</h5>
         </div>
-        <form action="{!!route('store.part3',$exam->id)!!}" enctype="multipart/form-data" method="POST">
+        <form action="{!!route('admin.questions.store.part3',$exam->id)!!}" enctype="multipart/form-data" method="POST">
           {{csrf_field()}}
           <div class="box-body">
             <div class="row">

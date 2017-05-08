@@ -7,6 +7,9 @@
       </div>
   @endif
   <div class="col-md-10 col-md-offset-1">
+  <div>
+  <button><a href="{{route('admin.categories.create')}}">{{trans('categories.add')}}</a></button>
+  </div>
     <div class="box">
       <div class="box-header with-border">
         <h3 class="box-title">{{trans('categories.list')}}</h3>

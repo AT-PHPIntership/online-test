@@ -37,14 +37,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     Route::resource('part', 'PartController', ['as' => 'admin'], ['only' => [
         'index',
     ]]);
+
     Route::group(['prefix' => 'exams'], function () {
-        Route::get('{id}/question/part2/create', 'QuestionController@getCreatePart2')->name('create.part2');
-        Route::post('{id}/question/part2/create', 'QuestionController@postCreatePart2')->name('store.part2');
-        Route::get('{id}/question/part3/create', 'QuestionController@getCreatePart3')->name('create.part3');
-        Route::post('{id}/question/part3/create', 'QuestionController@postCreatePart3')->name('store.part3');
+        Route::get('{examId}/question/part1/create', 'QuestionController@createPart1')->name('admin.questions.create.part1');
+        Route::post('{examId}/question/part1', 'QuestionController@storePart1')->name('admin.questions.store.part1');
+        Route::get('{examId}/question/part2/create', 'QuestionController@getCreatePart2')->name('admin.questions.create.part2');
+        Route::post('{examId}/question/part2', 'QuestionController@postCreatePart2')->name('admin.questions.store.part2');
+        Route::get('{examId}/question/part3/create', 'QuestionController@getCreatePart3')->name('admin.questions.create.part3');
+        Route::post('{examId}/question/part3', 'QuestionController@postCreatePart3')->name('admin.questions.store.part3');
     });
 });
-
 // Login backend
 Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
     Route::Auth();
