@@ -47,7 +47,7 @@
         </div>
         <div class="box-footer col-md-offset-5">
           <a href="{{route('admin.exams.index')}}"><button type="button" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
-          <a href="{{}}"><button type="submit" class="btn  btn-danger"><i class="fa fa-step-forward" aria-hidden="true"></i></button></a>
+          <a href=""><button type="submit" class="btn  btn-danger"><i class="fa fa-step-forward" aria-hidden="true"></i></button></a>
         </div>
       </form>
     </div>

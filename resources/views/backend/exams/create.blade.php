@@ -6,7 +6,7 @@
       <div class="box-header with-border">
         <h3 class="box-title">{{ trans('exams.add') }}</h3>
       </div>
-       <form action="{!!route('admin.exams.store')!!}" enctype="multipart/form-data" method="POST">
+      <form action="{!!route('admin.exams.store')!!}" enctype="multipart/form-data" method="POST">
       <form role="form" action="{{route('admin.exams.store')}}" method="POST">
       {{csrf_field()}}
         <div class="box-body">

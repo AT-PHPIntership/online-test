@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Exam;
+
+use App\Http\Requests\Backend\Part2Request;
+use App\Http\Requests\Backend\Part3Request;
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\Exam;
+use App\Models\Part;
 use App\Models\QuestionImage;
 use App\Http\Requests\Backend\PostPart1Request;
 use Session;
@@ -14,16 +18,8 @@ use DB;
 
 class QuestionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-    
+
+
     /**
      * Show the form for create the part 1 question
      *
@@ -73,6 +69,98 @@ class QuestionController extends Controller
             }
         });
         Session::flash('success', trans('messages.part1_create_success'));
-        return redirect()->route('admin.exam.create.part2', $examId);
+        return redirect()->route('admin.questions.create.part2', $examId);
+    }
+
+    /**
+     * Show the form for setup part 2 exam the specified resource.
+     *
+     * @param int $examId of exam
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createPart2($examId)
+    {
+        $exam = Exam::findOrFail($examId);
+        return view('backend.questions.create.part2', compact('exam'));
+    }
+
+    /**
+     * Create a new part 2 for exam
+     *
+     * @param \Illuminate\Http\Request $request of exams
+     * @param int                      $examId  of exam
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function storePart2(Part2Request $request, $examId)
+    {
+        $requestQuestion = $request->all();
+        DB::transaction(function () use ($requestQuestion, $examId) {
+            for ($i = 1; $i <= count($requestQuestion['question']); $i++) {
+                $question = new Question;
+                $question->exam_id = $examId;
+                $question->part_id = \App\Models\Part::PART_2;
+                $question->save();
+                for ($j = 0; $j< \App\Models\Answer::NUMBER_ANSWER_PART_2; $j++) {
+                    $answer = new Answer;
+                    if ($requestQuestion['question'][$i]['correct']== $j) {
+                        $answer->is_correct = \App\Models\Answer::IS_CORRECT;
+                    } else {
+                        $answer->is_correct = \App\Models\Answer::NOT_CORRECT;
+                    }
+                    $question->answers()->save($answer);
+                }
+            }
+        });
+        Session::flash('success', trans('messages.part2_create_success'));
+        return redirect()->route('admin.questions.create.part3', $examId);
+    }
+
+    /**
+     * Show the form for setup part 3 exam the specified resource.
+     *
+     * @param int $examId of exam
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createPart3($examId)
+    {
+        $exam = Exam::findOrFail($examId);
+        return view('backend.questions.create.part3', compact('exam'));
+    }
+
+    /**
+     * Create a new part 3 for exam
+     *
+     * @param \Illuminate\Http\Request $request of exams
+     * @param int                      $examId  of exam
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function storePart3(Part3Request $request, $examId)
+    {
+        $requestQuestion = $request->all();
+        DB::transaction(function () use ($requestQuestion, $examId) {
+            for ($i = 1; $i <= count($requestQuestion['question']); $i++) {
+                $question = new Question;
+                $question->exam_id = $examId;
+                $question->part_id = \App\Models\Part::PART_3;
+                $question->content = $requestQuestion['question'][$i]['content'];
+                $question->save();
+                for ($j = 0; $j< \App\Models\Answer::NUMBER_ANSWER_PART_3; $j++) {
+                    $answer = new Answer;
+                    $answer->content = $requestQuestion['question'][$i]['answer'][$j];
+                    if ($requestQuestion['question'][$i]['correct']== $j) {
+                        $answer->is_correct = \App\Models\Answer::IS_CORRECT;
+                    } else {
+                        $answer->is_correct = \App\Models\Answer::NOT_CORRECT;
+                    }
+                    $question->answers()->save($answer);
+                }
+            }
+        });
+        Session::flash('success', trans('messages.part3_create_success'));
+        return redirect()->route('admin.exam.create.part4', $examId);
     }
 }
