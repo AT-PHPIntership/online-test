@@ -20,7 +20,7 @@
             </tr>
             </thead>
             <tbody class ="add_question">
-              @for($i =1; $i<=\App\Models\Question::NUMBER_GROUP_IMAGE; $i++)
+              @for($i =1; $i<=2; $i++)
               <tr class="group-question">
                 <td>{{$i}}</td>
                 <td>
@@ -32,7 +32,7 @@
                   </div>
                 </td>
                 <td>
-                 @for($k = 1; $k<=4; $k++)
+                 @for($k = 1; $k<=1; $k++)
                   <div class="row">
                     <div  class="form-group question-first {{ $errors->has('questions.'.$i.'.content.question.'.$k) ? ' has-error' : '' }}">
                       <label class="col-md-2">{{trans('questions.question')}} {{$k}}: </label>

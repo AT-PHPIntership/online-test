@@ -8,7 +8,9 @@ use App\Models\Exam;
 use App\Models\Question;
 use App\Models\Answer;
 use App\Models\QuestionImage;
+use App\Models\SummaryImage;
 use App\Http\Requests\Backend\PostPart1Request;
+use App\Http\Requests\Backend\PostPart7Request;
 use Session;
 use DB;
 
@@ -77,7 +79,33 @@ class QuestionController extends Controller
     public function createPart7($examId)
     {
         $exam = Exam::findOrFail($examId);
-        return view('backend.questions.create.part7', compact('exam'));
+        return view('backend.questions.create.part6', compact('exam'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request of exams
+     * @param int                      $examId  of exam
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function storePart7(PostPart7Request $request, $examId)
+    {
+        $requestQuestions = $request->all();
+        // dd($requestQuestions);
+        DB::transaction(function () use ($requestQuestions, $examId) {
+            for ($i = 1; $i <= count($requestQuestions['questions']); $i++) {
+                $summaryImage = new SummaryImage;
+                $summaryImage->image = $requestQuestions['questions'][$i]['image']->hashName();
+                $requestQuestions['questions'][$i]['image']->move('anh', $requestQuestions['questions'][$i]['image']->hashName());
+                $summaryImage->save();
+
+                for ($j = 1; $j<=count($requestQuestions['questions'][$i]['content']['question']);$j++){
+                    echo $j;
+                }
+           }
+        });
     }
 
 }
