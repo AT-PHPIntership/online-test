@@ -79,7 +79,7 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getCreatePart2($examId)
+    public function createPart2($examId)
     {
         $exam = Exam::findOrFail($examId);
         return view('backend.questions.create.part2', compact('exam'));
@@ -93,7 +93,7 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function postCreatePart2(Part2Request $request, $examId)
+    public function storePart2(Part2Request $request, $examId)
     {
         $requestQuestion = $request->all();
         DB::transaction(function () use ($requestQuestion, $examId) {
@@ -124,7 +124,7 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getCreatePart3($examId)
+    public function createPart3($examId)
     {
         $exam = Exam::findOrFail($examId);
         return view('backend.questions.create.part3', compact('exam'));
@@ -138,7 +138,7 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function postCreatePart3(Part3Request $request, $examId)
+    public function storePart3(Part3Request $request, $examId)
     {
         $requestQuestion = $request->all();
         DB::transaction(function () use ($requestQuestion, $examId) {
@@ -161,7 +161,6 @@ class QuestionController extends Controller
             }
         });
         Session::flash('success', trans('messages.part3_create_success'));
-        //return redirect()->route('admin.exam.create.part4', $examId);
-        dd('ok');
+        return redirect()->route('admin.exam.create.part4', $examId);
     }
 }
