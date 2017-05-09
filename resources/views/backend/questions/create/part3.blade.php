@@ -19,7 +19,7 @@
             <div class="row">
               @for($i =1; $i <= \App\Models\Part::NUMBER_QUESTION_PART_3; $i++)
                 <div class="col-md-6">
-                  <h4 style ="padding-top: 30px" >{{trans('question.number')}}{{$i}}{{trans('question.:')}}
+                  <h4 style ="padding-top: 30px" ><em>{{trans('question.number')}}{{$i}}{{trans('question.:')}}</em>
                   <input type="text" class="form-control radio-inline part3" name="question[{{$i}}][content]" style ="width: 332px;" placeholder="Enter content question {{$i}}" value="{{old('question.'.$i.'.content')}}">
                   @if ($errors->has('question.*.content'))
                     <span class="help-block">{{$errors->first('question.'.$i.'.content')}}</span>
@@ -43,8 +43,9 @@
             </div>
           </div>
           <div class="box-footer text-center">
-            <button type="submit" class="btn btn-primary">{{trans('backend.submit')}}</button>
-            <button type="button" class="btn  btn-default"><a style="color: #000000" href="{{route('admin.exams.index')}}">{{trans('backend.cancel')}}</a></button>
+            <button type="button" class="btn btn-primary"><i class="fa fa-step-backward" aria-hidden="true"></i>{{trans('backend.previous')}}</button>
+            <button type="button" style="width: 115.69px;" class="btn  btn-default"><a style="color: #000000;" href="{{route('admin.exams.index')}}">{{trans('backend.cancel')}}</a></button>
+            <button type="submit" style="width: 115.69px;" class="btn btn-success">{{trans('backend.next')}}<i class="fa fa-step-forward" aria-hidden="true"></i></button>
           </div>
         </form>
       </div>

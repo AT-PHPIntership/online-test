@@ -9,4 +9,6 @@ return [
     'add' => 'Add',
     'list'=> 'List',
     'list' => ' List Category',
+    'next'  => 'Next step ',
+    'previous'  => ' Previous step'
     ];
