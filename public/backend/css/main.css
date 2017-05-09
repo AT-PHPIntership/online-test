@@ -1,0 +1,15 @@
+.group-question {
+    border-top: 1px solid #542f2f;
+}
+.form-group.correct-answer {
+    border-bottom: 1px solid #d2d6de;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.question-first {
+	padding-top: 30px;
+}
+.correct-answer label {
+    padding-right: 35px;
+}
