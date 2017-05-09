@@ -8,6 +8,8 @@ use App\Models\Exam;
 use App\Models\Question;
 use App\Models\Answer;
 use App\Models\QuestionImage;
+use App\Models\SummaryText;
+use App\Models\Summary;
 use App\Http\Requests\Backend\PostPart1Request;
 use App\Http\Requests\Backend\PostPart6Request;
 use Session;
@@ -92,27 +94,36 @@ class QuestionController extends Controller
     public function storePart6(PostPart6Request $request, $examId)
     {
         $requestQuestion = $request->all();
+        dump($requestQuestion);
         DB::transaction(function () use ($requestQuestion, $examId) {
-            for ($i = 1; $i <= count($requestQuestion['group']); $i++) {
-                
-                for ($j = 1; $j <= count($requestQuestion['question']); $j++) {
+            foreach ($requestQuestion['group'] as $group) {
+                $questionIds = [];
+                foreach ($group['question'] as $questionNumber => $questionParams) {
                     $question = new Question;
                     $question->exam_id = $examId;
                     $question->part_id = \App\Models\Part::PART_6;
                     $question->save();
-                    for ($k = 0; $k< \App\Models\Answer::NUMBER_ANSWER_4; $k++) {
+                    foreach ($questionParams['answer'] as $answerNumber =>  $answerParams) {
                         $answer = new Answer;
-                        $answer->content = $requestQuestion['group'][$i]['question'][$j]['answer'][$k];
-                        if ($requestQuestion['group'][$i]['question'][$j]['correct']== $k) {
+                        $answer->content = $answerParams;
+                        $correctAnswer = !empty($group['question'][$questionNumber]['correct']) ? $group['question'][$questionNumber]['correct'] : null;
+                        if ($answerNumber == $correctAnswer) {
                             $answer->is_correct = \App\Models\Answer::IS_CORRECT;
                         } else {
                             $answer->is_correct = \App\Models\Answer::NOT_CORRECT;
                         }
                         $question->answers()->save($answer);
                     }
+                    $questionIds[] = $question->id;
                 }
+                $summaryText = new SummaryText(['content' => $group['content']]);
+                $summaryText->save();
+                $summary = new Summary();
+                $summaryText->summaries()->save($summary);
+                $summary->questions()->attach($questionIds);
             }
         });
+        die('ok');
         Session::flash('success', trans('messages.part1_create_success'));
         return redirect()->route('admin.exam.create.part2', $examId);
     }

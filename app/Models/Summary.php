@@ -9,16 +9,16 @@ class Summary extends Model
 {
     protected $table = 'summary';
     protected $fillable = [
-        'summary_id', 'summary_type'
+        'summaryable_id', 'summaryable_type'
     ];
     public $timestamps = true;
 
     /**
-    * Get all of the owning summarytable models.
+    * Get all of the owning summaryable models.
      *
     * @return string
     */
-    public function summarytable()
+    public function summaryable()
     {
         return $this->morphTo();
     }
@@ -31,5 +31,9 @@ class Summary extends Model
     public function questionGroup()
     {
         return $this->belongsTo(QuestionGroup::class);
+    }
+
+    public function questions(){
+        return $this->belongsToMany(Question::class, 'question_group');
     }
 }

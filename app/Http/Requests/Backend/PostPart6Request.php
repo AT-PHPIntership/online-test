@@ -32,6 +32,7 @@ class PostPart6Request extends FormRequest
                 $rules['group.'.$i.'.question.'.$j.'.correct'] = 'required';
             }
         }
-        return $rules;
+        // return $rules;
+        return [];
     }
 }

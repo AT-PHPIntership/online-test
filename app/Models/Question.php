@@ -15,7 +15,7 @@ class Question extends Model
     /**
      * NUMBER_GROUP_PART_6 number group of part 6
      */
-    const NUMBER_GROUP_PART_6 = 3;
+    const NUMBER_GROUP_PART_6 = 2;
 
     /**
      * NUMBER_QUESTION_GROUP_PART_6 number question group of part 6

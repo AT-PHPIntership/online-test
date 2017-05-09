@@ -19,6 +19,6 @@ class SummaryImage extends Model
     */
     public function summaries()
     {
-        $this->morphMany('App\Models\Summary', 'summarytable');
+        $this->morphMany('App\Models\Summary', 'summaryable');
     }
 }

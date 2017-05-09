@@ -11,7 +11,6 @@
         {{csrf_field()}}
         <div class="form-group col-md-12">
           @for($i = 1; $i <= \App\Models\Question::NUMBER_GROUP_PART_6; $i++)
-          {{-- @for($i = 1; $i <= \App\Models\Question::NUMBER_GROUP_PART_6; $i++) --}}
             <div class="box">
               <div class="box-header">
                 <h3 class="box-title">{{trans('part.content_question_group').$i}}</h3>
