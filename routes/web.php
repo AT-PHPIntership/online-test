@@ -40,14 +40,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 
     Route::group(['prefix' => 'exams'], function () {
         Route::get('{examId}/question/part1/create', 'QuestionController@createPart1')->name('admin.questions.create.part1');
-        Route::post('{examId}/question/part1', 'QuestionController@storePart1')->name('admin.questions.store.part1');
+        Route::post('{examId}/question/part1/store', 'QuestionController@storePart1')->name('admin.questions.store.part1');
+        Route::get('{examId}/question/part2/create', 'QuestionController@createPart2')->name('admin.questions.create.part2');
+        Route::post('{examId}/question/part2/store', 'QuestionController@storePart2')->name('admin.questions.store.part2');
+        Route::get('{examId}/question/part3/create', 'QuestionController@createPart3')->name('admin.questions.create.part3');
+        Route::post('{examId}/question/part3/store', 'QuestionController@storePart3')->name('admin.questions.store.part3');
         Route::get('{examId}/question/part4/create', 'QuestionController@createPart4')->name('admin.questions.create.part4');
-        Route::post('{examId}/question/part4', 'QuestionController@storePart4')->name('admin.questions.store.part4');
+        Route::post('{examId}/question/part4/store', 'QuestionController@storePart4')->name('admin.questions.store.part4');
         Route::get('{examId}/question/part5/create', 'QuestionController@createPart5')->name('admin.questions.create.part5');
-        Route::post('{examId}/question/part5', 'QuestionController@storePart5')->name('admin.questions.store.part5');
+        Route::post('{examId}/question/part5/store', 'QuestionController@storePart5')->name('admin.questions.store.part5');
     });
 });
-
 // Login backend
 Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
     Route::Auth();
