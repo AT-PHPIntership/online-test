@@ -94,7 +94,7 @@ class QuestionController extends Controller
         $requestQuestion = $request->all();
         DB::transaction(function () use ($requestQuestion, $examId) {
             for ($i = 1; $i <= count($requestQuestion['group']); $i++) {
-                //I don't know save summary content (text or image) ??
+                
                 for ($j = 1; $j <= count($requestQuestion['question']); $j++) {
                     $question = new Question;
                     $question->exam_id = $examId;

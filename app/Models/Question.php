@@ -29,6 +29,16 @@ class Question extends Model
     public $timestamps = true;
 
     /**
+     * Question belongs to a questionGroup.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function questionGroup()
+    {
+        return $this->belongsTo(QuestionGroup::class);
+    }
+
+    /**
      * Question belongs to a part.
      *
      * @return Illuminate\Database\Eloquent\Relations\BelongsTo

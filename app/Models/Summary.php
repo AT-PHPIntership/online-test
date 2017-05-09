@@ -22,4 +22,14 @@ class Summary extends Model
     {
         return $this->morphTo();
     }
+
+    /**
+     * Summary belongs to a questionGroup.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function questionGroup()
+    {
+        return $this->belongsTo(QuestionGroup::class);
+    }
 }
