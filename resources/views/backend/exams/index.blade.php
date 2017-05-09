@@ -33,14 +33,16 @@
             <td>
               <audio controls>
                 <source src="{{asset(config('constant.upload_file_audio').$exam->audio)}}" type="audio/mpeg">
-              Your browser does not support the audio element.
+                Your browser does not support the audio element.
               </audio>
 
             </td>
             <td>{{$exam->count_test}}</td>
             <td>
               <a href="{{route('admin.exams.edit',$exam->id)}}">
-              <button type="button" class="btn btn-block btn-info btn-sm"><i class="fa fa-fw fa-edit"></i></button>
+                <button type="button" class="btn btn-block btn-info btn-sm">
+                  <i class="fa fa-fw fa-edit"></i>
+                </button>
               </a>
               <form action="{{route('admin.exams.destroy',$exam->id)}}" enctype="multipart/form-data" method="POST">
                  {{csrf_field()}}
