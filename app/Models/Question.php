@@ -15,7 +15,7 @@ class Question extends Model
     /**
      * NUMBER_GROUP_PART_6 number group of part 6
      */
-    const NUMBER_GROUP_PART_6 = 2;
+    const NUMBER_GROUP_PART_6 = 1;
 
     /**
      * NUMBER_QUESTION_GROUP_PART_6 number question group of part 6
@@ -27,16 +27,6 @@ class Question extends Model
         'content', 'part_id', 'exam_id'
     ];
     public $timestamps = true;
-
-    /**
-     * Question belongs to a questionGroup.
-     *
-     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function questionGroup()
-    {
-        return $this->belongsTo(QuestionGroup::class);
-    }
 
     /**
      * Question belongs to a part.

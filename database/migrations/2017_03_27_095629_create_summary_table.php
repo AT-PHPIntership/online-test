@@ -15,7 +15,7 @@ class CreateSummaryTable extends Migration
     {
         Schema::create('summary', function (Blueprint $table) {
             $table->increments('id');
-            $table->morphs('summary'); // create 2 field : summary_type and summary_id
+            $table->morphs('summaryable');
             $table->timestamps();
         });
     }

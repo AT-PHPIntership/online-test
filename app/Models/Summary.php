@@ -24,16 +24,12 @@ class Summary extends Model
     }
 
     /**
-     * Summary belongs to a questionGroup.
+     * Summary belongsToMany to a question.
      *
-     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function questionGroup()
+    public function questions()
     {
-        return $this->belongsTo(QuestionGroup::class);
-    }
-
-    public function questions(){
-        return $this->belongsToMany(Question::class, 'question_group');
+        return $this->belongsToMany(Question::class, 'question_group')->withTimestamps();
     }
 }

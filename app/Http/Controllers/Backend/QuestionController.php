@@ -94,7 +94,6 @@ class QuestionController extends Controller
     public function storePart6(PostPart6Request $request, $examId)
     {
         $requestQuestion = $request->all();
-        dump($requestQuestion);
         DB::transaction(function () use ($requestQuestion, $examId) {
             foreach ($requestQuestion['group'] as $group) {
                 $questionIds = [];
@@ -103,7 +102,7 @@ class QuestionController extends Controller
                     $question->exam_id = $examId;
                     $question->part_id = \App\Models\Part::PART_6;
                     $question->save();
-                    foreach ($questionParams['answer'] as $answerNumber =>  $answerParams) {
+                    foreach ($questionParams['answer'] as $answerNumber => $answerParams) {
                         $answer = new Answer;
                         $answer->content = $answerParams;
                         $correctAnswer = !empty($group['question'][$questionNumber]['correct']) ? $group['question'][$questionNumber]['correct'] : null;
@@ -118,13 +117,13 @@ class QuestionController extends Controller
                 }
                 $summaryText = new SummaryText(['content' => $group['content']]);
                 $summaryText->save();
-                $summary = new Summary();
-                $summaryText->summaries()->save($summary);
+                $summary = new Summary(['summaryable_id' => $summaryText->id, 'summaryable_type' => SummaryText::class]);
+                $summary->save();
                 $summary->questions()->attach($questionIds);
             }
         });
         die('ok');
-        Session::flash('success', trans('messages.part1_create_success'));
-        return redirect()->route('admin.exam.create.part2', $examId);
+        Session::flash('success', trans('messages.part6_create_success'));
+        // return redirect()->route('admin.exam.create.part7', $examId);
     }
 }
