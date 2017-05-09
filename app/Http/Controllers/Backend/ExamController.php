@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Exam;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\Backend\ExamPostRequest;
-use App\Http\Requests\Backend\ExamPutRequest;
+use App\Http\Requests\ExamPostRequest;
+use App\Http\Requests\ExamPutRequest;
+use App\Models\Question;
+use App\Models\Answer;
 use Session;
+use DB;
 
 class ExamController extends Controller
 {
