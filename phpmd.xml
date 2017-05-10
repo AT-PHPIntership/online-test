@@ -9,6 +9,7 @@
 
 
     <rule ref="rulesets/codesize.xml">
+        <exclude name="TooManyPublicMethods" />
     </rule>
 
     <rule ref="rulesets/controversial.xml">
@@ -33,6 +34,12 @@
         <properties>
             <property name="exceptions" value="to" />
             <property name="minimum" value="3" />
+        </properties>
+    </rule>
+
+    <rule ref="rulesets/codesize.xml/TooManyPublicMethods">
+        <properties>
+            <property name="maxmethods" value="15"/>
         </properties>
     </rule>
 
