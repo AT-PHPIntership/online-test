@@ -3,19 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 
 class Summary extends Model
 {
     protected $table = 'summary';
     protected $fillable = [
-        'summaryable_id', 'summaryable_type'
-    ];
+            'summaryable_id', 'summaryable_type'
+        ];
     public $timestamps = true;
 
     /**
-     * Get all of the owning commentable models.
+    * Get all of the owning summaryable models.
      *
-     * @return string
+    * @return string
     */
     public function summaryable()
     {
@@ -29,6 +30,6 @@ class Summary extends Model
     */
     public function questions()
     {
-        return $this->belongsToMany(Question::class);
+        return $this->belongsToMany(Question::class, 'question_group')->withTimestamps();
     }
 }

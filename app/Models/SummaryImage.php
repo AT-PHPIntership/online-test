@@ -8,12 +8,12 @@ class SummaryImage extends Model
 {
     protected $table = 'summary_images';
     protected $fillable = [
-      'image'
-    ];
+        'image'
+      ];
     public $timestamps = true;
 
     /**
-    * Get all of the post's comments.
+    * Get all of the image's sumaries.
     *
     * @return string
     */

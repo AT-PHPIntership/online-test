@@ -26,9 +26,20 @@ class Question extends Model
     const NUMBER_QUESTION_PART_4 = 30;
 
     /**
+     * NUMBER_GROUP_PART_6 number group of part 6
+     */
+    const NUMBER_GROUP_PART_6 = 1;
+
+    /**
+     * NUMBER_QUESTION_GROUP_PART_6 number question group of part 6
+     */
+    const NUMBER_QUESTION_GROUP_PART_6 = 4;
+
+    /**
      * NUMBER_QUESTION_PART_4 number question of part 4
      */
     const NUMBER_QUESTION_PART_5 = 40;
+
 
     protected $table = 'questions';
     protected $fillable = [

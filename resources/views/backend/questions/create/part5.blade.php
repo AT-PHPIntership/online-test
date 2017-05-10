@@ -9,7 +9,7 @@
   <div class="col-md-12">
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title">{{$exam->title}}/{{trans('questions.question')}}/{{trans('questions.part4')}}/{{trans('questions.create')}}</h3>
+        <h3 class="box-title">{{$exam->title}}/{{trans('questions.question')}}/{{trans('questions.part5')}}/{{trans('questions.create')}}</h3>
       </div>
       <form action="{{route('admin.questions.store.part5',$exam->id)}}" enctype="multipart/form-data" method="POST" >
         {{csrf_field()}}
