@@ -14,4 +14,5 @@ return [
     'exams_delete_success' => 'Delete Exams Success',
     'part1_create_success' => 'Create Part 1 Success',
     'part4_create_success' => 'Create Part 4 Success',
+    'part5_create_success' => 'Create Part 5 Success',
 ];

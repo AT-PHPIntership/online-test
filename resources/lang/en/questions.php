@@ -18,4 +18,5 @@
         'create' => 'Create',
         'status' => 'Status',
         'question.71.to.100' => 'Question 71 to question 100',
+        'question.101.to.140' => 'Question 101 to question 140',
     ];
