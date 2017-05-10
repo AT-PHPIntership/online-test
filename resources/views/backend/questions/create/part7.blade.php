@@ -57,7 +57,7 @@
                     </div>
                   </div>
                   <div class="form-group correct-answer ">
-                  <label>Correct Answer</label>
+                  <label>{{trans('questions.correct')}}</label>
                     <select name="questions[{{$i}}][content][correct][{{$k}}]">
                       <option value="">Choose</option>
                       @for($j = 0; $j < \App\Models\Answer::NUMBER_ANSWER_4; $j++)
