@@ -9,8 +9,8 @@ class Summary extends Model
 {
     protected $table = 'summary';
     protected $fillable = [
-            'summaryable_id', 'summaryable_type'
-        ];
+        'summaryable_id', 'summaryable_type'
+    ];
     public $timestamps = true;
 
     /**
