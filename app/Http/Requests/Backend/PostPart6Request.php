@@ -27,9 +27,9 @@ class PostPart6Request extends FormRequest
             'group.*.content'=>'required',
             'group.*.question.*.answer.*'=>'required',
         ];
-        for ($i = 1; $i <= \App\Models\Question::NUMBER_GROUP_PART_6; $i++) {
-            for ($j =1; $j<= \App\Models\Question::NUMBER_QUESTION_GROUP_PART_6; $j++) {
-                $rules['group.'.$i.'.question.'.$j.'.correct'] = 'required';
+        for ($i = \App\Models\Question::NUMBER_QUESTION_START_PART_6; $i <= \App\Models\Question::NUMBER_QUESTION_END_PART_6; $i = $i + \App\Models\Question::NUMBER_QUESTION_GROUP_PART_6) {
+            for ($j =$i; $j<= ($i+\App\Models\Question::NUMBER_GROUP_PART_6); $j++) {
+                $rules['group.'.($i-($i-1)).'.question.'.$j.'.correct'] = 'required';
             }
         }
         return $rules;

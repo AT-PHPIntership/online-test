@@ -24,7 +24,7 @@ class Part2Request extends FormRequest
     public function rules()
     {
         $rules = [];
-        for ($i = 1; $i <= \App\Models\Part::NUMBER_QUESTION_PART_2; $i++) {
+        for ($i = \App\Models\Part::NUMBER_QUESTION_START_PART_2; $i <= \App\Models\Part::NUMBER_QUESTION_END_PART_2; $i++) {
             $rules['question.'.$i.'.correct'] = 'required';
         }
         return $rules;

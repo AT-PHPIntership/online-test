@@ -17,10 +17,11 @@
           {{csrf_field()}}
           <div class="box-body">
             <div class="row">
-              @for($i =1; $i <= \App\Models\Part::NUMBER_QUESTION_PART_3; $i++)
+              @for($i =\App\Models\Part::NUMBER_QUESTION_START_PART_3; $i <= \App\Models\Part::NUMBER_QUESTION_END_PART_3; $i++)
                 <div class="col-md-6">
-                  <h4 style ="padding-top: 30px" >{{trans('question.number')}}{{$i}}{{trans('question.:')}}
+                  <h4 style ="padding-top: 30px" >{{trans('question.question')}}{{$i}} :
                   <input type="text" class="form-control radio-inline part3" name="question[{{$i}}][content]" style ="width: 332px;" placeholder="Enter content question {{$i}}" value="{{old('question.'.$i.'.content')}}">
+                  </h4>
                   @if ($errors->has('question.*.content'))
                     <span class="help-block">{{$errors->first('question.'.$i.'.content')}}</span>
                   @endif

@@ -17,7 +17,7 @@
           {{csrf_field()}}
           <div class="box-body">
             <div class="row">
-                  @for($i =1; $i <= \App\Models\Part::NUMBER_QUESTION_PART_2; $i++)
+                  @for($i = \App\Models\Part::NUMBER_QUESTION_START_PART_2; $i <= \App\Models\Part::NUMBER_QUESTION_END_PART_2; $i++)
                     <div class="col-md-4" style="padding-left: 70px">
                       <h4 style ="padding-top: 30px" >{{trans('question.question')}}{{$i}}:</h4>
                       @for($j=0; $j < \App\Models\Answer::NUMBER_ANSWER_PART_2; $j++)

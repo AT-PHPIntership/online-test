@@ -25,6 +25,29 @@ use DB;
 
 class QuestionController extends Controller
 {
+    /**
+     * [check description]
+     * @param  [type] $examId [description]
+     * @param  [type] $partId [description]
+     * @return [type]         [description]
+     */
+    public function check($examId, $partId) {
+        $exam = Exam::findOrFail($examId);
+        if($exam){
+            if($exam->is_finished === 0) {
+                     $questions = Question::where('exam_id', $examId);
+            if($partId > 1 && $questions->where('part_id', ($partId-1))->count()  === 0) {
+                    return redirect()->route('admin.questions.create.part'.($partId-1), $examId);
+                }
+                if($questions->where('part_id', $partId)->count()  !== 0) {
+                    return redirect()->route('admin.questions.create.part'.($partId+1), $examId);
+                } else {
+                    return view('backend.questions.create.part'.$partId, compact('exam'));
+                }  
+            }
+            return 'finished';
+        }
+    }
 
     /**
      * Show the form for create the part 1 question
@@ -35,8 +58,7 @@ class QuestionController extends Controller
      */
     public function createPart1($examId)
     {
-        $exam = Exam::findOrFail($examId);
-        return view('backend.questions.create.part1', compact('exam'));
+        return $this->check($examId, 1);
     }
 
     /**
@@ -85,8 +107,7 @@ class QuestionController extends Controller
      */
     public function createPart2($examId)
     {
-        $exam = Exam::findOrFail($examId);
-        return view('backend.questions.create.part2', compact('exam'));
+        return $this->check($examId, 2);
     }
 
      /**
@@ -130,8 +151,7 @@ class QuestionController extends Controller
      */
     public function createPart3($examId)
     {
-        $exam = Exam::findOrFail($examId);
-        return view('backend.questions.create.part3', compact('exam'));
+        return $this->check($examId, 3);
     }
 
     /**
@@ -177,8 +197,7 @@ class QuestionController extends Controller
      */
     public function createPart4($examId)
     {
-        $exam = Exam::findOrFail($examId);
-        return view('backend.questions.create.part4', compact('exam'));
+        return $this->check($examId, 4);
     }
    
     /**

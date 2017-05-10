@@ -27,7 +27,7 @@ class Part3Request extends FormRequest
             'question.*.content'=>'required',
             'question.*.answer.*'=>'required',
         ];
-        for ($i = 1; $i <= \App\Models\Part::NUMBER_QUESTION_PART_2; $i++) {
+        for ($i = \App\Models\Part::NUMBER_QUESTION_START_PART_3; $i <= \App\Models\Part::NUMBER_QUESTION_END_PART_3; $i++) {
             $rules['question.'.$i.'.correct'] = 'required';
         }
         return $rules;
