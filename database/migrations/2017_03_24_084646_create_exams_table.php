@@ -18,7 +18,7 @@ class CreateExamsTable extends Migration
             $table->string('title')->unique();
             $table->string('audio');
             $table->integer('count_test');
-            $table->integer('is_finished');
+            $table->integer('finished_part');
             $table->timestamps();
         });
     }
