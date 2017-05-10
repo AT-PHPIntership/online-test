@@ -77,6 +77,7 @@ class Part extends Model
      */
     const NUMBER_QUESTION_PART_6 = 30;
 
+
     protected $fillable = [
         'title', 'description', 'number_answer', 'number_question'
     ];

@@ -19,6 +19,7 @@ use DB;
 
 class QuestionController extends Controller
 {
+
     /**
      * Show the form for create the part 1 question
      *
@@ -84,7 +85,7 @@ class QuestionController extends Controller
         return view('backend.questions.create.part2', compact('exam'));
     }
 
-    /**
+     /**
      * Create a new part 2 for exam
      *
      * @param \Illuminate\Http\Request $request of exams
@@ -160,10 +161,10 @@ class QuestionController extends Controller
             }
         });
         Session::flash('success', trans('messages.part3_create_success'));
-        return redirect()->route('admin.exam.create.part4', $examId);
+        return redirect()->route('admin.questions.create.part4', $examId);
     }
     
-    
+
     /**
      * Show the form for create the part 4 question
      *
