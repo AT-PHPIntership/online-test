@@ -11,6 +11,10 @@ class Question extends Model
      * NUMBER_QUESTION_PART_1 number question of part 1
      */
     const NUMBER_QUESTION_PART_1 = 10;
+    /**
+     * NUMBER_QUESTION_PART_4 number question of part 4
+     */
+    const NUMBER_QUESTION_PART_4 = 30;
 
     /**
      * NUMBER_GROUP_PART_6 number group of part 6
