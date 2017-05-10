@@ -13,12 +13,38 @@ class Question extends Model
     const NUMBER_QUESTION_PART_1 = 10;
 
     /**
+<<<<<<< HEAD
      * NUMBER_QUESTION_PART_4 number question start of part 4
+=======
+     * NUMBER_GROUP_IMAGE number group in part
+     */
+    const NUMBER_GROUP_IMAGE = 12;
+    /**
+     * NUMBER_GROUP_QUESTION number question in group
+     */
+    const NUMBER_GROUP_QUESTION = 4;
+    /**
+     * NUMBER_QUESTION_PART_4 number question of part 4
+>>>>>>> 5471dcf53dbcd93390f2389f1ed505fd587de842
      */
     const NUMBER_QUESTION_START_PART_4 = 71;
 
     /**
+<<<<<<< HEAD
      * NUMBER_QUESTION_PART_4 number question end of part 4
+=======
+     * NUMBER_GROUP_PART_6 number group of part 6
+     */
+    const NUMBER_GROUP_PART_6 = 1;
+
+    /**
+     * NUMBER_QUESTION_GROUP_PART_6 number question group of part 6
+     */
+    const NUMBER_QUESTION_GROUP_PART_6 = 4;
+
+    /**
+     * NUMBER_QUESTION_PART_4 number question of part 4
+>>>>>>> 5471dcf53dbcd93390f2389f1ed505fd587de842
      */
     const NUMBER_QUESTION_END_PART_4 = 100;
 
@@ -51,6 +77,7 @@ class Question extends Model
      * NUMBER_QUESTION_GROUP_PART_6 number question group of part 6
      */
     const NUMBER_QUESTION_GROUP_PART_6 = 4;
+
 
     protected $table = 'questions';
     protected $fillable = [
@@ -106,5 +133,15 @@ class Question extends Model
     public function questionImage()
     {
         return $this->hasOne(QuestionImage::class);
+    }
+
+     /**
+     * Question hasmany  summaries
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function summaries()
+    {
+        return $this->hasMany(Summary::class);
     }
 }

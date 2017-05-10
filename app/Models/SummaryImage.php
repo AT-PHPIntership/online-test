@@ -8,7 +8,17 @@ class SummaryImage extends Model
 {
     protected $table = 'summary_images';
     protected $fillable = [
-      'image'
+        'image'
     ];
     public $timestamps = true;
+
+    /**
+    * Get all of the image's sumaries.
+    *
+    * @return string
+    */
+    public function summaries()
+    {
+        return $this->morphMany('App\Models\Summary', 'summaryable');
+    }
 }

@@ -4,3 +4,6 @@ function confirmDelete(msg){
     }
       return false;
 }
+$(function () {
+  $(".textarea").wysihtml5();
+});

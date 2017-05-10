@@ -20,6 +20,7 @@
                 </div>
               </div>
               <div class="box-body pad">
+<<<<<<< HEAD
                 <textarea class="textarea" name="group[{{$i-($i-1)}}][content]" placeholder="Entent content for question" style="width: 100%; height: 200px; font-size: 14px;line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('group.'.($i-($i-1)).'.content')}}
                 </textarea>
                 @if ($errors->has('group.*.content'))

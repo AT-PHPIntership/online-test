@@ -19,7 +19,7 @@
             <div class="row">
                   @for($i = \App\Models\Part::NUMBER_QUESTION_START_PART_2; $i <= \App\Models\Part::NUMBER_QUESTION_END_PART_2; $i++)
                     <div class="col-md-4" style="padding-left: 70px">
-                      <h4 style ="padding-top: 30px" >{{trans('question.number')}}{{$i}}{{trans('question.:')}}</h4>
+                      <h4 style ="padding-top: 30px" >{{trans('question.question')}}{{$i}}:</h4>
                       @for($j=0; $j < \App\Models\Answer::NUMBER_ANSWER_PART_2; $j++)
                         <label class="radio-inline">
                           <input  type="radio" name="question[{{$i}}][correct]" value="{{$j}}" {{ old('question.'.$i.'.correct').'' == $j.''?'checked':''}}>{{ trans('question.answer'.$j) }}

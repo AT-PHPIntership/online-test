@@ -11,4 +11,24 @@ class QuestionGroup extends Model
         'question_id', 'summary_id'
     ];
     public $timestamps = true;
+
+    /**
+     * QuestionGroup has many questions
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
+    /**
+     * QuestionGroup has many summaries
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function summaries()
+    {
+        return $this->hasMany(Summary::class);
+    }
 }
