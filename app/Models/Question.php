@@ -11,8 +11,15 @@ class Question extends Model
      * NUMBER_QUESTION_PART_1 number question of part 1
      */
     const NUMBER_QUESTION_PART_1 = 10;
-    const NUMBER_GROUP_IMAGE = 2;
-    const NUMBER_GROUP_QUESTION = 3;
+    /**
+     * NUMBER_GROUP_IMAGE number group in part
+     */
+    const NUMBER_GROUP_IMAGE = 12;
+    /**
+     * NUMBER_GROUP_QUESTION number question in group
+     */
+    const NUMBER_GROUP_QUESTION = 4;
+    
     protected $table = 'questions';
     protected $fillable = [
         'content', 'part_id', 'exam_id'
