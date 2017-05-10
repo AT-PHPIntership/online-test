@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Answer extends Model
 {
+
+    public $timestamps = true;
+
     /**
      * Value Answer correct is 1
      */
@@ -19,11 +22,20 @@ class Answer extends Model
      */
     const NUMBER_ANSWER_4= 4;
     
+    /**
+     * Number answer = 3
+     */
+    const NUMBER_ANSWER_PART_2 = 3;
+
+    /**
+     * Number answer = 4
+     */
+    const NUMBER_ANSWER_PART_3 = 4;
+    
     protected $table = 'answers';
     protected $fillable = [
         'content', 'question_id'
     ];
-    public $timestamps = true;
 
     /**
      * Answer belongs to a question.

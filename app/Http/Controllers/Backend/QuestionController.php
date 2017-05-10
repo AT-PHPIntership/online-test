@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Exam;
+
+use App\Http\Requests\Backend\Part2Request;
+use App\Http\Requests\Backend\Part3Request;
 use App\Models\Question;
 use App\Models\Answer;
+use App\Models\Exam;
+use App\Models\Part;
 use App\Models\QuestionImage;
 use App\Models\SummaryImage;
 use App\Models\QuestionGroup;
@@ -18,7 +22,8 @@ use DB;
 
 class QuestionController extends Controller
 {
-    
+
+
     /**
      * Show the form for create the part 1 question
      *
@@ -67,6 +72,7 @@ class QuestionController extends Controller
         Session::flash('success', trans('messages.part1_create_success'));
         return redirect()->route('admin.questions.create.part2', $examId);
     }
+
     /**
      * Show the form for setup part 2 exam the specified resource.
      *
@@ -79,6 +85,7 @@ class QuestionController extends Controller
         $exam = Exam::findOrFail($examId);
         return view('backend.questions.create.part2', compact('exam'));
     }
+
     /**
      * Create a new part 2 for exam
      *
@@ -110,6 +117,8 @@ class QuestionController extends Controller
         Session::flash('success', trans('messages.part2_create_success'));
         return redirect()->route('admin.questions.create.part3', $examId);
     }
+
+
     /**
      * Show the form for setup part 3 exam the specified resource.
      *
@@ -122,6 +131,7 @@ class QuestionController extends Controller
         $exam = Exam::findOrFail($examId);
         return view('backend.questions.create.part3', compact('exam'));
     }
+
     /**
      * Create a new part 3 for exam
      *
@@ -156,7 +166,7 @@ class QuestionController extends Controller
         return redirect()->route('admin.exam.create.part4', $examId);
     }
     /**
-     * Show the form for create the part 1 question
+     * Show the form for create the part 7 question
      *
      * @param int $examId of exam
      *
