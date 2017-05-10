@@ -8,7 +8,27 @@ class Summary extends Model
 {
     protected $table = 'summary';
     protected $fillable = [
-        'summary_id', 'summary_type'
+        'summaryable_id', 'summaryable_type'
     ];
     public $timestamps = true;
+
+    /**
+     * Get all of the owning commentable models.
+     *
+     * @return string
+    */
+    public function summaryable()
+    {
+        return $this->morphTo();
+    }
+
+    /**
+    * Summary belongsToMany to a question.
+    *
+    * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
+    public function questions()
+    {
+        return $this->belongsToMany(Question::class);
+    }
 }

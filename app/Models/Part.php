@@ -12,6 +12,7 @@ class Part extends Model
      *  PART_1 id of part 1
      */
     const PART_1 = 1;
+    const PART_7 = 7;
     
     protected $fillable = [
         'title', 'description', 'number_answer', 'number_question'

@@ -30,5 +30,4 @@ class PostPart7Request extends FormRequest
             'questions.*.content.correct.*'=>'required',
         ];
     }
-
 }

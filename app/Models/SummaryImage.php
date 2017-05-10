@@ -11,4 +11,14 @@ class SummaryImage extends Model
       'image'
     ];
     public $timestamps = true;
+
+    /**
+    * Get all of the post's comments.
+    *
+    * @return string
+    */
+    public function summaries()
+    {
+        return $this->morphMany('App\Models\Summary', 'summaryable');
+    }
 }
