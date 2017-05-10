@@ -24,10 +24,10 @@ class Summary extends Model
     }
 
     /**
-     * Summary belongsToMany to a question.
-     *
-     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
+    * Summary belongsToMany to a question.
+    *
+    * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
+    */
     public function questions()
     {
         return $this->belongsToMany(Question::class, 'question_group')->withTimestamps();

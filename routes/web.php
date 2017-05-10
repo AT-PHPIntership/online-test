@@ -51,6 +51,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         Route::post('{examId}/question/part5/store', 'QuestionController@storePart5')->name('admin.questions.store.part5');
         Route::get('{examId}/question/part6/create', 'QuestionController@createPart6')->name('admin.questions.create.part6');
         Route::post('{examId}/question/part6/store', 'QuestionController@storePart6')->name('admin.questions.store.part6');
+        Route::get('{examId}/question/part7/create', 'QuestionController@createPart7')->name('admin.questions.create.part7');
+        Route::post('{examId}/question/part7/store', 'QuestionController@storePart7')->name('admin.questions.store.part7');
     });
 });
 // Login backend

@@ -13,6 +13,14 @@ class Question extends Model
     const NUMBER_QUESTION_PART_1 = 10;
 
     /**
+     * NUMBER_GROUP_IMAGE number group in part
+     */
+    const NUMBER_GROUP_IMAGE = 12;
+    /**
+     * NUMBER_GROUP_QUESTION number question in group
+     */
+    const NUMBER_GROUP_QUESTION = 4;
+    /**
      * NUMBER_QUESTION_PART_4 number question of part 4
      */
     const NUMBER_QUESTION_PART_4 = 30;
@@ -87,5 +95,15 @@ class Question extends Model
     public function questionImage()
     {
         return $this->hasOne(QuestionImage::class);
+    }
+
+     /**
+     * Question hasmany  summaries
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function summaries()
+    {
+        return $this->hasMany(Summary::class);
     }
 }

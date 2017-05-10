@@ -4,21 +4,24 @@ namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\Part2Request;
-use App\Http\Requests\Backend\Part3Request;
 use App\Models\Question;
 use App\Models\Answer;
 use App\Models\Exam;
 use App\Models\Part;
 use App\Models\QuestionImage;
+use App\Models\SummaryImage;
+use App\Models\QuestionGroup;
 use App\Models\SummaryText;
 use App\Models\Summary;
 use App\Http\Requests\Backend\PostPart1Request;
-use App\Http\Requests\Backend\PostPart6Request;
+use App\Http\Requests\Backend\Part2Request;
+use App\Http\Requests\Backend\Part3Request;
 use App\Http\Requests\Backend\PostPart4Request;
 use App\Http\Requests\Backend\PostPart5Request;
-use DB;
+use App\Http\Requests\Backend\PostPart6Request;
+use App\Http\Requests\Backend\PostPart7Request;
 use Session;
+use DB;
 
 class QuestionController extends Controller
 {
@@ -53,13 +56,11 @@ class QuestionController extends Controller
                 $question->exam_id = $examId;
                 $question->part_id = \App\Models\Part::PART_1;
                 $question->save();
-
                 $questionImage = new QuestionImage;
                 $requestQuestionsI = $requestQuestions['question'][$i];
                 $questionImage->image = $requestQuestionsI['image']->hashName();
                 $requestQuestionsI['image']->move(config('constant.upload_questions_img'), $requestQuestionsI['image']->hashName());
                 $question->questionImage()->save($questionImage);
-
                 for ($j = 0; $j< \App\Models\Answer::NUMBER_ANSWER_4; $j++) {
                     $answer = new Answer;
                     if ($requestQuestionsI['correct'] == $j) {
@@ -120,7 +121,7 @@ class QuestionController extends Controller
         return redirect()->route('admin.questions.create.part3', $examId);
     }
 
-     /**
+    /**
      * Show the form for setup part 3 exam the specified resource.
      *
      * @param int $examId of exam
@@ -179,7 +180,7 @@ class QuestionController extends Controller
         $exam = Exam::findOrFail($examId);
         return view('backend.questions.create.part4', compact('exam'));
     }
-
+   
     /**
      * Store a newly created resource in storage.
      *
@@ -214,7 +215,7 @@ class QuestionController extends Controller
         Session::flash('success', trans('messages.part4_create_success'));
         return redirect()->route('admin.questions.create.part5', $examId);
     }
-
+    
     /**
      * Show the form for create the part 5 question
      *
@@ -269,14 +270,14 @@ class QuestionController extends Controller
      * @param int $examId of exam
      *
      * @return \Illuminate\Http\Response
-    */
+     */
     public function createPart6($examId)
     {
         $exam = Exam::findOrFail($examId);
         return view('backend.questions.create.part6', compact('exam'));
     }
 
-    /**
+     /**
     * Store a newly created resource in storage.
     *
     * @param \Illuminate\Http\Request $request of exams
@@ -306,7 +307,7 @@ class QuestionController extends Controller
                         }
                         $question->answers()->save($answer);
                     }
-                    $questionIds[] = $question->id;
+                     $questionIds[] = $question->id;
                 }
                 $summaryText = new SummaryText(['content' => $group['content']]);
                 $summaryText->save();
@@ -316,6 +317,68 @@ class QuestionController extends Controller
             }
         });
         Session::flash('success', trans('messages.part6_create_success'));
-        return redirect()->route('admin.exam.create.part7', $examId);
+        return redirect()->route('admin.questions.create.part7', $examId);
+    }
+    
+     /**
+     * Show the form for create the part 7 question
+      *
+     * @param int $examId of exam
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createPart7($examId)
+    {
+        $exam = Exam::findOrFail($examId);
+        return view('backend.questions.create.part7', compact('exam'));
+    }
+    
+     /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request of exams
+     * @param int                      $examId  of exam
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function storePart7(PostPart7Request $request, $examId)
+    {
+        $requestQuestions = $request->all();
+        DB::transaction(function () use ($requestQuestions, $examId) {
+            for ($i = 1; $i <= count($requestQuestions['questions']); $i++) {
+                $summaryImage = new SummaryImage;
+                $summaryImage->image = $requestQuestions['questions'][$i]['image']->hashName();
+                $requestQuestions['questions'][$i]['image']->move(config('constant.upload_questions_img'), $requestQuestions['questions'][$i]['image']->hashName());
+                $summaryImage->save();
+
+                $summary = new Summary();
+                $summary = $summaryImage->summaries()->save($summary);
+
+                for ($j = 1; $j<=count($requestQuestions['questions'][$i]['content']['question']); $j++) {
+                    $question = new Question;
+                    $question->content = $requestQuestions['questions'][$i]['content']['question'][$j];
+                    $question->exam_id = $examId;
+                    $question->part_id = \App\Models\Part::PART_7;
+                    $question->save();
+
+                    for ($k = 0; $k< \App\Models\Answer::NUMBER_ANSWER_4; $k++) {
+                        $answer = new Answer;
+                        $answer->content =  $requestQuestions['questions'][$i]['content']['answer'][$j][$k];
+                        if ($requestQuestions['questions'][$i]['content']['correct'][$j] == $k) {
+                            $answer->is_correct = \App\Models\Answer::IS_CORRECT;
+                        } else {
+                            $answer->is_correct = \App\Models\Answer::NOT_CORRECT;
+                        }
+                        $question->answers()->save($answer);
+                    }
+
+                    $questionGroup = new QuestionGroup(['summary_id' => $summary->id]);
+                    $question->summaries()->save($questionGroup);
+                }
+            }
+            Exam::findorFail($examId)->update(['is_finished'=>\App\Models\Exam::FINISHED]);
+        });
+        Session::flash('success', trans('messages.part7_create_success'));
+        return redirect()->route('admin.exams.index');
     }
 }
