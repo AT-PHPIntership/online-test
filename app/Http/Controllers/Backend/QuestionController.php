@@ -17,8 +17,8 @@ use App\Http\Requests\Backend\PostPart1Request;
 use App\Http\Requests\Backend\PostPart6Request;
 use App\Http\Requests\Backend\PostPart4Request;
 use App\Http\Requests\Backend\PostPart5Request;
-use Session;
 use DB;
+use Session;
 
 class QuestionController extends Controller
 {
