@@ -19,7 +19,11 @@ class Question extends Model
      * NUMBER_GROUP_QUESTION number question in group
      */
     const NUMBER_GROUP_QUESTION = 4;
-    
+    /**
+     * NUMBER_QUESTION_PART_4 number question of part 4
+     */
+    const NUMBER_QUESTION_PART_4 = 30;
+
     protected $table = 'questions';
     protected $fillable = [
         'content', 'part_id', 'exam_id'
