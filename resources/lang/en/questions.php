@@ -17,4 +17,5 @@
         'part7' => 'Part 7',
         'create' => 'Create',
         'status' => 'Status',
+        'question.71.to.100' => 'Question 71 to question 100',
     ];
