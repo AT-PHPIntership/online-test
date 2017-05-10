@@ -18,20 +18,18 @@
           <table class="table no-margin" id="lists">
             <thead>
             <tr>
-               <th style="width: 3%">#</th>
               <th style="width: 80%">{{trans('questions.question')}} & {{trans('questions.answer')}}</th>
               <th style="width: 8%">Correct Answer</th>
             </tr>
             </thead>
             <tbody id ="add_question">
-              @for($i = 1; $i <= \App\Models\Question::NUMBER_QUESTION_PART_5; $i++ )
+              @for($i = \App\Models\Question::NUMBER_QUESTION_START_PART_5; $i <= \App\Models\Question::NUMBER_QUESTION_END_PART_5; $i++ )
                 <tr id="item">
-                  <td>{{ $i }}</td>
                   <td>
                     <div class="row">
                       <div  class="form-group {{ $errors->has('question.'.$i.'.content') ? ' has-error' : '' }}">
-                        <label class="col-md-2">{{trans('questions.question')}} : </label>
-                        <input type="text" name="question[{{$i}}][content]" placeholder="Enter the question {{$i+100}}" class="col-md-9"  value="{{old('question.'.$i.'.content')}}">
+                        <label class="col-md-2">{{trans('questions.question')}}{{$i}} : </label>
+                        <input type="text" name="question[{{$i}}][content]" placeholder="Enter the question {{$i}}" class="col-md-9"  value="{{old('question.'.$i.'.content')}}">
                         @if ($errors->has('question.*.content'))
                           <span class="help-block col-md-10 col-md-offset-2 " > {{ $errors->first('question.'.$i.'.content') }}</span>
                         @endif

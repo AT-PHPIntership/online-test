@@ -13,14 +13,44 @@ class Question extends Model
     const NUMBER_QUESTION_PART_1 = 10;
 
     /**
-     * NUMBER_QUESTION_PART_4 number question of part 4
+     * NUMBER_QUESTION_PART_4 number question start of part 4
      */
-    const NUMBER_QUESTION_PART_4 = 30;
+    const NUMBER_QUESTION_START_PART_4 = 71;
 
     /**
-     * NUMBER_QUESTION_PART_4 number question of part 4
+     * NUMBER_QUESTION_PART_4 number question end of part 4
      */
-    const NUMBER_QUESTION_PART_5 = 40;
+    const NUMBER_QUESTION_END_PART_4 = 100;
+
+    /**
+     * NUMBER_QUESTION_PART_5 number question start of part 5
+     */
+    const NUMBER_QUESTION_START_PART_5 = 101;
+
+    /**
+     * NUMBER_QUESTION_PART_5 number question end of part 5
+     */
+    const NUMBER_QUESTION_END_PART_5 = 140;
+
+    /**
+     * NUMBER_QUESTION_PART_6 number question start of part 6
+     */
+    const NUMBER_QUESTION_START_PART_6 = 141;
+
+    /**
+     * NUMBER_QUESTION_PART_6 number question end of part 6
+     */
+    const NUMBER_QUESTION_END_PART_6 = 152;
+
+    /**
+     * NUMBER_GROUP_PART_6 number group of part 6
+     */
+    const NUMBER_GROUP_PART_6 = 3;
+
+    /**
+     * NUMBER_QUESTION_GROUP_PART_6 number question group of part 6
+     */
+    const NUMBER_QUESTION_GROUP_PART_6 = 4;
 
     protected $table = 'questions';
     protected $fillable = [

@@ -43,24 +43,29 @@ class Part extends Model
     const PART_7 = 7;
     
     /**
-     * Number start
-     */
-    const NUMBER_QUESTION_START = 1;
-    
-    /**
      * Number question part 1
      */
     const NUMBER_QUESTION_PART_1 = 30;
 
     /**
-     * Number question part 2
+     * Number question start part 2
      */
-    const NUMBER_QUESTION_PART_2 = 30;
+    const NUMBER_QUESTION_START_PART_2 = 11;
 
     /**
-     * Number question part 3
+     * Number question end part 2
      */
-    const NUMBER_QUESTION_PART_3 = 30;
+    const NUMBER_QUESTION_END_PART_2 = 40;
+
+    /**
+     * Number question start part 3
+     */
+    const NUMBER_QUESTION_START_PART_3 = 41;
+
+    /**
+     * Number question end part 3
+     */
+    const NUMBER_QUESTION_END_PART_3 = 70;
 
     /**
      * Number question part 4

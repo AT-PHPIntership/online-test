@@ -6,7 +6,7 @@
         'key3' => 'D',
         'add_question_answer' => 'Add picture question & correct answer',
         'answer' => 'Answer',
-        'question' => 'Question',
+        'question' => 'Question ',
         'picture' => 'Picture',
         'part1' => 'Part 1',
         'part2' => 'Part 2',
