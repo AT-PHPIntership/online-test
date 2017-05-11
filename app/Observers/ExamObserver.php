@@ -16,6 +16,6 @@ class ExamObserver
     public function creating(Exam $exams)
     {
         $exams->count_test = 0;
-        $exams->is_finished = 0;
+        $exams->finished_part = 0;
     }
 }

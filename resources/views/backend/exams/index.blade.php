@@ -51,17 +51,17 @@
               </form>
             </td>
             <td>
-              @if($exam->is_finished == \App\Models\Exam::NOT_FINISHED)
+              @if($exam->finished_part == \App\Models\Exam::NOT_FINISHED)
                <a href="{{route('admin.questions.create.part1',$exam->id)}}">
                <button type="button" class="btn btn-block btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i></button>
                </a>
-               @elseif($exam->is_finished == \App\Models\Exam::FINISHED)
-               <a href="">
-               <button type="button" class="btn btn-block btn-success btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-               </a>
+                  @elseif($exam->finished_part >=\App\Models\Exam::FINISHED_PART_1 && $exam->finished_part<=\App\Models\Exam::FINISHED_PART_6)
+                   <a href="{{route('admin.questions.create.part'.($exam->finished_part+1),$exam->id)}}">
+                   <button type="button" class="btn btn-block btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                   </a>
                @else
                <a href="">
-               <button type="button" class="btn btn-block btn-warning btn-sm"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
+               <button type="button" class="btn btn-block btn-success btn-sm"><i class="fa fa-check" aria-hidden="true"></i></button>
                </a>
                @endif
             </td>

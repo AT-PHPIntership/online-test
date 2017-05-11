@@ -25,7 +25,6 @@ use DB;
 
 class QuestionController extends Controller
 {
-
     /**
      * Show the form for create the part 1 question
      *
@@ -35,10 +34,8 @@ class QuestionController extends Controller
      */
     public function createPart1($examId)
     {
-        $exam = Exam::findOrFail($examId);
-        return view('backend.questions.create.part1', compact('exam'));
+        return $this->createPart($examId, \App\Models\Exam::NOT_FINISHED);
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -71,6 +68,7 @@ class QuestionController extends Controller
                     $question->answers()->save($answer);
                 }
             }
+            Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_1]);
         });
         Session::flash('success', trans('messages.part1_create_success'));
         return redirect()->route('admin.questions.create.part2', $examId);
@@ -85,8 +83,7 @@ class QuestionController extends Controller
      */
     public function createPart2($examId)
     {
-        $exam = Exam::findOrFail($examId);
-        return view('backend.questions.create.part2', compact('exam'));
+        return $this->createPart($examId, \App\Models\Exam::FINISHED_PART_1);
     }
 
      /**
@@ -116,6 +113,7 @@ class QuestionController extends Controller
                     $question->answers()->save($answer);
                 }
             }
+            Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_2]);
         });
         Session::flash('success', trans('messages.part2_create_success'));
         return redirect()->route('admin.questions.create.part3', $examId);
@@ -130,8 +128,7 @@ class QuestionController extends Controller
      */
     public function createPart3($examId)
     {
-        $exam = Exam::findOrFail($examId);
-        return view('backend.questions.create.part3', compact('exam'));
+        return $this->createPart($examId, \App\Models\Exam::FINISHED_PART_2);
     }
 
     /**
@@ -163,6 +160,7 @@ class QuestionController extends Controller
                     $question->answers()->save($answer);
                 }
             }
+            Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_3]);
         });
         Session::flash('success', trans('messages.part3_create_success'));
         return redirect()->route('admin.questions.create.part4', $examId);
@@ -177,8 +175,7 @@ class QuestionController extends Controller
      */
     public function createPart4($examId)
     {
-        $exam = Exam::findOrFail($examId);
-        return view('backend.questions.create.part4', compact('exam'));
+        return $this->createPart($examId, \App\Models\Exam::FINISHED_PART_3);
     }
    
     /**
@@ -211,6 +208,7 @@ class QuestionController extends Controller
                     $question->answers()->save($answer);
                 }
             }
+            Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_4]);
         });
         Session::flash('success', trans('messages.part4_create_success'));
         return redirect()->route('admin.questions.create.part5', $examId);
@@ -225,8 +223,7 @@ class QuestionController extends Controller
     */
     public function createPart5($examId)
     {
-        $exam = Exam::findOrFail($examId);
-        return view('backend.questions.create.part5', compact('exam'));
+        return $this->createPart($examId, \App\Models\Exam::FINISHED_PART_4);
     }
 
      /**
@@ -259,6 +256,7 @@ class QuestionController extends Controller
                     $question->answers()->save($answer);
                 }
             }
+            Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_5]);
         });
         Session::flash('success', trans('messages.part5_create_success'));
         return redirect()->route('admin.questions.create.part6', $examId);
@@ -273,8 +271,7 @@ class QuestionController extends Controller
      */
     public function createPart6($examId)
     {
-        $exam = Exam::findOrFail($examId);
-        return view('backend.questions.create.part6', compact('exam'));
+        return $this->createPart($examId, \App\Models\Exam::FINISHED_PART_5);
     }
 
      /**
@@ -315,6 +312,7 @@ class QuestionController extends Controller
                 $summary->save();
                 $summary->questions()->attach($questionIds);
             }
+            Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_6]);
         });
         Session::flash('success', trans('messages.part6_create_success'));
         return redirect()->route('admin.questions.create.part7', $examId);
@@ -329,8 +327,7 @@ class QuestionController extends Controller
      */
     public function createPart7($examId)
     {
-        $exam = Exam::findOrFail($examId);
-        return view('backend.questions.create.part7', compact('exam'));
+        return $this->createPart($examId, \App\Models\Exam::FINISHED_PART_6);
     }
     
      /**
@@ -376,9 +373,29 @@ class QuestionController extends Controller
                     $question->summaries()->save($questionGroup);
                 }
             }
-            Exam::findorFail($examId)->update(['is_finished'=>\App\Models\Exam::FINISHED]);
+            Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_7]);
         });
         Session::flash('success', trans('messages.part7_create_success'));
         return redirect()->route('admin.exams.index');
+    }
+
+    /**
+     * Show the form for create the part question
+     *
+     * @param int     $examId       The exam identifier
+     * @param integer $finishedPart The finished part
+     *
+     *  @return \Illuminate\Http\Response
+     */
+    public function createPart($examId, $finishedPart)
+    {
+        $exam = Exam::findOrFail($examId);
+        if ($exam->finished_part == \App\Models\Exam::FINISHED_PART_7) {
+            return redirect()->route('admin.exams.index');
+        } elseif ($exam->finished_part == $finishedPart) {
+            return view('backend.questions.create.part'.($finishedPart+1), compact('exam'));
+        } else {
+            return redirect()->route('admin.questions.create.part'.($exam->finished_part+1), $examId);
+        }
     }
 }
