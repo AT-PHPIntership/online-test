@@ -5,7 +5,8 @@
   <div class="col-md-12">
     <div class="box box-primary">
       <div class="box-header with-border">
-        <h3 class="box-title">{{$exam->title}}/{{trans('questions.question')}}/{{trans('questions.part1')}}/{{trans('questions.create')}}</h3>
+        <h3>{{trans('labels.exam').$exam->id}}</h3>
+        <h5 class="box-title">{{ trans('exams.part1') }}</h5>
       </div>
        <form action="{{route('admin.questions.store.part1',$exam->id)}}" enctype="multipart/form-data" method="POST">
         {{csrf_field()}}
@@ -45,9 +46,9 @@
               </tbody>
             </table>
         </div>
-        <div class="box-footer col-md-offset-5">
-          <a href="{{route('admin.exams.index')}}"><button type="button" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
-          <a href=""><button type="submit" class="btn  btn-danger"><i class="fa fa-step-forward" aria-hidden="true"></i></button></a>
+        <div class="box-footer text-center">
+          <button type="button" style="width: 92px;" class="btn  btn-default"><a style="color: #000000;" href="{{route('admin.exams.index')}}">{{trans('backend.cancel')}}</a></button>
+          <button type="submit" class="btn btn-success">{{trans('backend.next')}}<i class="fa fa-step-forward" aria-hidden="true"></i></button>
         </div>
       </form>
     </div>
