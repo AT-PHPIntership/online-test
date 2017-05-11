@@ -1,5 +1,6 @@
 <?php
     return [
+    'id'    => 'ID',
     'table' => 'Table Exams',
     'title' => 'Title',
     'audio' => ' Audio',

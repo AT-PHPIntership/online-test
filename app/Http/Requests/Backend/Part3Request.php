@@ -27,9 +27,24 @@ class Part3Request extends FormRequest
             'question.*.content'=>'required',
             'question.*.answer.*'=>'required',
         ];
-        for ($i = 1; $i <= \App\Models\Part::NUMBER_QUESTION_PART_2; $i++) {
+        for ($i = 1; $i <= \App\Models\Part::NUMBER_QUESTION_PART_3; $i++) {
             $rules['question.'.$i.'.correct'] = 'required';
         }
         return $rules;
+    }
+    /**
+     * Messages errors part 3
+     * @return string for requestion
+     */
+    public function messages()
+    {    
+        $messages = [
+            'question.*.content.required'=>'Please, enter content for question',
+            'question.*.answer.*.required'=>'Please, enter answer for question',
+        ];
+        for ($i = 1; $i <= \App\Models\Part::NUMBER_QUESTION_PART_3; $i++) {
+            $messages['question.'.$i.'.correct'.'.required'] = 'Please! Choose the correct answer.';
+        }
+        return $messages;
     }
 }
