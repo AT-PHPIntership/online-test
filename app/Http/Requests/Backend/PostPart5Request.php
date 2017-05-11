@@ -29,4 +29,18 @@ class PostPart5Request extends FormRequest
             'question.*.correct'=>'required',
         ];
     }
+
+    /**
+     * Messages errors part 5
+     * @return string for requestion
+     */
+    public function messages()
+    {    
+        $messages = [
+            'question.*.content.required'=>'Please, enter content for question',
+            'question.*.answer.*.required'=>'Please, enter answer for question',
+            'question.*.correct.required'=>'Please, enter correct for question',
+        ];
+        return $messages;
+    }
 }

@@ -19,7 +19,7 @@
             <div class="row">
                   @for($i =1; $i <= \App\Models\Part::NUMBER_QUESTION_PART_2; $i++)
                     <div class="col-md-4" style="padding-left: 70px">
-                      <h4 style ="padding-top: 30px" >{{trans('question.question')}}{{$i}}:</h4>
+                      <h4 style ="padding-top: 30px" >{{trans('question.question')}}{{$i+\App\Models\Part::START_PART_2}}:</h4>
                       @for($j=0; $j < \App\Models\Answer::NUMBER_ANSWER_PART_2; $j++)
                         <label class="radio-inline">
                           <input  type="radio" name="question[{{$i}}][correct]" value="{{$j}}" {{ old('question.'.$i.'.correct').'' == $j.''?'checked':''}}>{{ trans('question.answer'.$j) }}
@@ -33,8 +33,9 @@
             </div>
           </div>
           <div class="box-footer text-center">
-            <button type="submit" class="btn btn-primary">{{trans('backend.submit')}}</button>
-            <button type="button" class="btn  btn-default"><a style="color: #000000" href="{{route('admin.exams.index')}}">{{trans('backend.cancel')}}</a></button>
+            <a style="color: #ffffff" href=""><button style="width: 110px" type="button" class="btn  btn-warning"><i class="fa fa-step-backward" aria-hidden="true"></i>{{trans('part.previous_step')}}</button></a>
+            <a style="color: #ffffff;" href="{{route('admin.exams.index')}}"><button style="width: 110px" type="button" class="btn btn-primary">{{trans('backend.cancel')}}</button></a>
+            <a style="color: #ffffff" href=""><button type="submit" class="btn  btn-success">{{trans('part.next_step')}}<i class="fa fa-step-forward" aria-hidden="true"></i></button></a>
           </div>
         </form>
       </div>

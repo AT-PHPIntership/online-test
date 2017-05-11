@@ -18,20 +18,18 @@
           <table class="table no-margin" id="lists">
             <thead>
             <tr>
-               <th style="width: 3%">#</th>
-              <th style="width: 80%">{{trans('questions.question')}} & {{trans('questions.answer')}}</th>
-              <th style="width: 8%">Correct Answer</th>
+              <th style="width: 70%">{{trans('questions.question')}} & {{trans('questions.answer')}}</th>
+              <th style="width: 30%">{{trans('questions.correct')}}</th>
             </tr>
             </thead>
             <tbody id ="add_question">
               @for($i = 1; $i <= \App\Models\Question::NUMBER_QUESTION_PART_5; $i++ )
                 <tr id="item">
-                  <td>{{ $i }}</td>
                   <td>
                     <div class="row">
                       <div  class="form-group {{ $errors->has('question.'.$i.'.content') ? ' has-error' : '' }}">
-                        <label class="col-md-2">{{trans('questions.question')}} : </label>
-                        <input type="text" name="question[{{$i}}][content]" placeholder="Enter the question {{$i+100}}" class="col-md-9"  value="{{old('question.'.$i.'.content')}}">
+                        <label class="col-md-2">{{trans('questions.question')}} {{$i+\App\Models\Part::START_PART_5}} : </label>
+                        <input type="text" name="question[{{$i}}][content]" placeholder="Enter the question {{$i+\App\Models\Part::START_PART_5}}" class="col-md-9"  value="{{old('question.'.$i.'.content')}}">
                         @if ($errors->has('question.*.content'))
                           <span class="help-block col-md-10 col-md-offset-2 " > {{ $errors->first('question.'.$i.'.content') }}</span>
                         @endif
@@ -41,7 +39,7 @@
                       <label class="col-md-1">{{trans('questions.answer')}}</label>
                       <div class=" form-group col-md-10" >
                         @for($j = 0; $j < \App\Models\Answer::NUMBER_ANSWER_4; $j++)
-                          <div class="col-md-6 {{ $errors->has('question.'.$i.'.answer.'.$j) ? ' has-error' : '' }}">
+                          <div class=" form-group col-md-6 {{ $errors->has('question.'.$i.'.answer.'.$j) ? ' has-error' : '' }}">
                             {{trans('questions.key'. $j)}} <input class="col-md-12"  type="text" name="question[{{$i}}][answer][{{$j}}]"  value="{{old('question.'.$i.'.answer.'.$j)}}"  placeholder="Answer {{trans('questions.key'. $j)}}">
                             @if ($errors->has('question.*.answer.*'))
                               <span class="help-block"> {{ $errors->first('question.'.$i.'.answer.'.$j) }}</span>
@@ -60,7 +58,7 @@
                         @endfor
                       </select>
                       @if ($errors->has('question.*.correct'))
-                        <span class="help-block"> {{ $errors->first('question.'.$i.'.correct') }}</span>
+                        <span style="color: red" class="help-block"> {{ $errors->first('question.'.$i.'.correct') }}</span>
                       @endif
                     </div>
                    </td>
@@ -69,9 +67,10 @@
             </tbody>
           </table>
         </div>
-        <div class="box-footer col-md-offset-5">
-          <a href="{{route('admin.exams.index')}}"><button type="button" class="btn btn-primary"><i class="fa fa-trash" aria-hidden="true"></i></button></a>
-          <a href="{{}}"><button type="submit" class="btn  btn-danger"><i class="fa fa-step-forward" aria-hidden="true"></i></button></a>
+        <div class="box-footer text-center">
+          <a style="color: #ffffff" href=""><button style="width: 110px" type="button" class="btn  btn-warning"><i class="fa fa-step-backward" aria-hidden="true"></i>{{trans('part.previous_step')}}</button></a>
+          <a style="color: #ffffff;" href="{{route('admin.exams.index')}}"><button style="width: 110px" type="button" class="btn btn-primary">{{trans('backend.cancel')}}</button></a>
+          <a style="color: #ffffff" href=""><button type="submit" class="btn  btn-success">{{trans('part.next_step')}}<i class="fa fa-step-forward" aria-hidden="true"></i></button></a>
         </div>
       </form>
     </div>

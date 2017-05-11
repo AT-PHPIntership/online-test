@@ -8,18 +8,22 @@
 @endif
   <div class="col-xs-10 col-xs-offset-1">
   <div>
-  <button><a href="{{route('admin.exams.create')}}">{{trans('exams.add')}}</a></button>
   </div>
     <div class="box">
       <div class="box-header">
-        <h3 class="box-title">{{trans('exams.table')}}</h3>
+        <div class="col-md-6 text-right">
+          <h3 class="box-title">{{trans('exams.table')}}</h3>
+        </div>
+        <div class="col-md-6 text-right">
+          <a style=" color: #ffffff" href="{{route('admin.exams.create')}}"><button class="btn btn-success" >{{trans('exams.add')}}</button></a>
+        </div>
         <div class="box-tools">
         </div>
       </div>
       <div class="box-body table-responsive no-padding">
         <table class="table table-hover">
           <tr>
-            <th>#</th>
+            <th>{{trans('exams.id')}}</th>
             <th style="width:25%">{{trans('exams.title')}}</th>
             <th >{{trans('exams.audio')}}</th>
             <th style="width:15%">{{trans('exams.count_test')}}</th>

@@ -28,7 +28,7 @@ class Question extends Model
     /**
      * NUMBER_GROUP_PART_6 number group of part 6
      */
-    const NUMBER_GROUP_PART_6 = 1;
+    const NUMBER_GROUP_PART_6 = 3;
 
     /**
      * NUMBER_QUESTION_GROUP_PART_6 number question group of part 6
@@ -39,6 +39,16 @@ class Question extends Model
      * NUMBER_QUESTION_PART_4 number question of part 4
      */
     const NUMBER_QUESTION_PART_5 = 40;
+
+    /**
+     * NUMBER_QUESTION_PART_6 number question start of part 6
+     */
+    const NUMBER_QUESTION_START_PART_6 = 141;
+
+    /**
+     * NUMBER_QUESTION_PART_6 number question end of part 6
+     */
+    const NUMBER_QUESTION_END_PART_6 = 152;
 
 
     protected $table = 'questions';
