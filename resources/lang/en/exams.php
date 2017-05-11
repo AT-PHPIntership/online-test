@@ -1,5 +1,6 @@
 <?php
     return [
+    'id'    => 'ID',
     'table' => 'Table Exams',
     'title' => 'Title',
     'audio' => ' Audio',
@@ -15,4 +16,7 @@
     'part5' => 'Part 5',
     'part6' => 'Part 6',
     'part7' => 'Part 7',
+    'edit_exam' => 'Edit',
+    'delete_exam'   => 'Delete',
+    'setup_exam'    => 'Setup',
     ];

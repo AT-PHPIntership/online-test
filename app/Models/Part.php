@@ -76,8 +76,37 @@ class Part extends Model
      * Number question part 6
      */
     const NUMBER_QUESTION_PART_6 = 30;
+    
+    /**
+     * Number start part 2
+     */
+    const START_PART_2 = 10;
 
+    /**
+     * Number start part 3
+     */
+    const START_PART_3 = 40;
 
+    /**
+     * Number start part 4
+     */
+    const START_PART_4 = 70;
+
+    /**
+     * Number start part 5
+     */
+    const START_PART_5 = 100;
+
+    /**
+     * Number start part 6
+     */
+    const START_PART_6 = 140;
+    
+    /**
+     * Number start part 7
+     */
+    const START_PART_7 = 152;
+    
     protected $fillable = [
         'title', 'description', 'number_answer', 'number_question'
     ];
