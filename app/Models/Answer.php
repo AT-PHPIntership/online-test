@@ -20,8 +20,12 @@ class Answer extends Model
     /**
      * Number answer of part 1 , part 3 to part 7 is 4
      */
-    const NUMBER_ANSWER_4= 4;
-    
+    const NUMBER_ANSWER_4 = 4;
+
+    /**
+     * Number answer of part 2
+     */
+    const NUMBER_ANSWER_3 = 3;
     /**
      * Number answer = 3
      */

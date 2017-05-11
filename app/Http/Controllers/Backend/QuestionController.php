@@ -46,32 +46,7 @@ class QuestionController extends Controller
      */
     public function storePart1(PostPart1Request $request, $examId)
     {
-        $requestQuestions = $request->all();
-        DB::transaction(function () use ($requestQuestions, $examId) {
-            for ($i = 1; $i <= count($requestQuestions['question']); $i++) {
-                $question = new Question;
-                $question->exam_id = $examId;
-                $question->part_id = \App\Models\Part::PART_1;
-                $question->save();
-                $questionImage = new QuestionImage;
-                $requestQuestionsI = $requestQuestions['question'][$i];
-                $questionImage->image = $requestQuestionsI['image']->hashName();
-                $requestQuestionsI['image']->move(config('constant.upload_questions_img'), $requestQuestionsI['image']->hashName());
-                $question->questionImage()->save($questionImage);
-                for ($j = 0; $j< \App\Models\Answer::NUMBER_ANSWER_4; $j++) {
-                    $answer = new Answer;
-                    if ($requestQuestionsI['correct'] == $j) {
-                        $answer->is_correct = \App\Models\Answer::IS_CORRECT;
-                    } else {
-                        $answer->is_correct = \App\Models\Answer::NOT_CORRECT;
-                    }
-                    $question->answers()->save($answer);
-                }
-            }
-            Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_1]);
-        });
-        Session::flash('success', trans('messages.part1_create_success'));
-        return redirect()->route('admin.questions.create.part2', $examId);
+        return $this->storepart($examId, $request, \App\Models\Part::PART_1);
     }
 
      /**
@@ -96,27 +71,7 @@ class QuestionController extends Controller
      */
     public function storePart2(Part2Request $request, $examId)
     {
-        $requestQuestion = $request->all();
-        DB::transaction(function () use ($requestQuestion, $examId) {
-            for ($i = 1; $i <= count($requestQuestion['question']); $i++) {
-                $question = new Question;
-                $question->exam_id = $examId;
-                $question->part_id = \App\Models\Part::PART_2;
-                $question->save();
-                for ($j = 0; $j< \App\Models\Answer::NUMBER_ANSWER_PART_2; $j++) {
-                    $answer = new Answer;
-                    if ($requestQuestion['question'][$i]['correct']== $j) {
-                        $answer->is_correct = \App\Models\Answer::IS_CORRECT;
-                    } else {
-                        $answer->is_correct = \App\Models\Answer::NOT_CORRECT;
-                    }
-                    $question->answers()->save($answer);
-                }
-            }
-            Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_2]);
-        });
-        Session::flash('success', trans('messages.part2_create_success'));
-        return redirect()->route('admin.questions.create.part3', $examId);
+        return $this->storepart($examId, $request, \App\Models\Part::PART_2);
     }
 
     /**
@@ -141,29 +96,7 @@ class QuestionController extends Controller
      */
     public function storePart3(Part3Request $request, $examId)
     {
-        $requestQuestion = $request->all();
-        DB::transaction(function () use ($requestQuestion, $examId) {
-            for ($i = 1; $i <= count($requestQuestion['question']); $i++) {
-                $question = new Question;
-                $question->exam_id = $examId;
-                $question->part_id = \App\Models\Part::PART_3;
-                $question->content = $requestQuestion['question'][$i]['content'];
-                $question->save();
-                for ($j = 0; $j< \App\Models\Answer::NUMBER_ANSWER_PART_3; $j++) {
-                    $answer = new Answer;
-                    $answer->content = $requestQuestion['question'][$i]['answer'][$j];
-                    if ($requestQuestion['question'][$i]['correct']== $j) {
-                        $answer->is_correct = \App\Models\Answer::IS_CORRECT;
-                    } else {
-                        $answer->is_correct = \App\Models\Answer::NOT_CORRECT;
-                    }
-                    $question->answers()->save($answer);
-                }
-            }
-            Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_3]);
-        });
-        Session::flash('success', trans('messages.part3_create_success'));
-        return redirect()->route('admin.questions.create.part4', $examId);
+        return $this->storepart($examId, $request, \App\Models\Part::PART_3);
     }
 
     /**
@@ -188,30 +121,7 @@ class QuestionController extends Controller
      */
     public function storePart4(PostPart4Request $request, $examId)
     {
-        $requestQuestions = $request->all();
-        DB::transaction(function () use ($requestQuestions, $examId) {
-            for ($i = 1; $i <= count($requestQuestions['question']); $i++) {
-                $question = new Question;
-                $question->exam_id = $examId;
-                $question->content = $requestQuestions['question'][$i]['content'];
-                $question->part_id = \App\Models\Part::PART_4;
-                $question->save();
-
-                for ($j = 0; $j< \App\Models\Answer::NUMBER_ANSWER_4; $j++) {
-                    $answer = new Answer;
-                    $answer->content = $requestQuestions['question'][$i]['answer'][$j];
-                    if ($requestQuestions['question'][$i]['correct'] == $j) {
-                        $answer->is_correct = \App\Models\Answer::IS_CORRECT;
-                    } else {
-                        $answer->is_correct = \App\Models\Answer::NOT_CORRECT;
-                    }
-                    $question->answers()->save($answer);
-                }
-            }
-            Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_4]);
-        });
-        Session::flash('success', trans('messages.part4_create_success'));
-        return redirect()->route('admin.questions.create.part5', $examId);
+        return $this->storepart($examId, $request, \App\Models\Part::PART_4);
     }
     
     /**
@@ -236,30 +146,7 @@ class QuestionController extends Controller
      */
     public function storePart5(PostPart5Request $request, $examId)
     {
-        $requestQuestions = $request->all();
-        DB::transaction(function () use ($requestQuestions, $examId) {
-            for ($i = 1; $i <= count($requestQuestions['question']); $i++) {
-                $question = new Question;
-                $question->exam_id = $examId;
-                $question->content = $requestQuestions['question'][$i]['content'];
-                $question->part_id = \App\Models\Part::PART_5;
-                $question->save();
-
-                for ($j = 0; $j< \App\Models\Answer::NUMBER_ANSWER_4; $j++) {
-                    $answer = new Answer;
-                    $answer->content = $requestQuestions['question'][$i]['answer'][$j];
-                    if ($requestQuestions['question'][$i]['correct'] == $j) {
-                        $answer->is_correct = \App\Models\Answer::IS_CORRECT;
-                    } else {
-                        $answer->is_correct = \App\Models\Answer::NOT_CORRECT;
-                    }
-                    $question->answers()->save($answer);
-                }
-            }
-            Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_5]);
-        });
-        Session::flash('success', trans('messages.part5_create_success'));
-        return redirect()->route('admin.questions.create.part6', $examId);
+        return $this->storepart($examId, $request, \App\Models\Part::PART_5);
     }
 
     /**
@@ -293,6 +180,7 @@ class QuestionController extends Controller
                     $question->exam_id = $examId;
                     $question->part_id = \App\Models\Part::PART_6;
                     $question->save();
+
                     foreach ($questionParams['answer'] as $answerNumber => $answerParams) {
                         $answer = new Answer;
                         $answer->content = $answerParams;
@@ -304,7 +192,7 @@ class QuestionController extends Controller
                         }
                         $question->answers()->save($answer);
                     }
-                     $questionIds[] = $question->id;
+                    $questionIds[] = $question->id;
                 }
                 $summaryText = new SummaryText(['content' => $group['content']]);
                 $summaryText->save();
@@ -396,6 +284,59 @@ class QuestionController extends Controller
             return view('backend.questions.create.part'.($finishedPart+1), compact('exam'));
         } else {
             return redirect()->route('admin.questions.create.part'.($exam->finished_part+1), $examId);
+        }
+    }
+    
+    /**
+     * Storepart 1 to part 5
+     *
+     * @param int     $examId  of exam
+     * @param request $request of
+     * @param id      $partId  of part
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function storepart($examId, $request, $partId)
+    {
+        $requestQuestions = $request->all();
+        DB::transaction(function () use ($requestQuestions, $examId, $partId) {
+            for ($i = 1; $i <= count($requestQuestions['question']); $i++) {
+                $question = new Question;
+                $question->exam_id = $examId;
+                $question->content = ($partId == \App\Models\Part::PART_1 || $partId == \App\Models\Part::PART_2 ? null : $requestQuestions['question'][$i]['content']);
+                $question->part_id = $partId;
+                $question->save();
+
+                if ($question->part_id == 1) {
+                    $questionImage = new QuestionImage;
+                    $requestQuestionsI = $requestQuestions['question'][$i];
+                    $questionImage->image = $requestQuestionsI['image']->hashName();
+                    $requestQuestionsI['image']->move(config('constant.upload_questions_img'), $requestQuestionsI['image']->hashName());
+                    $question->questionImage()->save($questionImage);
+                }
+                $this->createAnswer($requestQuestions['question'][$i], $question);
+            }
+            Exam::findorFail($examId)->update(['finished_part'=>$partId]);
+        });
+        Session::flash('success', trans('messages.part'.$partId.'_create_success'));
+        return redirect()->route('admin.questions.create.part'.($partId+1), $examId);
+    }
+    
+    /**
+     * Insert table answer
+     *
+     * @param request  $requestQuestions of form
+     * @param response $question         of question
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createAnswer($requestQuestions, $question)
+    {
+        for ($j = 0; $j< ($question->part_id == \App\Models\Part::PART_2 ? \App\Models\Answer::NUMBER_ANSWER_3 : \App\Models\Answer::NUMBER_ANSWER_4); $j++) {
+            $answer = new Answer;
+            $answer->content = ($question->part_id == \App\Models\Part::PART_1 || $question->part_id  == \App\Models\Part::PART_2 ? null : $requestQuestions['answer'][$j]);
+            $answer->is_correct = ($requestQuestions['correct'] == $j ? \App\Models\Answer::IS_CORRECT : \App\Models\Answer::NOT_CORRECT );
+            $question->answers()->save($answer);
         }
     }
 }
