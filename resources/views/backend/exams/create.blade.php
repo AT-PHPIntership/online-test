@@ -25,9 +25,9 @@
             @endif
           </div>
         </div>
-        <div class="box-footer">
-          <button type="submit" class="btn btn-primary">{{trans('backend.submit')}}</button>
+        <div class="box-footer text-center">
           <button type="button" class="btn  btn-danger"><a style="color: #fff" href="{{route('admin.exams.index')}}">{{trans('backend.cancel')}}</a></button>
+          <button type="submit" class="btn btn-primary">{{trans('backend.submit')}}</button>
         </div>
       </form>
     </div>

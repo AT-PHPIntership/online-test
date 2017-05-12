@@ -13,6 +13,10 @@ return [
     'exams_edit_success' => 'Edit Exam Success',
     'exams_delete_success' => 'Delete Exams Success',
     'part1_create_success' => 'Create Part 1 Success',
+    'part2_create_success' => 'Create Part 2 Success',
+    'part3_create_success' => 'Create Part 3 Success',
     'part4_create_success' => 'Create Part 4 Success',
     'part5_create_success' => 'Create Part 5 Success',
+    'part6_create_success' => 'Create Part 6 Success',
+    'part7_create_success' => 'Create Part 7 Success',
 ];

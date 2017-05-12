@@ -1,6 +1,6 @@
 <?php
     return [
-        'question'    => 'Question ',
+        'number'    => 'Question ',
         'answer0'   => 'A',
         'answer1'   => 'B',
         'answer2'   => 'C',
