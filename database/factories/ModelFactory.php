@@ -17,7 +17,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
 
     return [
         'email' => $faker->unique()->safeEmail,
-        'password' => bcrypt('123456'),
+        'password' => '123456',
         'name'  => $faker->firstName().' '.$faker->lastName(),
         'sex'       => $faker->NumberBetween($min = 0, $max = 1),
         'birthday'  => $faker->dateTimeBetween($startDate = '-25 years', $endDate = '-20 years'),
@@ -29,7 +29,7 @@ $factory->define(App\Models\AdminUser::class, function (Faker\Generator $faker) 
 
     return [
         'email' => $faker->unique()->safeEmail,
-        'password' => bcrypt('123456'),
+        'password' => '123456',
         'name'  => $faker->firstName().' '.$faker->lastName(),
         'sex'       => $faker->biasedNumberBetween($min = 0, $max = 1),
         'birthday'  => $faker->dateTimeBetween($startDate = '-25 years', $endDate = '-20 years'),
