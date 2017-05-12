@@ -27,6 +27,8 @@ class UserObserver
      */
     public function updating(AdminUser $adminUser)
     {
-        $adminUser->password = bcrypt($adminUser->password);
+        if (\Hash::needsRehash($adminUser->password)) {
+            $adminUser->password = bcrypt($adminUser->password);
+        }
     }
 }
