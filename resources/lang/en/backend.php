@@ -9,4 +9,5 @@ return [
     'add' => 'Add',
     'list'=> 'List',
     'list' => ' List Category',
+    'logout'  => 'Logout',
     ];
