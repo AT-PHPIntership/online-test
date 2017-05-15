@@ -7,7 +7,6 @@ use App\Observers\UserObserver;
 use App\Observers\ExamObserver;
 use App\Models\AdminUser;
 use App\Models\Exam;
-use Illuminate\Support\Facades\View;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
 class AppServiceProvider extends ServiceProvider
