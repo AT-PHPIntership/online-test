@@ -12,7 +12,7 @@
 */
 
 //=========================Backend=======================================
-Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
+Route::group(['prefix' => 'admin','middleware' => 'auth', 'namespace' => 'Backend'], function () {
 
     // Dashboard
     Route::get('dashboard', function () {
@@ -67,3 +67,4 @@ Route::group(['namespace'=>'Frontend'], function() {
    });
   
 });
+

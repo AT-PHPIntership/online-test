@@ -29,4 +29,18 @@ class Part2Request extends FormRequest
         }
         return $rules;
     }
+
+    /**
+     * Messages errors part 2
+     *
+     * @return string
+     */
+    public function messages()
+    {
+        $messages = [];
+        for ($i = 1; $i <= \App\Models\Part::NUMBER_QUESTION_PART_2; $i++) {
+            $messages['question.'.$i.'.correct.required'] = 'Please! Choose the correct answer.';
+        }
+        return $messages;
+    }
 }

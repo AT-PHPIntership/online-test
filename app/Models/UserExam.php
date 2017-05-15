@@ -33,4 +33,14 @@ class UserExam extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    /**
+     * User_exam hasMany to user_anser
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function userAnswer()
+    {
+        return $this->hasMany(UserAnswer::class);
+    }
 }

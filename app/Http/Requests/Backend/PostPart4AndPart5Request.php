@@ -4,7 +4,7 @@ namespace App\Http\Requests\Backend;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PostPart4Request extends FormRequest
+class PostPart4AndPart5Request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,5 +28,20 @@ class PostPart4Request extends FormRequest
             'question.*.answer.*'=>'required',
             'question.*.correct'=>'required',
         ];
+    }
+
+    /**
+     * Messages errors part 4 and part 5
+     *
+     * @return string for requestion
+     */
+    public function messages()
+    {
+        $messages = [
+            'question.*.content.required'=>'Please, enter content for question',
+            'question.*.answer.*.required'=>'Please, enter answer for question',
+            'question.*.correct.required'=>'Please, enter correct for question',
+        ];
+        return $messages;
     }
 }

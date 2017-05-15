@@ -16,8 +16,7 @@ use App\Models\Summary;
 use App\Http\Requests\Backend\PostPart1Request;
 use App\Http\Requests\Backend\Part2Request;
 use App\Http\Requests\Backend\Part3Request;
-use App\Http\Requests\Backend\PostPart4Request;
-use App\Http\Requests\Backend\PostPart5Request;
+use App\Http\Requests\Backend\PostPart4AndPart5Request;
 use App\Http\Requests\Backend\PostPart6Request;
 use App\Http\Requests\Backend\PostPart7Request;
 use Session;
@@ -119,7 +118,7 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function storePart4(PostPart4Request $request, $examId)
+    public function storePart4(PostPart4AndPart5Request $request, $examId)
     {
         return $this->storepart($examId, $request, \App\Models\Part::PART_4);
     }
@@ -144,7 +143,7 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function storePart5(PostPart5Request $request, $examId)
+    public function storePart5(PostPart4AndPart5Request $request, $examId)
     {
         return $this->storepart($examId, $request, \App\Models\Part::PART_5);
     }
