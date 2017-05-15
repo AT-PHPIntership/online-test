@@ -35,7 +35,7 @@ class UserExam extends Model
     }
 
     /**
-     * Question has many answers
+     * User exam has many user_answers
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany
      */

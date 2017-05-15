@@ -24,10 +24,6 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'summaryImages' => 'App\Models\SummaryImage',
         ]);
-        View::composer(
-            ['frontend.index.index'],
-            'App\Http\ViewComposers\ExamComposer'
-        );
     }
 
     /**
