@@ -70,7 +70,7 @@ class Part extends Model
     /**
      * Number question part 5
      */
-    const NUMBER_QUESTION_PART_5 = 30;
+    const NUMBER_QUESTION_PART_5 = 40;
 
     /**
      * Number question part 6

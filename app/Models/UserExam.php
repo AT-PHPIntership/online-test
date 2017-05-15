@@ -39,7 +39,7 @@ class UserExam extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function userAnswer()
+    public function userAnswers()
     {
         return $this->hasMany(UserAnswer::class);
     }

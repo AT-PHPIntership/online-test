@@ -60,8 +60,18 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
     Route::Auth();
 });
 
-//=========================Backend=======================================
+//=========================Frontend=======================================
 //Login frontend
 Route::get('login', function () {
     return view('frontend.auth.login');
 });
+
+Route::group(['namespace' => 'Frontend'], function () {
+
+    Route::group(['prefix' => 'exams'], function () {
+        Route::get('{examId}/reading/test', 'ExamController@showReadingTestForm')->name('exam.get.reading');
+        Route::post('{examId}/reading/up', 'ExamController@up')->name('exam.post.part5');
+    });
+});
+
+

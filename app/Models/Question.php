@@ -127,8 +127,12 @@ class Question extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function summaries()
+    public function questionGroup()
     {
-        return $this->hasMany(Summary::class);
+        return $this->belongsTo(QuestionGroup::class);
+    }
+
+    public function summaries(){
+        return $this->belongsToMany(Summary::class ,'question_group')->withTimestamps();
     }
 }
