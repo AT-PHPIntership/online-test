@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddQuestionsAndAnswersToUsersAnswersTable extends Migration
+class AddQuestionsAndUsersExamsToUsersAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,8 +17,8 @@ class AddQuestionsAndAnswersToUsersAnswersTable extends Migration
             $table->foreign('question_id')
                   ->references('id')->on('questions')
                   ->onDelete('cascade');
-            $table->foreign('answer_id')
-                  ->references('id')->on('answers')
+            $table->foreign('user_exam_id')
+                  ->references('id')->on('users_exams')
                   ->onDelete('cascade');
         });
     }
@@ -32,7 +32,7 @@ class AddQuestionsAndAnswersToUsersAnswersTable extends Migration
     {
         Schema::table('users_answers', function (Blueprint $table) {
             $table->dropForeign('users_answers_question_id_foreign');
-            $table->dropForeign('users_answers_answer_id_foreign');
+            $table->dropForeign('users_answers_user_exam_id_foreign');
         });
     }
 }

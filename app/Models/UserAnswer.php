@@ -8,7 +8,7 @@ class UserAnswer extends Model
 {
     protected $table = 'users_answers';
     protected $fillable = [
-        'question_id', 'answer_id'
+        'question_id', 'is_correct', 'user_exam_id'
     ];
     public $timestamps = true;
 
