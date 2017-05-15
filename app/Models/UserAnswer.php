@@ -31,4 +31,14 @@ class UserAnswer extends Model
     {
         return $this->belongsTo(Question::class);
     }
+
+    /**
+     * User_answer belongs to a user_exam.
+     *
+     * @return Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function userExam()
+    {
+        return $this->belongsTo(UserExam::class);
+    }
 }

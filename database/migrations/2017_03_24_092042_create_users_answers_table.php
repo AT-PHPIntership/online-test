@@ -17,6 +17,7 @@ class CreateUsersAnswersTable extends Migration
             $table->increments('id');
             $table->integer('question_id')->unsigned();
             $table->integer('answer_id')->unsigned();
+            $table->integer('user_exam_id')->unsigned();
             $table->timestamps();
         });
     }
