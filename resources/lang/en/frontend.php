@@ -5,4 +5,5 @@
         'reading'=>'Reading',
         'listening'=>'Listening',
         'nextpart'=>'Next Part',
+        'coppyright'=>'Copyright &copy; TOEIC EXAM',
     ];

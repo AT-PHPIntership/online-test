@@ -1,6 +1,6 @@
 <!-- Footer -->
 <footer>
     <div class="container">
-      <p>Copyright &copy; TOEIC EXAM</p>
+      <p>{{trans('frontend.copyright')}}</p>
     </div>
 </footer>
