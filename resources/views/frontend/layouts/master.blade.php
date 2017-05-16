@@ -13,8 +13,8 @@
   <link href="{{asset('/frontend/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link href="{{asset('/frontend/css/master.css')}}" rel="stylesheet">
- <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <script>
         window.Laravel = {!! json_encode([
