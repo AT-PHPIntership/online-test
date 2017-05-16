@@ -24,7 +24,7 @@
     		    <tr>
     		    <td>{{$correctListening}}/100</td>
     		      <td>
-    		      	{{scoreListening($correctListening)}}
+    		      	{{getListeningScore($correctListening)}}
     		      </td>
     		      <td></td>
     		      <td></td>
