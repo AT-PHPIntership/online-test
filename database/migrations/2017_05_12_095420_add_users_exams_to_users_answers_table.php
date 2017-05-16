@@ -15,7 +15,7 @@ class AddUsersExamsToUsersAnswersTable extends Migration
     {
         Schema::table('users_answers', function (Blueprint $table) {
             $table->foreign('user_exam_id')
-                  ->references('id')->on('users_answers')
+                  ->references('id')->on('users_exams')
                   ->onDelete('cascade');
         });
     }

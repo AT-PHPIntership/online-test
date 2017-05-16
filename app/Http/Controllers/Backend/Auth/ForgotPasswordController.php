@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use App\Models\AdminUser;
+use Illuminate\Http\Request;
 
 class ForgotPasswordController extends Controller
 {
@@ -19,6 +21,16 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
+
+    /**
+     * Display the form to request a password reset link.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLinkRequestForm()
+    {
+        return view('backend.auth.passwords.email');
+    }
 
     /**
      * Create a new controller instance.

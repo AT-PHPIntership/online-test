@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Middleware;
 
 use Closure;
@@ -10,22 +9,26 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request the request
-     * @param \Closure                 $next    the next callback
-     * @param string|null              $guard   guard
+     * @param \Illuminate\Http\Request $request of Authenticated
+     * @param \Closure                 $next    of Authenticated
+     * @param string|null              $guard   of Authenticated
      *
      * @return mixed
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::guard($guard)->check()) {
-            if ($guard == 'admin') {
-                return redirect('admin/dashboard');
-            } else {
-                return redirect('/');
-            }
+        switch ($guard) {
+            case 'admin':
+                if (Auth::guard($guard)->check()) {
+                    return redirect()->route('dashboard');
+                }
+                break;
+            default:
+                if (Auth::guard($guard)->check()) {
+                    return redirect('/');
+                }
+                break;
         }
-
         return $next($request);
     }
 }

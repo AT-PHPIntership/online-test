@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers\Backend\Auth;
+namespace App\Http\Controllers\Frontend\Auth;
 
-use App\Models\AdminUser;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -27,7 +27,17 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        return view('frontend.auth.register');
+    }
 
     /**
      * Create a new controller instance.
@@ -67,7 +77,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => $data['password'],
         ]);
     }
 }
