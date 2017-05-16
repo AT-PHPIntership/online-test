@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\UserExam;
-
+use App\Observers\UserObserver;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
