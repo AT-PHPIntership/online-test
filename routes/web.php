@@ -12,7 +12,8 @@
 */
 
 //=========================Backend=======================================
-Route::group(['prefix' => 'admin','middleware' => 'auth', 'namespace' => 'Backend'], function () {
+Route::group(['prefix' => 'admin','middleware' => 'auth:admin', 'namespace' => 'Backend'], function () {
+
 
     // Dashboard
     Route::get('dashboard', function () {
@@ -57,13 +58,17 @@ Route::group(['prefix' => 'admin','middleware' => 'auth', 'namespace' => 'Backen
 });
 // Login backend
 Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
-    Route::Auth();
+    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\LoginController@login')->name('admin.login');
+    Route::post('/logout', 'Auth\LoginController@logout')->name('admin.logout');
+    Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.reset');
 });
 Route::group(['namespace'=>'Frontend'], function () {
-    Route::get('/', 'IndexController@index')->name('home');
     Route::group(['prefix'=>'exams'], function () {
         Route::get('listening/{examId}/test', 'ExamController@test')->name('exams.listening.test');
         Route::post('listening/{examId}/store', 'ExamController@storeTest')->name('exams.listening.store');
         Route::get('result/{Id}', 'ExamController@resultTest')->name('resuilt.listening');
     });
+    Route::Auth();
+    Route::get('/', 'IndexController@index');
 });
