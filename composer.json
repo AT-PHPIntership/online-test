@@ -25,7 +25,7 @@
             "App\\": "app/"
         },
         "files": [
-            "app/function/score.php"
+            "app/helpers/score.php"
         ]
     },
     "autoload-dev": {

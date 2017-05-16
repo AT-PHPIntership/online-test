@@ -24,7 +24,6 @@ class ExamController extends Controller
      */
     public function test($idExam)
     {
-        
         $exam = Exam::findorFail($idExam);
         $questionsPart1  = Exam::findorFail($idExam)->questions->where('part_id', \App\Models\Part::PART_1);
         $questionsPart2  = Exam::findorFail($idExam)->questions->where('part_id', \App\Models\Part::PART_2);
@@ -56,7 +55,7 @@ class ExamController extends Controller
             }
         });
         Session::flash('success', trans('messages.listening_success'));
-        return redirect()->route('exams.listening.test', $idExam);
+        return redirect()->route('exams.reading.test', $idExam);
     }
     /**
      * Show resultTest
