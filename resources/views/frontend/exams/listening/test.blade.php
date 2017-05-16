@@ -13,22 +13,22 @@
             <h2>{{trans('exams.part1')}}</h2>
             <?php  $i=0; ?>
             @foreach ($questionsPart1 as $questionPart1)
-            <div class="row picture-part1" style="padding-top: 30px">
-                <div class="col-md-2"> 
-                <h5>{{trans('questions.question')}} {{++$i}}</h5>
-                <input type="hidden" name="answers[{{$i}}][question]" value="{{$questionPart1->id}}">
+                <div class="row picture-part1" style="padding-top: 30px">
+                    <div class="col-md-2"> 
+                    <h5>{{trans('questions.question')}} {{++$i}}</h5>
+                    <input type="hidden" name="answers[{{$i}}][question]" value="{{$questionPart1->id}}">
+                    </div>
+                    <div class="col-md-4">
+                        <img style="height: 250px;width: 250px" src="{{asset(config('constant.upload_questions_img').$questionPart1->questionImage->image)}}">
+                    </div>
+                    <div class="col-md-4">
+                        <br><br>
+                        @for($j = 0; $j < count($questionPart1->answers); $j++)
+                        {{trans('questions.key'.$j)}} 
+                       <input type="radio" name="answers[{{$i}}][correct]" value="{{$questionPart1->answers[$j]['is_correct']}}"><br><br>
+                        @endfor
+                    </div>
                 </div>
-                <div class="col-md-4">
-                    <img style="height: 250px;width: 250px" src="{{asset(config('constant.upload_questions_img').$questionPart1->questionImage->image)}}">
-                </div>
-                <div class="col-md-4">
-                    <br><br>
-                    @for($j = 0; $j < count($questionPart1->answers); $j++)
-                    {{trans('questions.key'.$j)}} 
-                   <input type="radio" name="answers[{{$i}}][correct]" value="{{$questionPart1->answers[$j]['is_correct']}}"><br><br>
-                    @endfor
-                </div>
-            </div>
             @endforeach
         </div>
         <div class="part-2 col-md-4">
