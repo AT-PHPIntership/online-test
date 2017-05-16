@@ -73,10 +73,9 @@ Route::group(['namespace' => 'Frontend',], function () {
 
 Route::group(['namespace' => 'Frontend'], function () {
 
-    Route::group(['prefix' => 'exams'], function () {
-        Route::get('{examId}/reading/test', 'ExamController@showReadingTestForm')->name('exam.get.reading');
-        Route::post('{examId}/reading/up', 'ExamController@up')->name('exam.post.part5');
+    Route::group(['prefix' => 'exams','middleware' => 'auth:web'], function () {
+        Route::get('{examId}/reading/', 'ExamController@reading')->name('exam.reading');
+        Route::post('{examId}/reading', 'ExamController@storeReading')->name('exam.reading');
+        Route::get('{examId}/results', 'ExamController@resultExam')->name('exam.results');
     });
 });
-
-

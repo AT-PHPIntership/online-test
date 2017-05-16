@@ -53,6 +53,11 @@ class Part extends Model
     const NUMBER_QUESTION_PART_1 = 30;
 
     /**
+     * Number question listening
+     */
+    const NUMBER_QUESTION_LISTEN = 100;
+
+    /**
      * Number question part 2
      */
     const NUMBER_QUESTION_PART_2 = 30;

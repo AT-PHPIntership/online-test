@@ -132,7 +132,13 @@ class Question extends Model
         return $this->belongsTo(QuestionGroup::class);
     }
 
-    public function summaries(){
-        return $this->belongsToMany(Summary::class ,'question_group')->withTimestamps();
+    /**
+    * Get all of the image's sumaries.
+    *
+    * @return string
+    */
+    public function summaries()
+    {
+        return $this->belongsToMany(Summary::class, 'question_group')->withTimestamps();
     }
 }

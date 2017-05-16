@@ -35,7 +35,7 @@ class UserExam extends Model
     }
 
     /**
-     * User_exam hasMany to user_anser
+     * User_exam has many to user_anser
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
