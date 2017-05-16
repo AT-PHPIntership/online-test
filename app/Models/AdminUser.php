@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
-use App\Observers\UserObserver;
+use App\Observers\AdminUserObserver;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class AdminUser extends Authenticatable
 {
     use Notifiable;
    
+    protected $guard = 'admin';
+
     protected $table = 'admin_users';
     /**
      * Sex Male
@@ -39,7 +41,7 @@ class AdminUser extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','sex', 'birthday'
+        'name', 'email', 'password', 'sex', 'birthday'
     ];
 
     public $timestamps = true;

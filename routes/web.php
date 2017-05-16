@@ -12,7 +12,8 @@
 */
 
 //=========================Backend=======================================
-Route::group(['prefix' => 'admin','middleware' => 'auth', 'namespace' => 'Backend'], function () {
+Route::group(['prefix' => 'admin','middleware' => 'auth:admin', 'namespace' => 'Backend'], function () {
+
 
     // Dashboard
     Route::get('dashboard', function () {
@@ -57,13 +58,17 @@ Route::group(['prefix' => 'admin','middleware' => 'auth', 'namespace' => 'Backen
 });
 // Login backend
 Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
-    Route::Auth();
+    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('admin.login');
+    Route::post('/login', 'Auth\LoginController@login')->name('admin.login');
+    Route::post('/logout', 'Auth\LoginController@logout')->name('admin.logout');
+    Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.reset');
 });
 
 //=========================Frontend=======================================
-//Login frontend
-Route::get('login', function () {
-    return view('frontend.auth.login');
+// Login frontend
+Route::group(['namespace' => 'Frontend',], function () {
+    Route::Auth();
+    Route::get('/', 'IndexController@index');
 });
 
 Route::group(['namespace' => 'Frontend'], function () {

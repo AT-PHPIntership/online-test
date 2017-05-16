@@ -2,33 +2,34 @@
 
 namespace App\Observers;
 
-use App\Models\AdminUser;
+use App\Models\User;
 
 class UserObserver
 {
+
     /**
      * Listen to the User created event.
      *
-     * @param AdminUser $adminUser of hashpassword
+     * @param User $user of hashpassword
      *
      * @return void
      */
-    public function creating(AdminUser $adminUser)
+    public function creating(User $user)
     {
-        $adminUser->password = bcrypt($adminUser->password);
+        $user->password = bcrypt($user->password);
     }
 
     /**
      * Listen to the User deleting event.
      *
-     * @param AdminUser $adminUser of hashpassword
+     * @param User $user of hashpassword
      *
      * @return void
      */
-    public function updating(AdminUser $adminUser)
+    public function updating(User $user)
     {
-        if (\Hash::needsRehash($adminUser->password)) {
-            $adminUser->password = bcrypt($adminUser->password);
+        if (\Hash::needsRehash($user->password)) {
+            $user->password = bcrypt($user->password);
         }
     }
 }
