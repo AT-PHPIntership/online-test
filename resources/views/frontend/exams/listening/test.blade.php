@@ -6,7 +6,9 @@
         <audio  controls="" src="{{asset(config('constant.upload_file_audio').$exam->audio)}}" style="width: 100%" autoplay="">
         Your browser does not support the audio element.
         </audio>
-        <h4 >Time  <span id="countdown" class="timer" style="color: red"></span></h4>
+        <div class="scroll-to-fixed">
+        <h4><span id="countdown" class="timer" style="color: red"></span></h4>
+        </div>
         <form method="POST" id="test" action="{{route('exams.listening.store',$exam->id)}}">
          {{csrf_field()}}
         <div class="part-1 col-md-8">
