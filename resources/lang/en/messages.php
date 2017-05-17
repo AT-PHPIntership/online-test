@@ -19,4 +19,5 @@ return [
     'part5_create_success' => 'Create Part 5 Success',
     'part6_create_success' => 'Create Part 6 Success',
     'part7_create_success' => 'Create Part 7 Success',
+    'exam_test_success' => 'Exam Test Success!'
 ];
