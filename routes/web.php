@@ -64,18 +64,17 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
     Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.reset');
 });
 
-//=========================Frontend=======================================
-// Login frontend
-Route::group(['namespace' => 'Frontend',], function () {
+//=======================================Frontend=======================================================
+Route::group(['namespace'=>'Frontend'], function () {
+
     Route::Auth();
     Route::get('/', 'IndexController@index');
-});
-
-Route::group(['namespace' => 'Frontend'], function () {
 
     Route::group(['prefix' => 'exams','middleware' => 'auth:web'], function () {
+        Route::get('{examId}/listening', 'ExamController@listening')->name('exams.listening');
+        Route::post('{examId}/storeListening', 'ExamController@storeListening')->name('exams.storeListening');
         Route::get('{examId}/reading/', 'ExamController@reading')->name('exam.reading');
-        Route::post('{examId}/reading', 'ExamController@storeReading')->name('exam.reading');
-        Route::get('{examId}/results', 'ExamController@resultExam')->name('exam.results');
+        Route::post('{examId}/reading', 'ExamController@storeReading')->name('exam.storeReading');
+        Route::get('exams/{Id}/result', 'ExamController@resultTest')->name('result.test');
     });
 });

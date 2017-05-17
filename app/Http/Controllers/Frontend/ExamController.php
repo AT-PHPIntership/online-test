@@ -20,6 +20,56 @@ use Session;
 class ExamController extends Controller
 {
     /**
+     * Show form test online
+     *
+     * @param int $examId of exam
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listening($examId)
+    {
+        $with = [
+            'questionsPart1',
+            'questionsPart2',
+            'questionsPart3',
+            'questionsPart4',
+            'questionsPart1.answers',
+            'questionsPart2.answers',
+            'questionsPart3.answers',
+            'questionsPart4.answers',
+        ];
+        $exam = Exam::with($with)->findorFail($examId);
+        return view('frontend.exams.listening.listening', compact('exam'));
+    }
+
+    /**
+     * Store test online
+     *
+     * @param Request $request of request
+     * @param int     $examId  of exam
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function storeListening(Request $request, $examId)
+    {
+        $requestQuestion = $request->all();
+        DB::transaction(function () use ($requestQuestion, $examId) {
+
+            $userExam = new UserExam(['user_id'=>Auth()->user()->id,'exam_id'=>$examId]);
+            $userExam->save();
+
+            for ($i = 1; $i <= count($requestQuestion['answers']); $i++) {
+                $userAnswer = new UserAnswer;
+                $userAnswer->question_id = $requestQuestion['answers'][$i]['question'];
+                $userAnswer->is_correct = (!empty($requestQuestion['answers'][$i]['correct']) ? $requestQuestion['answers'][$i]['correct'] :0);
+                $userExam->userAnswers()->save($userAnswer);
+            }
+        });
+        Session::flash('success', trans('messages.exam_test_success'));
+        return redirect()->route('exam.results', $examId);
+    }
+
+    /**
      * Show reading form
      *
      * @param int $examId for exam
@@ -42,7 +92,7 @@ class ExamController extends Controller
             return $query->where('exam_id', $exam->id)->where('part_id', \App\Models\Part::PART_7);
         })->with('questions', 'summaryable', 'questions.answers')->get();
         
-        return view('frontend.exams.reading.index', compact('exam', 'examId', 'questionsPart5', 'summariesPart7', 'summariesPart6'));
+        return view('frontend.exams.reading.reading', compact('exam', 'examId', 'questionsPart5', 'summariesPart7', 'summariesPart6'));
     }
 
     /**
@@ -67,26 +117,28 @@ class ExamController extends Controller
             }
         });
         Session::flash('success', trans('messages.exam_test_success'));
-        return redirect()->route('exam.results', $examId);
+        return redirect()->route('result.test', $examId);
     }
 
     /**
-     * Show Reults
+     * Show resultTest
      *
      * @param int $examId of exam
      *
      * @return \Illuminate\Http\Response
      */
-    public function resultExam($examId)
+    public function resultTest($examId)
     {
         $exam = Exam::findorFail($examId);
         $userAnswerId = UserExam::where('user_id', Auth()->user()->id)->where('exam_id', $examId)->orderBy('id', 'DESC')->first()->id;
-        $answerCorrects = UserAnswer::where('user_exam_id', $userAnswerId)->where('is_correct', \App\Models\Answer::IS_CORRECT)->get();
+        $correctAnswers = UserAnswer::where('user_exam_id', $userAnswerId)->where('is_correct', \App\Models\Answer::IS_CORRECT)->get();
         
+        $correctListening = 0;
         $correctReading = 0;
-        foreach ($answerCorrects as $answerCorrect) {
-            $correctReading+= count($answerCorrect->question()->get()->wherein('part_id', [\App\Models\Part::PART_5,\App\Models\Part::PART_6,\App\Models\Part::PART_7]));
+        foreach ($correctAnswers as $correctAnswer) {
+            $correctReading+= count($correctAnswer->question()->get()->wherein('part_id', [\App\Models\Part::PART_5,\App\Models\Part::PART_6,\App\Models\Part::PART_7]));
+            $correctListening+= count($correctAnswer->question()->get()->wherein('part_id', [\App\Models\Part::PART_1,\App\Models\Part::PART_2,\App\Models\Part::PART_3,\App\Models\Part::PART_4]));
         }
-        return view('frontend.exams.results.index', compact('correctReading', 'exam'));
+        return view('frontend.exams.result', compact('correctListening', 'correctReading', 'exam'));
     }
 }
