@@ -52,8 +52,7 @@
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <h1 class="brand-heading">{{ trans('frontend.toeic') }}</h1>
-            <p class="intro-text">Free Practice Tests for learners of English.
-              <br>Listening and Writing in Exams Toeic.</p>
+            <p class="intro-text">{{ trans('frontend.intro') }}</p>
             <a href="#about" class="btn btn-circle page-scroll">
               <i class="fa fa-angle-double-down animated"></i>
             </a>

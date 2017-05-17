@@ -19,4 +19,5 @@
         'register'=>' Register  ',
         'logout'=>' Logout  ',
         'coppyright'=>'Copyright &copy; TOEIC EXAM',
+        'intro'=>'Free Practice Tests for learners of English. Listening and writing in Exams Toeic.',
     ];

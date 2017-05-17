@@ -1,4 +1,5 @@
 @extends('frontend.layouts.master')
+@section('title',' Resuilt Test - ')
 @section('content')
 
 <section id="news" class="container content-section text-center news">

@@ -72,4 +72,41 @@ class Exam extends Model
     {
         return $this->hasMany(Question::class);
     }
+
+    /**
+     * Get all questions of part 1
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questionsPart1()
+    {
+        return $this->hasMany(Question::class)->where('part_id', Part::PART_1);
+    }
+    /**
+     * Get all questions of part 2
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questionsPart2()
+    {
+        return $this->hasMany(Question::class)->where('part_id', Part::PART_2);
+    }
+    /**
+     * Get all questions of part 3
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questionsPart3()
+    {
+        return $this->hasMany(Question::class)->where('part_id', Part::PART_3);
+    }
+    /**
+     * Get all questions of part 4
+     *
+     * @return Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function questionsPart4()
+    {
+        return $this->hasMany(Question::class)->where('part_id', Part::PART_4);
+    }
 }

@@ -1,5 +1,5 @@
 
-var timeListening = 27000;
+var timeListening = 2700;
 function timerListening() {
     var days        = Math.floor(timeListening/24/60/60);
     var hoursLeft   = Math.floor((timeListening) - (days*86400));

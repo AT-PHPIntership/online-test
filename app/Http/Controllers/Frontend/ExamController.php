@@ -22,14 +22,20 @@ class ExamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function test($idExam)
+    public function listening($idExam)
     {
-        $exam = Exam::findorFail($idExam);
-        $questionsPart1 = Question::with('answers')->where('exam_id', $idExam)->where('part_id', \App\Models\Part::PART_1)->get();
-        $questionsPart2 = Question::with('answers')->where('exam_id', $idExam)->where('part_id', \App\Models\Part::PART_2)->get();
-        $questionsPart3 = Question::with('answers')->where('exam_id', $idExam)->where('part_id', \App\Models\Part::PART_3)->get();
-        $questionsPart4 = Question::with('answers')->where('exam_id', $idExam)->where('part_id', \App\Models\Part::PART_4)->get();
-        return view('frontend.exams.listening.test', compact('exam', 'questionsPart1', 'questionsPart2', 'questionsPart3', 'questionsPart4'));
+        $with = [
+            'questionsPart1',
+            'questionsPart2',
+            'questionsPart3',
+            'questionsPart4',
+            'questionsPart1.answers',
+            'questionsPart2.answers',
+            'questionsPart3.answers',
+            'questionsPart4.answers',
+        ];
+        $exam = Exam::with($with)->findorFail($idExam);
+        return view('frontend.exams.listening.listening', compact('exam'));
     }
     /**
      * Store test online
@@ -39,7 +45,7 @@ class ExamController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function storeTest(Request $request, $idExam)
+    public function storeListening(Request $request, $idExam)
     {
         $requestQuestion = $request->all();
         DB::transaction(function () use ($requestQuestion, $idExam) {
@@ -54,7 +60,7 @@ class ExamController extends Controller
             }
         });
         Session::flash('success', trans('messages.listening_success'));
-        return redirect()->route('exams.reading.test', $idExam);
+        return redirect()->route('exams.listening', $idExam);
     }
     /**
      * Show resultTest

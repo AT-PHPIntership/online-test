@@ -65,9 +65,9 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
 });
 Route::group(['namespace'=>'Frontend'], function () {
     Route::group(['prefix'=>'exams'], function () {
-        Route::get('listening/{examId}/test', 'ExamController@test')->name('exams.listening.test');
-        Route::post('listening/{examId}/store', 'ExamController@storeTest')->name('exams.listening.store');
-        Route::get('result/{Id}', 'ExamController@resultTest')->name('result.listening');
+        Route::get('/{examId}/listening', 'ExamController@listening')->name('exams.listening');
+        Route::post('{examId}/storeListening', 'ExamController@storeListening')->name('exams.storeListening');
+        Route::get('result/{examId}', 'ExamController@resultTest')->name('result.test');
     });
     Route::Auth();
     Route::get('/', 'IndexController@index');
