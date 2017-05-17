@@ -66,7 +66,7 @@ class ExamController extends Controller
             }
         });
         Session::flash('success', trans('messages.exam_test_success'));
-        return redirect()->route('exam.results', $examId);
+        return redirect()->route('exam.reading', $examId);
     }
 
     /**
@@ -115,6 +115,7 @@ class ExamController extends Controller
                 $userAnswer->is_correct = (!empty($requestQuestion['answers'][$i]['correct']) ? $requestQuestion['answers'][$i]['correct'] :0);
                 $userExam->userAnswers()->save($userAnswer);
             }
+            Exam::findOrFail($examId)->increment('count_test');
         });
         Session::flash('success', trans('messages.exam_test_success'));
         return redirect()->route('result.test', $examId);
