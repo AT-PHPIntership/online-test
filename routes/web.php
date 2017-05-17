@@ -68,7 +68,7 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
 Route::group(['namespace'=>'Frontend'], function () {
 
     Route::Auth();
-    Route::get('/', 'IndexController@index');
+    Route::get('/', 'IndexController@index')->name('home');
 
     Route::group(['prefix' => 'exams','middleware' => 'auth:web'], function () {
         Route::get('{examId}/listening', 'ExamController@listening')->name('exams.listening');

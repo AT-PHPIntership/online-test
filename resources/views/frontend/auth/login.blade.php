@@ -55,6 +55,9 @@
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     {!! trans('labels.forgot_pass') !!}
                                 </a>
+                                <a class="btn btn-link" href="{{ route('home') }}">
+                                    <span class="light">{!! trans('labels.back_home') !!}</span>
+                                </a>
                         </div>
                     </form>
                 </div>

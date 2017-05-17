@@ -64,6 +64,9 @@
                             <button type="submit" class="btn btn-success">
                                 {!! trans('labels.register') !!}
                             </button>
+                            <a class="btn btn-link" href="{{ route('home') }}">
+                                <span class="light">{!! trans('labels.back_home') !!}</span>
+                            </a>
                         </div>
                     </form>
                 </div>
