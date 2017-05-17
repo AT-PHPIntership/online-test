@@ -35,11 +35,11 @@ class UserExam extends Model
     }
 
     /**
-     * User_exam hasMany to user_anser
+     * User exam has many user_answers
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function userAnswer()
+    public function userAnswers()
     {
         return $this->hasMany(UserAnswer::class);
     }

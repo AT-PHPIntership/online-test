@@ -63,10 +63,10 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
     Route::post('/logout', 'Auth\LoginController@logout')->name('admin.logout');
     Route::get('/password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.reset');
 });
-
-//=========================Frontend=======================================
-// Login frontend
-Route::group(['namespace' => 'Frontend',], function () {
+Route::group(['namespace'=>'Frontend'], function () {
+    Route::get('{examId}/listening', 'ExamController@listening')->name('exams.listening');
+    Route::post('{examId}/storeListening', 'ExamController@storeListening')->name('exams.storeListening');
+    Route::get('exams/{Id}/result', 'ExamController@resultTest')->name('result.test');
     Route::Auth();
     Route::get('/', 'IndexController@index');
 });
