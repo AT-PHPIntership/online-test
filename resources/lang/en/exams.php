@@ -19,4 +19,5 @@
     'edit_exam' => 'Edit',
     'delete_exam'   => 'Delete',
     'setup_exam'    => 'Setup',
+    'exam_finish'   => ' Finish ',
     ];

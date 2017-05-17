@@ -24,12 +24,10 @@
     		  <tbody>
     		    <tr>
     		    <td>{{$correctListening}}/100</td>
-    		      <td>
-    		      	{{getListeningScore($correctListening)}}
-    		      </td>
-    		      <td></td>
-    		      <td></td>
-    		      <td></td>
+                <td>{{getListeningScore($correctListening)}}</td>
+    		      <td>{{$correctReading}}/100</td>
+    		      <td>{{getListeningScore($correctReading)}}</td>
+    		      <td>{{getListeningScore($correctReading)+getListeningScore($correctListening)}}</td>
     		    </tr>
     		  </tbody>
     		</table>

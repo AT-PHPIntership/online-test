@@ -256,8 +256,8 @@ class QuestionController extends Controller
                         $question->answers()->save($answer);
                     }
 
-                    $questionGroup = new QuestionGroup(['summary_id' => $summary->id]);
-                    $question->summaries()->save($questionGroup);
+                    $questionGroup = new QuestionGroup(['summary_id' => $summary->id, 'question_id' => $question->id]);
+                    $questionGroup->save();
                 }
             }
             Exam::findorFail($examId)->update(['finished_part'=>\App\Models\Exam::FINISHED_PART_7]);

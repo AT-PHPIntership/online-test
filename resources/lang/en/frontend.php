@@ -23,4 +23,6 @@
         'listening&reading'=>'The TOEIC Listening and Reading test',
         'intro-exam'=>'The Listening and Reading test takes 2.5 hours and has two sections:',
         'at-toeic'=>'AT Exams Toeic',
-    ];
+        'remember'  => 'Remember',
+        'forgot_pass'   => 'Forgot Password',
+];

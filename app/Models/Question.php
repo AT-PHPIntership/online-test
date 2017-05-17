@@ -127,8 +127,18 @@ class Question extends Model
      *
      * @return Illuminate\Database\Eloquent\Relations\HasMany
      */
+    public function questionGroup()
+    {
+        return $this->belongsTo(QuestionGroup::class);
+    }
+
+    /**
+    * Get all of the image's sumaries.
+    *
+    * @return string
+    */
     public function summaries()
     {
-        return $this->hasMany(Summary::class);
+        return $this->belongsToMany(Summary::class, 'question_group')->withTimestamps();
     }
 }
