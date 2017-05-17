@@ -69,6 +69,7 @@ Route::group(['namespace'=>'Frontend'], function () {
 
     Route::Auth();
     Route::get('/', 'IndexController@index')->name('home');
+
     Route::group(['prefix' => 'exams','middleware' => 'auth:web'], function () {
         Route::get('{examId}/listening', 'ExamController@listening')->name('exams.listening');
         Route::post('{examId}/storeListening', 'ExamController@storeListening')->name('exams.storeListening');
