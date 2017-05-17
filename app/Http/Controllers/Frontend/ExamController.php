@@ -25,11 +25,10 @@ class ExamController extends Controller
     public function test($idExam)
     {
         $exam = Exam::findorFail($idExam);
-        $questionsPart1  = Exam::findorFail($idExam)->questions->where('part_id', \App\Models\Part::PART_1);
-        $questionsPart2  = Exam::findorFail($idExam)->questions->where('part_id', \App\Models\Part::PART_2);
-        $questionsPart3  = Exam::findorFail($idExam)->questions->where('part_id', \App\Models\Part::PART_3);
-        $questionsPart4  = Exam::findorFail($idExam)->questions->where('part_id', \App\Models\Part::PART_4);
-        
+        $questionsPart1 = Question::with('answers')->where('exam_id', $idExam)->where('part_id', \App\Models\Part::PART_1)->get();
+        $questionsPart2 = Question::with('answers')->where('exam_id', $idExam)->where('part_id', \App\Models\Part::PART_2)->get();
+        $questionsPart3 = Question::with('answers')->where('exam_id', $idExam)->where('part_id', \App\Models\Part::PART_3)->get();
+        $questionsPart4 = Question::with('answers')->where('exam_id', $idExam)->where('part_id', \App\Models\Part::PART_4)->get();
         return view('frontend.exams.listening.test', compact('exam', 'questionsPart1', 'questionsPart2', 'questionsPart3', 'questionsPart4'));
     }
     /**

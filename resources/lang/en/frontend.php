@@ -12,5 +12,11 @@
         'correctreading'=>'Số câu đọc đúng  ',
         'point'=>'Điểm  ',
         'sumpoint'=>' Tổng Điểm  ',
+        'part'=>' Part  ',
+        'exams'=>' Exams  ',
+        'news'=>' News  ',
+        'login'=>' Login  ',
+        'register'=>' Register  ',
+        'logout'=>' Logout  ',
         'coppyright'=>'Copyright &copy; TOEIC EXAM',
     ];

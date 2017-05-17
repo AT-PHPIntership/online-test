@@ -1,4 +1,5 @@
-var timeListening = 2700;
+
+var timeListening = 27000;
 function timerListening() {
     var days        = Math.floor(timeListening/24/60/60);
     var hoursLeft   = Math.floor((timeListening) - (days*86400));
@@ -16,6 +17,7 @@ function timerListening() {
      if (timeListening == 0) {
         clearInterval(countdownTimer);
         $('.next-question').trigger('click');
+
     } else {
         timeListening--;
     }

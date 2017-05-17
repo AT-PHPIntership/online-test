@@ -1,8 +1,8 @@
 <?php
 /**
- * [getListeningScore description]
+ * Get Score of test listening
  *
- * @param int $score [description]
+ * @param int $score of exam
  *
  * @return int        score
  */
