@@ -68,5 +68,5 @@ Route::group(['namespace'=>'Frontend'], function () {
     Route::post('{examId}/storeListening', 'ExamController@storeListening')->name('exams.storeListening');
     Route::get('exams/{Id}/result', 'ExamController@resultTest')->name('result.test');
     Route::Auth();
-    Route::get('/', 'IndexController@index');
+    Route::get('/', 'IndexController@index')->name('home');
 });

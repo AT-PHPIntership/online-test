@@ -3,7 +3,7 @@
 <section id="news" class="container content-section text-center news">
     <div class="row">
       <div class="col-lg-12 ">
-        <h2>News</h2>
+        <h2>{{trans('frontend.news')}}</h2>
         <p>Tin tuc 1  <a href="#">Learn more...</a>.</p>
         <p>Tin tuc 2  <a href="#">Learn more...</a>.</p>
         <p>Tin tuc 3 <a href="#">Learn more...</a>.</p>

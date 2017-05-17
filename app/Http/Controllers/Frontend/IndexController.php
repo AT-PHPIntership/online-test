@@ -14,8 +14,8 @@ class IndexController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {	
-    	$examsFinished = Exam::where('finished_part',\App\Models\Part::PART_7)->get();
-        return view('frontend.index',compact('examsFinished'));
+    {
+        $examsFinished = Exam::where('finished_part', \App\Models\Part::PART_7)->get();
+        return view('frontend.index', compact('examsFinished'));
     }
 }
