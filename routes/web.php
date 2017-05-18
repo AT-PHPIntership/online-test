@@ -69,7 +69,7 @@ Route::group(['namespace'=>'Frontend'], function () {
 
     Route::Auth();
     Route::get('/', 'IndexController@index')->name('home');
-    Route::get('news/{title}/{id}', 'NewsController@detail')->where(['id' => '[0-9]+','title'=>'[a-zA-Z0-9:@-]*'])->name('news.detail');
+    Route::get('news-detail/{id}', 'NewsController@detail')->name('news.detail');
     Route::group(['prefix' => 'exams','middleware' => 'auth:web'], function () {
         Route::get('{examId}/listening', 'ExamController@listening')->name('exams.listening');
         Route::post('{examId}/storeListening', 'ExamController@storeListening')->name('exams.storeListening');

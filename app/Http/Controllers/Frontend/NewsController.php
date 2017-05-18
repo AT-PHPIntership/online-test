@@ -11,12 +11,11 @@ class NewsController extends Controller
     /**
      * Show detail news
      *
-     * @param string $titleNews of news
-     * @param int    $newsId    of news
+     * @param int $newsId of news
      *
      * @return \Illuminate\Http\Response
      */
-    public function detail($titleNews, $newsId)
+    public function detail($newsId)
     {
         $news = News::findorFail($newsId);
         return view('frontend.news.detail', compact('news'));
