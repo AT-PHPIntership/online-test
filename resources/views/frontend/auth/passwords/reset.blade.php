@@ -6,7 +6,6 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading text-center" style="background: #3097d1; color: #ffffff"><strong>{!! trans('labels.reset_pass') !!}</strong></div>
-
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
