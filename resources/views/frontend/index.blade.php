@@ -4,9 +4,14 @@
     <div class="row">
       <div class="col-lg-12 ">
         <h2>{{trans('frontend.news')}}</h2>
-        <p>Tin tuc 1  <a href="#">Learn more...</a>.</p>
-        <p>Tin tuc 2  <a href="#">Learn more...</a>.</p>
-        <p>Tin tuc 3 <a href="#">Learn more...</a>.</p>
+        @foreach($news as $new)
+        <p>{!!str_limit($new->title,'100')!!}<a href="{{route('news.detail',[$new->slug,$new->id])}}"> >></a></p>
+        @endforeach
+      </div>
+      <div class="box-footer clearfix">
+        <ul class="pagination pagination-sm no-margin pull-right">
+         <li> {{$news->render()}}</li> 
+        </ul>
       </div>
     </div>
 </section>
