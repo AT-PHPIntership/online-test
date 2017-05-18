@@ -43,21 +43,24 @@
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {!! trans('labels.remember') !!}
+                                        <a href="{{ route('password.request') }}">{!! trans('labels.forgot_pass') !!}</a>
                                     </label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-group text-center">
-                                <button type="submit" class="btn btn-success">
+                        <div class="form-group">
+                            <div class="text-center">
+                                <button style="width: 78.14px" type="submit" class="btn btn-primary">
                                     {!! trans('labels.login') !!}
                                 </button>
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {!! trans('labels.forgot_pass') !!}
+                                <a href="{{ route('register') }}">
+                                    <button type="button" class="btn btn-danger">
+                                        {!! trans('labels.register') !!}
+                                    </button>
                                 </a>
-                                <a class="btn btn-link" href="{{ route('home') }}">
-                                    <span class="light">{!! trans('labels.back_home') !!}</span>
-                                </a>
+                            </div>
+                                
                         </div>
                     </form>
                 </div>

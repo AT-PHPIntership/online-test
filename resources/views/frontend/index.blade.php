@@ -2,16 +2,14 @@
 @section('content')
 <section id="news" class="container content-section text-center news">
     <div class="row">
-      <div class="col-lg-12 ">
-        <h2>{{trans('frontend.news')}}</h2>
-        <p>Tin tuc 1  <a href="#">Learn more...</a>.</p>
-        <p>Tin tuc 2  <a href="#">Learn more...</a>.</p>
-        <p>Tin tuc 3 <a href="#">Learn more...</a>.</p>
-      </div>
+      <h2>{{trans('frontend.news')}}</h2>
+      <div class="col-lg-4 "><p>Tin tuc 1  <a href="#">Learn more...</a>.</p></div>
+      <div class="col-lg-4 "><p>Tin tuc 2  <a href="#">Learn more...</a>.</p></div>
+      <div class="col-lg-4 "><p>Tin tuc 3 <a href="#">Learn more...</a>.</p></div>
     </div>
 </section>
 <!-- Part Section -->
-<section id="download" class="content-section text-center">
+<section id="parts" class="content-section text-center">
   <div class="download-section">
     <div class="container">
       <div class="col-lg-8 col-lg-offset-2">
@@ -24,7 +22,7 @@
   </div>
 </section>
 <!-- Exam Section -->
-<section id="contact" class="container content-section text-center">
+<section id="exams" class="container content-section text-center">
   <div class="row">
     <div class="col-lg-12 ">
       <h2>{{trans('frontend.toeic') }}</h2>

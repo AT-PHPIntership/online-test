@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'back_home' => 'Back Home ?',
+    'back_home' => 'BACK HOME',
     'login' => 'Login',
     'register'  => 'Register',
     'logout'    => 'Log Out',

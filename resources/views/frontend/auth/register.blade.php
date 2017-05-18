@@ -61,10 +61,10 @@
                         </div>
 
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-success">
+                            <button style="width: 110.2px" type="submit" class="btn btn-danger">
                                 {!! trans('labels.register') !!}
                             </button>
-                            <a class="btn btn-link" href="{{ route('home') }}">
+                            <a class="btn btn-default" href="{{ route('home') }}">
                                 <span class="light">{!! trans('labels.back_home') !!}</span>
                             </a>
                         </div>
