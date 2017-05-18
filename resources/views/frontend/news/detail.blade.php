@@ -1,8 +1,8 @@
 @extends('frontend.layouts.master')
 @section('title',$news->title)
 @section('content')
-
 <section id="news" class="container content-section text-center news" style="background-color: white;color: black">
+<p>Danh mục : <a href="">{{$news->category->name}}</a></p>
  <h3>{{$news->title}}</h3>
  <div>{!!$news->content!!}</div>
 </section>

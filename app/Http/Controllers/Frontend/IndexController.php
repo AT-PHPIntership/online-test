@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Exam;
 use App\Models\News;
+use App\Models\Category;
 
 class IndexController extends Controller
 {
@@ -17,7 +18,7 @@ class IndexController extends Controller
     public function index()
     {
         $examsFinished = Exam::where('finished_part', \App\Models\Part::PART_7)->get();
-        $news = News::orderBy('id', 'DESC')->paginate();
+        $news = Category::with('news')->get();
         return view('frontend.index', compact('examsFinished', 'news'));
     }
 }
