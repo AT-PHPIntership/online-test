@@ -6,7 +6,7 @@
           <h3 style="color: white"><a href="">{{$element->name}}</a></h3>
            <div class="col-lg-12 ">
            @foreach ($element->news as $news)
-             <p>{!!str_limit($news->title,'100')!!}<a href="{{route('news.detail',[$news->slug,$news->id])}}"> >></a></p>
+             <p>{!!str_limit($news->title,'100')!!}<a href="{{route('news.detail',$news->id)}}"> >></a></p>
              @endforeach
           </div>
       @endforeach
