@@ -45,8 +45,6 @@ class NewsController extends Controller
     public function store(NewsPostRequest $request)
     {
         $news = new News($request->all());
-        $news ->admin_user_id = Auth()->user()->id;
-        $news ->slug = str_slug($news->title);
         $news ->save();
         Session::flash('success', trans('messages.news_create_success'));
         return redirect()->route('admin.news.index');
@@ -75,10 +73,7 @@ class NewsController extends Controller
      */
     public function update(NewsPutRequest $request, $id)
     {
-        $news = News::findOrFail($id);
-        $news ->admin_user_id = $news->adminUser->id;
-        $news ->slug = str_slug($request->title);
-        $news->fill($request->all());
+        $news = News::findOrFail($id)->fill($request->all());
         $news->update();
         Session::flash('success', trans('messages.news_edit_success'));
         return redirect()->route('admin.news.index');
