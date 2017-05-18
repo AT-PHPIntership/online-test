@@ -6,9 +6,9 @@
       {{ Session::get('success') }}
   </div>
 @endif
-<div class="col-md-1">
+<div class="col-md-2">
   <a href="{{route('admin.news.create')}}">
-  <button type="button" class="btn btn-block btn-info btn-sm"> Add News
+  <button type="button" class="btn btn-block btn-info btn-sm"> {{trans('backend.add')}}
   </button></a>
 </div>
   <div class="col-xs-12">
@@ -25,7 +25,7 @@
             <th style="width:25%">{{trans('news.title')}}</th>
             <th >{{trans('categories.category')}}</th>
             <th style="width:15%">{{trans('news.user')}}</th>
-            <th style="width:8%">{{trans('admin.action')}}</th>
+            <th style="width:8%">{{trans('backend.action')}}</th>
           </tr>
           @foreach($news as $item)
           <tr>

@@ -51,8 +51,8 @@
           </div>
         </div>
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">{{trans('admin.edit')}}</button>
-          <a href="{{route('admin.news.index')}}"><button type="button" class="btn  btn-danger">{{trans('admin.cancel')}}</button></a>
+          <button type="submit" class="btn btn-primary">{{trans('backend.edit')}}</button>
+          <a href="{{route('admin.news.index')}}"><button type="button" class="btn  btn-danger">{{trans('backend.cancel')}}</button></a>
         </div>
       </form>
     </div>

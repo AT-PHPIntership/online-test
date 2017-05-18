@@ -17,7 +17,7 @@
             @endif
           </div>
           <div class="form-group  {{ $errors->has('category_id') ? ' has-error' : '' }}" >
-            <label>{{trans('admin.category')}}</label>
+            <label>{{trans('categories.category')}}</label>
             <select class="form-control select2" name="category_id" style="width: 100%;">
               <option value="">-- Choose --</option>
               @foreach($categories as $item)
@@ -32,7 +32,6 @@
             <label>{{trans('news.content')}}</label>
             <div class="box box-info ">
               <div class="box-header">
-                <small>{{trans('news.advanced')}}</small>
                 <div class="pull-right box-tools">
                 <button type="button" class="btn btn-info btn-sm" data-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fa fa-minus"></i></button>
@@ -49,8 +48,8 @@
           </div>
         </div>
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary">{{trans('admin.add')}}</button>
-          <a href="{{route('admin.news.index')}}"><button type="button" class="btn  btn-danger">{{trans('admin.cancel')}}</button></a>
+          <button type="submit" class="btn btn-primary">{{trans('backend.add')}}</button>
+          <a href="{{route('admin.news.index')}}"><button type="button" class="btn  btn-danger">{{trans('backend.cancel')}}</button></a>
          
         </div>
       </form>
