@@ -2,16 +2,29 @@
 @section('content')
 <section id="news" class="container content-section text-center news">
       <h2>{{trans('frontend.news')}}</h2>
+       <ul class="nav nav-pills">
+        <li class="filter" >
+          <a href="/">Tat ca danh muc</a>
+        </li>
+        @foreach ($categories as $category)
+        <li class="filter" >
+          <a href="{{route('categories.show', $category ->id)}}">{{$category -> name}}</a>
+        </li>
+        @endforeach
+      </ul>
+      @php   
+      $i = 0;
+      @endphp
       @foreach ($news as $element)
-          <h3 style="color: white"><a href="">{{$element->name}}</a></h3>
-           <div class="col-lg-12 ">
-           @foreach ($element->news as $news)
-             <p>{!!str_limit($news->title,'100')!!}<a href="{{route('news.detail',$news->id)}}"> >></a></p>
-             @endforeach
+          <div class="col-lg-12 ">
+           <p> {{++$i}}. {!!str_limit($element->title,'200')!!}<a href="{{route('news.detail',$element->id)}}"> >></a></p>
           </div>
       @endforeach
       <div class="box-footer clearfix">
         <ul class="pagination pagination-sm no-margin pull-right">
+        <li> 
+       {{$news -> render()}}
+        </li>
         </ul>
       </div>
     </div>

@@ -4,20 +4,21 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Exam;
 use App\Models\News;
-use App\Models\Category;
+use App\Models\Exam;
 
-class IndexController extends Controller
+class CategoryController extends Controller
 {
     /**
-     * Show the application dashboard.
+     * Show page index
+     *
+     * @param int $id category
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function show($id)
     {
-        $news = News::orderBy('id', 'DESC')->paginate();
+        $news = News::where('category_id', '=', $id)->paginate();
         return view('frontend.index', compact('news'));
     }
 }
