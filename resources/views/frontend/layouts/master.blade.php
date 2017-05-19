@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('/frontend/css/master.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
       <script>
           window.Laravel = {!! json_encode([
               'csrfToken' => csrf_token(),

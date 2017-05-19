@@ -38,7 +38,7 @@ Route::group(['prefix' => 'admin','middleware' => 'auth:admin', 'namespace' => '
     Route::resource('part', 'PartController', ['as' => 'admin'], ['only' => [
         'index',
     ]]);
-
+    Route::resource('news', 'NewsController', ['as' => 'admin','except' => 'show']);
     Route::group(['prefix' => 'exams'], function () {
         Route::get('{examId}/question/part1/create', 'QuestionController@createPart1')->name('admin.questions.create.part1');
         Route::post('{examId}/question/part1/store', 'QuestionController@storePart1')->name('admin.questions.store.part1');

@@ -299,3 +299,20 @@ input.answer-part2 {
 .parts p{
   color: #000000;
 }
+
+.part-3.col-md-12{
+  text-align: left;
+}
+.part-4.col-md-12{
+  text-align: left;
+}
+.part-1.col-md-8{
+  text-align: left;
+}
+.part5.col-md-10.col-md-offset-2 {
+    padding-bottom: 45px;
+}
+
+.answer.col-md-3{
+  padding-bottom: 50px;
+}
