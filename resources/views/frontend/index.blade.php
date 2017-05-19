@@ -4,7 +4,7 @@
       <h2>{{trans('frontend.news')}}</h2>
        <ul class="nav nav-pills">
         <li class="filter" >
-          <a href="/">Tat ca danh muc</a>
+          <a href="/">{{trans('frontend.allcategories')}}</a>
         </li>
         @foreach ($categories as $category)
         <li class="filter" >
