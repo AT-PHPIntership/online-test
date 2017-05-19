@@ -18,3 +18,12 @@
   padding-top: 10px;
   padding-bottom: 10px
 }
+.scroll-to-fixed {
+    position: fixed;
+    top: 448px;
+    left: 100px;
+    z-index: 1000;
+    padding: 20px;
+    background: #253c17;
+    border-radius: 50%;
+}
