@@ -30,7 +30,8 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'summaryImages' => 'App\Models\SummaryImage',
         ]);
-        View::composer(['backend.news.create', 'backend.news.edit'], 'App\Http\ViewComposers\CategoryComposer');
+        View::composer(['backend.news.create', 'backend.news.edit','frontend.index'], 'App\Http\ViewComposers\CategoryComposer');
+        View::composer(['frontend.index'], 'App\Http\ViewComposers\ExamsFinishedComposer');
     }
 
     /**
