@@ -15,7 +15,7 @@ class CreateSummaryTextTable extends Migration
     {
         Schema::create('summary_text', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('content');
+            $table->longText('content');
             $table->timestamps();
         });
     }

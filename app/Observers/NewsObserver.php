@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\News;
+use Auth;
 
 class NewsObserver
 {
@@ -15,7 +16,9 @@ class NewsObserver
      */
     public function creating(News $news)
     {
-        $news ->admin_user_id = Auth()->user()->id;
+        if (!Auth::guest()) {
+            $news ->admin_user_id = Auth()->user()->id;
+        }
         $news ->slug = str_slug($news->title);
     }
 

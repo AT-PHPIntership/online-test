@@ -1,12 +1,34 @@
 @extends('frontend.layouts.master')
 @section('content')
-<section id="news" class="container content-section text-center news">
-    <div class="row">
-      <h2>{{trans('frontend.news')}}</h2>
-      <div class="col-lg-4 "><p>Tin tuc 1  <a href="#">Learn more...</a>.</p></div>
-      <div class="col-lg-4 "><p>Tin tuc 2  <a href="#">Learn more...</a>.</p></div>
-      <div class="col-lg-4 "><p>Tin tuc 3 <a href="#">Learn more...</a>.</p></div>
+<section id="news" class="container content-section news">
+  <div class="row">
+    <h2>{{trans('frontend.news')}}</h2>
+     <ul class="nav nav-pills">
+      <li class="filter" >
+        <a href="/">{{trans('frontend.allcategories')}}</a>
+      </li>
+      @foreach ($categories as $category)
+      <li class="filter" >
+        <a href="{{route('categories.show', $category ->id)}}">{{$category -> name}}</a>
+      </li>
+      @endforeach
+    </ul>
+    @php   
+    $i = 0;
+    @endphp
+    @foreach ($news as $element)
+        <div class="col-lg-12 ">
+         <p> {{++$i}}. {!!str_limit($element->title,'200')!!}<a href="{{route('news.detail',$element->id)}}"> >></a></p>
+        </div>
+    @endforeach
+    <div class="box-footer clearfix">
+      <ul class="pagination pagination-sm no-margin pull-right">
+      <li> 
+     {{$news -> render()}}
+      </li>
+      </ul>
     </div>
+  </div>
 </section>
 <!-- Part Section -->
 <section id="parts" class="content-section text-center">

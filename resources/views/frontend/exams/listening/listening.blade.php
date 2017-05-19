@@ -83,5 +83,5 @@
 </section>
 @endsection
 @section('script')
-  <script type="text/javascript" src="{{asset('/frontend/js/main.js')}}"></script>
+  <script type="text/javascript" src="{{asset('/frontend/js/timelistening.js')}}"></script>
 @endsection

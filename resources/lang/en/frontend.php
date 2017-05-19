@@ -25,4 +25,5 @@
         'at-toeic'=>'AT Exams Toeic',
         'remember'  => 'Remember',
         'forgot_pass'   => 'Forgot Password',
+        'allcategories'   => 'All Category',
     ];

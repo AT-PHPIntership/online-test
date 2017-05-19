@@ -11,7 +11,7 @@ class News extends Model
         'title', 'slug', 'content', 'category_id', 'admin_user_id'
     ];
     public $timestamps = true;
-
+    public $perPage = 5;
     /**
      *  News belongs to an AdminUser.
      *

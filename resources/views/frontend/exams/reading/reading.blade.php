@@ -5,6 +5,9 @@
   <form action="{{route('exam.reading',$exam->id)}}" enctype="multipart/form-data" method="POST" >
     {{csrf_field()}}
     <div class="container">
+    <div class="scroll-to-fixed">
+        <h4><span id="countdown-reading" class="timer" style="color: red"></span></h4>
+        </div>
       <div class="part5">
           <h2 class="text-center">{{trans('exams.part5')}}</h2>
         <?php  $question_start_part_5 = \App\Models\Part::START_PART_5; ?>
@@ -72,11 +75,11 @@
       </div>
     </div>
     <div class="text-center">
-      <a href=""><button type="submit" class="btn  btn-success "><i class="fa fa-flag-checkered" aria-hidden="true"></i>{{trans('exams.exam_finish')}}<i class="fa fa-flag-checkered" aria-hidden="true"></i></button></a>
+      <a href=""><button type="submit" class="btn  btn-success end-test "><i class="fa fa-flag-checkered" aria-hidden="true"></i>{{trans('exams.exam_finish')}}<i class="fa fa-flag-checkered" aria-hidden="true"></i></button></a>
     </div>
   </form>
 </section>
 @endsection
 @section('script')
-  <script type="text/javascript" src="{{asset('/frontend/js/main.js')}}"></script>
+  <script type="text/javascript" src="{{asset('frontend/js/timereading.js')}}"></script>
 @endsection
