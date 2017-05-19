@@ -70,7 +70,7 @@ Route::group(['namespace'=>'Frontend'], function () {
     Route::Auth();
     Route::get('/', 'IndexController@index')->name('home');
     Route::get('news-detail/{id}', 'NewsController@detail')->name('news.detail');
-    Route::resource('/categories', 'CategoryController');
+    Route::resource('/categories', 'CategoryController', ['only' => 'show']);
     Route::group(['prefix' => 'exams','middleware' => 'auth:web'], function () {
         Route::get('{examId}/listening', 'ExamController@listening')->name('exams.listening');
         Route::post('{examId}/storeListening', 'ExamController@storeListening')->name('exams.storeListening');
