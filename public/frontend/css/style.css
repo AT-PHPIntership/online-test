@@ -15,10 +15,10 @@
 }
 .scroll-to-fixed {
     position: fixed;
-    top: 448px;
-    left: 100px;
+    top: 270px;
+    left: 1110px;
     z-index: 1000;
-    padding: 20px;
-    background: #253c17;
+    background: #ffffff;
+    border: 1px solid;
     border-radius: 50%;
 }
