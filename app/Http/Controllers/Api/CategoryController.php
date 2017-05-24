@@ -12,6 +12,13 @@ class CategoryController extends Controller
 {
     
 
+    public function index()
+    {
+        $categories = Category::all();
+        return response()->json([
+            'categories'=>$categories,
+            ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -19,36 +26,12 @@ class CategoryController extends Controller
      */
     public function create(CategoryRequest $request)
     {
-
-        // return response()->json([
-        //     'name' => 'Abigail',
-        //     'state' => 'CA'
-        // ]);
         $category = new Category($request->all());
         $category ->save();
-        return response()->json($category);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return response()->json([
+            'data'=>$category,
+            'message' => trans('messages.category_create_success')
+        ]);
     }
 
     /**
