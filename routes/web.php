@@ -71,6 +71,10 @@ Route::group(['namespace'=>'Frontend'], function () {
     Route::get('/', 'IndexController@index')->name('home');
     Route::get('news-detail/{id}', 'NewsController@detail')->name('news.detail');
     Route::resource('categories', 'CategoryController', ['only' => 'show']);
+    Route::group(['prefix' => 'user','middleware' => 'auth:web'], function () {
+        Route::get('{id}/profile', 'UserController@edit')->name('user.edit');
+        Route::put('{id}/profile', 'UserController@update')->name('user.update');
+    });
     Route::group(['prefix' => 'exams','middleware' => 'auth:web'], function () {
         Route::get('{examId}/listening', 'ExamController@listening')->name('exams.listening');
         Route::post('{examId}/storeListening', 'ExamController@storeListening')->name('exams.storeListening');

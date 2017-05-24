@@ -7,7 +7,6 @@ use App\Http\Requests;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Session;
-use DB;
 
 class UserController extends Controller
 {

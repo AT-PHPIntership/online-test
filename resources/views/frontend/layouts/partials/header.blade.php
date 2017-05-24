@@ -33,12 +33,12 @@
 
                   <ul class="dropdown-menu" role="menu">
                       <li>
+                          <a href="{{ route('user.edit', Auth::user()->id)}}">{!! trans('frontend.edit') !!}</a>
                           <a href="{{ route('logout') }}"
                               onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">
                               {!! trans('backend.logout') !!}
                           </a>
-
                           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                               {{ csrf_field() }}
                           </form>

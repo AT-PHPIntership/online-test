@@ -14,6 +14,12 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{asset('/frontend/css/master.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <script src="{{ asset('bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+      <script type="text/javascript"> 
+        $(document).ready( function() {
+          $('#update').delay(3000).fadeOut();
+        });
+      </script>
       <script>
           window.Laravel = {!! json_encode([
               'csrfToken' => csrf_token(),
@@ -22,11 +28,15 @@
   </head>
   <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
     @include('frontend.layouts.partials.header')
+    @if(Session::has('success'))
+        <div class="alert alert-success text-center" id="update">
+            {{ Session::get('success') }}
+        </div>
+    @endif
     @yield('content')
     @include('frontend.layouts.partials.footer')
     @yield('script')
     <!-- jQuery 2.2.3 -->
-    <script src="{{ asset('bower_components/AdminLTE/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
     <!-- Bootstrap 3.3.6 -->
     <script src="{{ asset('bower_components/AdminLTE/bootstrap/js/bootstrap.min.js') }}"></script>
   </body>

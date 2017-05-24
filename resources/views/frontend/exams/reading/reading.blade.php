@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title','Test Listening - ')
+@section('title','Test Reading - ')
 @section('content')
 <section id="exams" class="container content-section">
   <form action="{{route('exam.reading',$exam->id)}}" enctype="multipart/form-data" method="POST" >
