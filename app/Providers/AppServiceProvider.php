@@ -13,6 +13,7 @@ use App\Models\Exam;
 use App\Models\News;
 use Illuminate\Support\Facades\View;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Laravel\Dusk\DuskServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -41,6 +42,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment('local', 'testing')) {
+            $this->app->register(DuskServiceProvider::class);
+        }
     }
 }
