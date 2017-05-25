@@ -33,6 +33,11 @@
             {{ Session::get('success') }}
         </div>
     @endif
+    @if(Session::has('failure'))
+        <div class="alert alert-danger text-center" id="update">
+            {{ Session::get('failure') }}
+        </div>
+    @endif
     @yield('content')
     @include('frontend.layouts.partials.footer')
     @yield('script')

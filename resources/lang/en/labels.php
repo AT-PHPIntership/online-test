@@ -12,6 +12,7 @@ return [
     'new_password'  => 'New Password',
     'password'  => 'Password',
     'repassword'    => 'Re-Password',
+    'change_pass'   => 'Change Password',
     'remember'  => 'Remember',
     'address'   => 'Address',
     'cancel'    => 'Cancel',

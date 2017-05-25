@@ -33,7 +33,8 @@
 
                   <ul class="dropdown-menu" role="menu">
                       <li>
-                          <a href="{{ route('user.edit', Auth::user()->id)}}">{!! trans('frontend.edit') !!}</a>
+                          <a href="{{ route('user.editProfile', Auth::user()->id)}}">{!! trans('frontend.edit') !!}</a>
+                          <a href="{{ route('user.editPass', Auth::user()->id)}}">{!! trans('frontend.update_pass') !!}</a>
                           <a href="{{ route('logout') }}"
                               onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">

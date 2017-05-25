@@ -66,14 +66,15 @@ Route::group(['namespace' => 'Backend', 'prefix' => 'admin'], function () {
 
 //=======================================Frontend=======================================================
 Route::group(['namespace'=>'Frontend'], function () {
-
     Route::Auth();
     Route::get('/', 'IndexController@index')->name('home');
     Route::get('news-detail/{id}', 'NewsController@detail')->name('news.detail');
     Route::resource('categories', 'CategoryController', ['only' => 'show']);
     Route::group(['prefix' => 'user','middleware' => 'auth:web'], function () {
-        Route::get('{id}/profile', 'UserController@edit')->name('user.edit');
-        Route::put('{id}/profile', 'UserController@update')->name('user.update');
+        Route::get('{id}/profile', 'Auth\UpdateProfileController@edit')->name('user.editProfile');
+        Route::put('{id}/profile', 'Auth\UpdateProfileController@update')->name('user.updateProfile');
+        Route::get('{id}/change-password', 'Auth\UpdatePasswordController@edit')->name('user.editPass');
+        Route::put('{id}/change-password', 'Auth\UpdatePasswordController@update')->name('user.updatePass');
     });
     Route::group(['prefix' => 'exams','middleware' => 'auth:web'], function () {
         Route::get('{examId}/listening', 'ExamController@listening')->name('exams.listening');

@@ -12,7 +12,7 @@
               <div class="panel-body">
                   <h2>{!! trans('labels.user') !!}<small>{!! trans('labels.edit') !!}</small></h2>
                   <div class="clearfix"></div>
-                  <form id="form-change-password" role="form" method="POST" action="{{route('user.update', $user->id) }}" novalidate class="form-horizontal">
+                  <form id="form-change-password" role="form" method="POST" action="{{route('user.updateProfile', $user->id) }}" novalidate class="form-horizontal">
                   {{csrf_field()}}
                   {{ method_field('PUT') }}
                   <div class="col-md-9">

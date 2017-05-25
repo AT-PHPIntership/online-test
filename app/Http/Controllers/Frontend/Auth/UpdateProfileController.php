@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Frontend\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Frontend\UserEditRequest;
 use Session;
 
-class UserController extends Controller
+class UpdateProfileController extends Controller
 {
     /**
      * Show the form for editing the specified resource.
@@ -22,7 +22,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         if ($id == Auth::user()->id) {
-            return view('frontend.user.edit', compact('user'));
+            return view('frontend.user.change-profile', compact('user'));
         } else {
             return view('errors.404');
         }

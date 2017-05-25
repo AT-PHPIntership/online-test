@@ -27,4 +27,5 @@
         'forgot_pass'   => 'Forgot Password',
         'allcategories'   => 'All Category',
         'edit'  => 'Profile',
+        'update_pass'   => 'Change Pass',
     ];
