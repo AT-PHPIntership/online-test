@@ -62,6 +62,6 @@ class User extends Authenticatable
      */
     public function userExams()
     {
-        return $this->hasMany(UserExams::class);
+        return $this->hasMany(UserExam::class);
     }
 }
